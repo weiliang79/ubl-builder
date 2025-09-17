@@ -85,7 +85,7 @@ import {
 } from '../types/UnqualifiedDataTypes';
 
 import { decomposeTime } from '../../tools/dateFormatter';
-import * as builder from 'xmlbuilder';
+import { create } from 'xmlbuilder2';
 import { SHA384 } from '../../tools/shas';
 import { addition, fixDecimals } from '../../tools/mathTools';
 import { IGenericKeyValue } from '../CommonAggregateComponents/GenericAggregateComponent';
@@ -1157,6 +1157,8 @@ export default class Invoice {
           : this.children[attKey].parseToJson();
       });
 
-    return builder.create(this.xmlRef, { encoding: 'UTF-8', standalone: false, headless }).end({ pretty });
+    return create(this.xmlRef as object, { encoding: 'UTF-8', standalone: false, headless }).end({
+      prettyPrint: pretty,
+    });
   }
 }

@@ -1,4 +1,4 @@
-import * as builder from 'xmlbuilder';
+import { create } from 'xmlbuilder2';
 
 export type ParamsMapValues = {
   order: number;
@@ -81,7 +81,7 @@ export default class GenericAggregateComponent {
    */
   getAsXml(pretty = true, headless = false) {
     const xmlRef = this.parseToJson();
-    const xml = builder.create(xmlRef, { encoding: 'UTF-8', standalone: false, headless }).end({ pretty });
+    const xml = create(xmlRef, { encoding: 'UTF-8', standalone: false, headless }).end({ prettyPrint: pretty });
     return xml; // console.log(xml);
   }
 

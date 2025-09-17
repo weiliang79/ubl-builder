@@ -43,7 +43,7 @@
   "dependencies": {
     "@xmldom/xmldom": "^0.8.11",
     "weeknumber": "^1.2.1",
-    "xmlbuilder": "^15.1.1",
+    "xmlbuilder2": "^3.1.1",
     "xpath": "^0.0.34"
   },
   "devDependencies": {
