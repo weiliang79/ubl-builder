@@ -2,9 +2,9 @@
   "name": "ubl-builder",
   "version": "1.4.3",
   "description": "Tool to create xml documents with UBL 2.0 standard",
-  "main": "lib/index.js",
+  "main": "dist/index.js",
   "files": [
-    "lib/**/*"
+    "dist/**/*"
   ],
   "scripts": {
     "test": "jest --config jestconfig.json",
@@ -32,18 +32,19 @@
   "contributors": [
     {
       "name": "Lars Buur",
-      "email": "lars@buur.org"}
-    ],
+      "email": "lars@buur.org"
+    }
+  ],
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/pipesanta/ubl-builder/issues"
   },
   "homepage": "https://github.com/pipesanta/ubl-builder#readme",
   "dependencies": {
-    "@xmldom/xmldom": "^0.7.0",
-    "weeknumber": "^1.1.2",
+    "@xmldom/xmldom": "^0.8.11",
+    "weeknumber": "^1.2.1",
     "xmlbuilder": "^15.1.1",
-    "xpath": "0.0.29"
+    "xpath": "^0.0.34"
   },
   "devDependencies": {
     "@types/jest": "^27.0.2",
