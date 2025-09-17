@@ -13,7 +13,7 @@ export class UBLVersionID extends UdtIdentifier {
   }
 
   parseToJson() {
-    const jsonResult: any = { '#text': this.content };
+    const jsonResult: any = { '#': this.content };
     Object.keys(this.attributes).forEach((attribute) => {
       jsonResult[`@${attribute}`] = this.attributes[attribute];
     });

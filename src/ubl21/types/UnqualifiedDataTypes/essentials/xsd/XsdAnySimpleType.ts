@@ -15,7 +15,7 @@ export default class XsdAnySimpleType implements IXsdAnySimpleType {
   }
 
   parseToJson(): any {
-    return { '#text': this.content };
+    return { '#': this.content };
   }
 
   validateContent() {

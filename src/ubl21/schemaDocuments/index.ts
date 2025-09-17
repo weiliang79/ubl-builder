@@ -13,6 +13,6 @@
 //     DebitNote
 // }
 
-import Invoice from './Invoice';
+import Invoice, { InvoiceOptions } from './Invoice';
 
-export { Invoice };
+export { Invoice, InvoiceOptions };

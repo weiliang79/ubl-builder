@@ -18,6 +18,6 @@ export default class XsdAnyURI extends XsdAnySimpleType {
   }
 
   parseToJson() {
-    return { '#text': this.content };
+    return { '#': this.content };
   }
 }

@@ -91,7 +91,7 @@ import { addition, fixDecimals } from '../../tools/mathTools';
 import { IGenericKeyValue } from '../CommonAggregateComponents/GenericAggregateComponent';
 import { INVOICE_CHILDREN_MAP } from './ChildrenMap';
 
-type InvoiceOptions = {
+export type InvoiceOptions = {
   /** Issue time to create issues field like issuetime, issue date. Current Date by default . */
   timestamp?: number;
   /** DIAN enviroment.  "1" for production: "2" for testing */
@@ -176,8 +176,8 @@ export default class Invoice {
     // this.setProfileID('DIAN 2.1'); // mandatory
     // this.setProfileExecutionID(this.options.enviroment); // DIAN enviroment
 
-    //  this.setIssueDate(`${year}-${month}-${dayOfMonth}`);
-    // this.setIssueTime(`${hourOfDay}:${minute}:${second}-05:00`);
+    // this.setIssueDate(`${year}-${month}-${dayOfMonth}`);
+    // this.setIssueTime(`${hourOfDay}:${minute}:${second}Z`);
     // this.setUBLVersionID('UBL 2.1');
     // this.setDocumentCurrencyCode('COP'); // Divisa de toda la factura
     // this.calculateDianExtension(); // fill Dian extension content
@@ -1157,7 +1157,8 @@ export default class Invoice {
           : this.children[attKey].parseToJson();
       });
 
-    return create(this.xmlRef as object, { encoding: 'UTF-8', standalone: false, headless }).end({
+    return create({ version: '1.0', encoding: 'UTF-8', standalone: false }, this.xmlRef as object).end({
+      headless,
       prettyPrint: pretty,
     });
   }

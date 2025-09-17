@@ -15,7 +15,7 @@ export class CctNumericType extends XsdDecimal {
   }
 
   parseToJson() {
-    const jsonResult: any = { '#text': this.content };
+    const jsonResult: any = { '#': this.content };
     Object.keys(this.attributes)
       .filter((att) => this.attributes[att])
       .forEach((att) => {

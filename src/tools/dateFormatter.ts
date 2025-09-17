@@ -12,7 +12,7 @@ interface Options {
  */
 function decomposeTime(ts: number, options?: Options) {
   options = options || {};
-  options.timezone = options.timezone || 'America/Bogota';
+  options.timezone = options.timezone || 'UTC';
 
   // 2018-12-4 17:12:05
   const date = new Date(new Date(ts).toLocaleString('en-US', { timeZone: options.timezone }));
