@@ -88,7 +88,7 @@ type AllowedParams = {
   /** An identifier for this party's logo */
   logoReferenceID?: UdtIdentifier | string;
   /** An identifier for the end point of the routing service (e.g., EAN Location Number, GLN) */
-  EndpointID: UdtIdentifier | string;
+  EndpointID?: UdtIdentifier | string;
   /** This party's Industry Classification Code */
   industryClassificationCode?: UdtCode | string;
   /**  An identifier for this party */
@@ -102,10 +102,10 @@ type AllowedParams = {
 
   // postalAddress: { order: 10,  attributeName: 'cac:PostalAddress', min: 0, max: 1, classRef: PostalAddress },
   // physicalLocation: "The physical location of this party.",
-  partyTaxSchemes: PartyTaxScheme[];
-  partyLegalEntities: PartyLegalEntity[];
+  partyTaxSchemes?: PartyTaxScheme[];
+  partyLegalEntities?: PartyLegalEntity[];
   contact?: Contact;
-  postalAddress: PostalAddress;
+  postalAddress?: PostalAddress;
   // person: { order: 15,  attributeName: 'cac:Person', min: 0, max: 1, classRef: PostalAddress },
   // postalAddress: { order: 16,  attributeName: 'cac:PostalAddress', min: 0, max: 1, classRef: Person },
   // serviceProviderParty: { order: 17,  attributeName: 'cac:ServiceProviderParty', min: 0, max: 1, classRef: ServiceProviderParty },
@@ -120,11 +120,10 @@ type AllowedParams = {
  * More info http://www.datypic.com/sc/ubl21/e-cac_IssuerParty.html
  */
 class Party extends GenericAggregateComponent {
-  /**     *
+  /**
    * @param {AllowedParams} content
-   * @param {string} name
    */
-  constructor(content: AllowedParams) {
+  constructor(content?: AllowedParams) {
     super(content, ParamsMap, 'cac:IssueParty');
   }
 
@@ -185,6 +184,8 @@ class Party extends GenericAggregateComponent {
     }
     const itemToPush = value instanceof PartyIdentification ? value : new PartyIdentification(value);
     this.attributes.partyIdentifications.push(itemToPush);
+
+    return this;
   }
 
   /**

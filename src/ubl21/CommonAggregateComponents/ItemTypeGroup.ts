@@ -3,6 +3,8 @@ import { UdtText, UdtQuantity, UdtIndicator, UdtName, UdtIdentifier } from '../t
 import { UdtNumeric } from '../types/UnqualifiedDataTypes/UdtNumeric';
 import { SellersItemIdentification } from './SellersItemIdentification';
 import { ClassifiedTaxCategory } from './TaxCategoryTypeGroup';
+import { Country } from './CountryTypeGroup';
+import { CommodityClassification } from './CommodityClassification';
 
 /*
     1   cbc:Description [0..*]    Text describing this item.
@@ -69,6 +71,20 @@ const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
     max: 1,
     classRef: SellersItemIdentification,
   },
+  originCountry: {
+    order: 19,
+    attributeName: 'cac:OriginCountry',
+    min: 0,
+    max: 1,
+    classRef: Country,
+  },
+  commodityClassification: {
+    order: 20,
+    attributeName: 'cac:CommodityClassification',
+    min: 0,
+    max: undefined,
+    classRef: CommodityClassification,
+  },
   classifiedTaxCategory: {
     order: 23,
     attributeName: 'cac:ClassifiedTaxCategory',
@@ -81,19 +97,20 @@ const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
 
 // ##################################  TODO CAC MISSING ################################################
 type AllowedParams = {
-  descriptions?: string[] | UdtText[];
+  name?: string | UdtName;
+  descriptions?: UdtText[];
   packQuantity?: string | UdtQuantity;
   packSizeNumeric?: string | UdtNumeric;
   catalogueIndicator?: string | UdtIndicator;
-  name: string | UdtName;
   hazardousRiskIndicator?: string | UdtIndicator;
-  additionalInformations?: string[] | UdtText[];
-  keywords?: string[] | UdtText[];
-  /** @type {UdtName} */
+  additionalInformations?: UdtText[];
+  keywords?: UdtText[];
   brandName?: string | UdtName;
   modelName?: string | UdtName;
-  sellersItemIdentification: SellersItemIdentification;
-  classifiedTaxCategory: ClassifiedTaxCategory;
+  sellersItemIdentification?: SellersItemIdentification;
+  classifiedTaxCategory?: ClassifiedTaxCategory;
+  originCountry?: Country;
+  commodityClassification?: CommodityClassification[];
 };
 
 /**

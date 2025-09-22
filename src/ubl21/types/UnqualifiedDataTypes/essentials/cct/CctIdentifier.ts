@@ -3,7 +3,7 @@
 // const { XsdNormalizedString, XsdString, XsdAnyURI } = require("../xsd");
 import { XsdNormalizedString } from '../xsd';
 
-export type AllowedAttributes = {
+export interface AllowedAttributes {
   /** The identification of the identification scheme */
   schemeID?: string;
   /** The name of the identification scheme. */
@@ -18,7 +18,7 @@ export type AllowedAttributes = {
   schemeDataURI?: string;
   /** The Uniform Resource Identifier that identifies where the identification scheme is located. */
   schemeURI?: string;
-};
+}
 /**
  * A character string to identify and distinguish uniquely,
  * one instance of an object in an identification scheme from all other objects in

@@ -39,25 +39,47 @@ const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
   //                                   TODO CAC MISSING
 };
 
-// todo jsdoc missing
-type AllowedParams = {
+/**
+ *
+ */
+/**
+ * An interface to define the allowed params for document reference.
+ *
+ * @property {string} id - The id of the component.
+ * @property {string} [copyIndicator] - The copy indicator of the component.
+ * @property {UDTIdentifier|string} [uuid] - The uuid of the component.
+ * @property {string} [issueDate] - The issue date of the component.
+ * @property {string} [issueTime] - The issue time of the component.
+ * @property {UDTCode|string} [documentTypeCode] - The document type code of the component.
+ * @property {string} [documentType] - The document type of the component.
+ * @property {string} [xPath] - The x path of the component.
+ * @property {string} [languageID] - The language id of the component.
+ * @property {string} [localeCode] - The locale code of the component.
+ * @property {string} [versionID] - The version id of the component.
+ * @property {string} [documentStatusCode] - The document status code of the component.
+ * @property {string} [documentDescription] - The document description of the component.
+ * @property {string} [attachment] - The attachment of the component.
+ * @property {string} [validityPeriod] - The validity period of the component.
+ * @property {string} [issuerParty] - The issuer party of the component.
+ */
+interface AllowedParams {
   id: string;
-  copyIndicator: string;
-  uuid: UdtIdentifier | string;
-  issueDate: string;
-  issueTime: string;
-  documentTypeCode: UdtCode | string;
-  documentType: string;
-  xPath: string;
-  languageID: string;
-  localeCode: string;
-  versionID: string;
-  documentStatusCode: string;
-  documentDescription: string;
-  attachment: string;
-  validityPeriod: string;
-  issuerParty: string;
-};
+  copyIndicator?: string;
+  uuid?: UdtIdentifier | string;
+  issueDate?: string;
+  issueTime?: string;
+  documentTypeCode?: UdtCode | string;
+  documentType?: string;
+  xPath?: string;
+  languageID?: string;
+  localeCode?: string;
+  versionID?: string;
+  documentStatusCode?: string;
+  documentDescription?: string;
+  attachment?: string;
+  validityPeriod?: string;
+  issuerParty?: string;
+}
 
 class DespatchDocumentReference extends GenericAggregateComponent {
   constructor(content: AllowedParams) {

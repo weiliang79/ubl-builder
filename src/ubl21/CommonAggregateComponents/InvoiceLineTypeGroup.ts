@@ -15,6 +15,7 @@ import { TaxTotal, WithholdingTaxTotal } from './TaxTotalTypeGroup';
 import { Item } from './ItemTypeGroup';
 import { Price } from './PriceTypeGroup';
 import { DeliveryTerms } from './DeliveryTerms';
+import { ItemPriceExtension } from './ItemPriceExtension';
 
 /*
   1    cbc:ID [1..1]    An identifier for this invoice line.
@@ -118,6 +119,13 @@ const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
   price: { order: 25, attributeName: 'cac:Price', min: 0, max: undefined, classRef: Price },
   deliveryTerms: { order: 26, attributeName: 'cac:DeliveryTerms', min: 0, max: undefined, classRef: DeliveryTerms },
   // subInvoiceLine: { order: 27,  attributeName: 'cac:SubInvoiceLine', min: 0, max: undefined, classRef: SubInvoiceLine },
+  itemPriceExtension: {
+    order: 28,
+    attributeName: 'cac:ItemPriceExtension',
+    min: 0,
+    max: 1,
+    classRef: ItemPriceExtension,
+  },
 };
 
 type AllowedParams = {
@@ -148,6 +156,7 @@ type AllowedParams = {
   price: Price; // Mandatory
   deliveryTerms?: DeliveryTerms;
   // subInvoiceLine: "",
+  itemPriceExtension?: ItemPriceExtension;
 };
 
 /**

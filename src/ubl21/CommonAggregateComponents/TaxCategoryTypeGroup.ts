@@ -36,9 +36,9 @@ const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
 };
 
 type AllowedParams = {
-  id: string | UdtIdentifier;
+  id?: string | UdtIdentifier;
   name?: string | UdtName;
-  percent: string | UdtPercent;
+  percent?: string | UdtPercent;
   baseUnitMeasure?: string | UdtMeasure;
   perUnitAmount?: string | UdtAmount;
   taxExemptionReasonCode?: string | UdtCode;

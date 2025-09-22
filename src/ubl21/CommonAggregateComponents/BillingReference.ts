@@ -1,7 +1,5 @@
-// 'use strict'
-
 import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from './GenericAggregateComponent';
-import { InvoiceDocumentReference } from './DocumentReferenceGroup';
+import { AdditionalDocumentReference, InvoiceDocumentReference } from './DocumentReferenceGroup';
 
 const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
   invoiceDocumentReference: {
@@ -11,20 +9,75 @@ const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
     max: 1,
     classRef: InvoiceDocumentReference,
   },
-  //                                   TODO CAC MISSING
-  // selfBilledInvoiceDocumentReference: { order: 2, attributeName: 'cac:SelfBilledInvoiceDocumentReference', min: 0, max:1, classRef: null },
-  // creditNoteDocumentReference: { order: 3, attributeName: 'cac:CreditNoteDocumentReference', min: 0, max:1, classRef: null },
-  // selfBilledCreditNoteDocumentReference: { order: 4, attributeName: 'cac:SelfBilledCreditNoteDocumentReference', min: 0, max:1, classRef: null },
-  // debitNoteDocumentReference: { order: 5, attributeName: 'cac:DebitNoteDocumentReference', min: 0, max:1, classRef: null },
-  // reminderDocumentReference: { order: 6, attributeName: 'cac:ReminderDocumentReference', min: 0, max:1, classRef: null },
-  // additionalDocumentReference: { order: 7, attributeName: 'cac:AdditionalDocumentReference', min: 0, max:1, classRef: null },
-  // billingReferenceLine: { order: 8, attributeName: 'cac:BillingReferenceLine', min: 0, max:undefined, classRef: null },
-  //                                   TODO CAC MISSING
+  selfBilledInvoiceDocumentReference: {
+    order: 2,
+    attributeName: 'cac:SelfBilledInvoiceDocumentReference',
+    min: 0,
+    max: 1,
+    classRef: null,
+  },
+  creditNoteDocumentReference: {
+    order: 3,
+    attributeName: 'cac:CreditNoteDocumentReference',
+    min: 0,
+    max: 1,
+    classRef: null,
+  },
+  selfBilledCreditNoteDocumentReference: {
+    order: 4,
+    attributeName: 'cac:SelfBilledCreditNoteDocumentReference',
+    min: 0,
+    max: 1,
+    classRef: null,
+  },
+  debitNoteDocumentReference: {
+    order: 5,
+    attributeName: 'cac:DebitNoteDocumentReference',
+    min: 0,
+    max: 1,
+    classRef: null,
+  },
+  reminderDocumentReference: {
+    order: 6,
+    attributeName: 'cac:ReminderDocumentReference',
+    min: 0,
+    max: 1,
+    classRef: null,
+  },
+  additionalDocumentReference: {
+    order: 7,
+    attributeName: 'cac:AdditionalDocumentReference',
+    min: 0,
+    max: 1,
+    classRef: AdditionalDocumentReference,
+  },
+  billingReferenceLine: { order: 8, attributeName: 'cac:BillingReferenceLine', min: 0, max: undefined, classRef: null },
 };
 
 type AllowedParams = {
   /** A reference to an invoice */
-  invoiceDocumentReference: InvoiceDocumentReference;
+  invoiceDocumentReference?: InvoiceDocumentReference;
+
+  // /** A reference to a self-billed invoice */
+  // selfBilledInvoiceDocumentReference: null;
+
+  // /** A reference to a credit note */
+  // creditNoteDocumentReference: null;
+
+  // /** A reference to a self-billed credit note */
+  // selfBilledCreditNoteDocumentReference: null;
+
+  // /** A reference to a debit note */
+  // debitNoteDocumentReference: null;
+
+  // /** A reference to a reminder */
+  // reminderDocumentReference: null;
+
+  /** A reference to an additional document */
+  additionalDocumentReference?: AdditionalDocumentReference;
+
+  // /** A reference to a billing document */
+  // billingReferenceLine: null;
 };
 
 /**
@@ -43,6 +96,20 @@ class BillingReference extends GenericAggregateComponent {
   setInvoiceDocumentReference(value: InvoiceDocumentReference) {
     if (value instanceof InvoiceDocumentReference) {
       this.attributes.invoiceDocumentReference = value;
+    } else {
+      throw new Error('this action is not suported yet');
+    }
+
+    return this;
+  }
+
+  /**
+   *
+   * @param value
+   */
+  setAdditionalDocumentReference(value: AdditionalDocumentReference) {
+    if (value instanceof AdditionalDocumentReference) {
+      this.attributes.additionalDocumentReference = value;
     } else {
       throw new Error('this action is not suported yet');
     }

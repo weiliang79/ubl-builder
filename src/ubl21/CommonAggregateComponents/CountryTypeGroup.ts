@@ -10,7 +10,7 @@ const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
 
 type AllowedParams = {
   /** A code signifying this country. */
-  identificationCode?: string;
+  identificationCode?: string | UdtCode;
   /** The name of this country */
   name?: string | UdtName;
 };
