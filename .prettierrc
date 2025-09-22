@@ -1,5 +1,9 @@
 {
-    "printWidth": 120,
-    "trailingComma": "all",
-    "singleQuote": true
-  }
+  "semi": true,
+  "singleQuote": false,
+  "singleAttributePerLine": false,
+  "tabWidth": 2,
+  "endOfLine": "auto",
+  "trailingComma": "all",
+  "plugins": ["prettier-plugin-organize-imports"]
+}
