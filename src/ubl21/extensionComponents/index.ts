@@ -22,19 +22,19 @@ export {
   UBLExtensionsParams,
   UBLExtensionType,
   UBLExtensionTypeParams,
+
   // DIAN extensions
+  // NOTICE: Dian Extensions are specific to Colombia and may not be applicable in other regions.
   DianExtensions,
   DianExtensionsParams,
   DianExtensionsContent,
   DianExtensionsContentParams,
-  // custom Extensions
   InvoiceControl,
   InvoiceControlParams,
   AuthorizedInvoices,
   AuthorizedInvoicesParams,
   InvoiceSource,
   AuthorizationProvider,
-  //
   SoftwareProvider,
   SoftwareProviderParams,
 };

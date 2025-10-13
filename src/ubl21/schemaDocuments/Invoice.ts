@@ -84,10 +84,7 @@ import {
   UdtNumericAttributes,
 } from '../types/UnqualifiedDataTypes';
 
-import { decomposeTime } from '../../tools/dateFormatter';
 import { create } from 'xmlbuilder2';
-import { SHA384 } from '../../tools/shas';
-import { addition, fixDecimals } from '../../tools/mathTools';
 import { IGenericKeyValue } from '../CommonAggregateComponents/GenericAggregateComponent';
 import { INVOICE_CHILDREN_MAP } from './ChildrenMap';
 
@@ -147,20 +144,6 @@ export default class Invoice {
       Invoice: {},
     };
 
-    // options.issuer = options.issuer || {};
-    // if(!options.issuer.resolutionNumber) throw "Resolution number is required";
-    // if(!options.issuer.prefix) throw "Issuer prefix is required";
-    // if(!options.issuer.startRange) throw "Software start range is required";
-    // if(!options.issuer.endRange) throw "Software end range is required";
-    // if(!options.issuer.startDate) throw "Software start Date is required";
-    // if(!options.issuer.endDate) throw "Software end date is required";
-    // if(!options.issuer.technicalKey) throw "Technical ID is required";
-
-    // options.software = options.software || {};
-    // if(!options.software.id) throw "Software ID is required";
-    // if(!options.software.providerNit) throw "Software provider is required";
-    // if(!options.software.pin) throw "Software Pin is required";
-
     this.options = options || {};
     this.options.timestamp = options?.timestamp || Date.now();
     this.options.enviroment = options?.enviroment || '2';
@@ -168,22 +151,6 @@ export default class Invoice {
     if (!['1', '2'].includes(this.options.enviroment)) {
       throw new Error('Enviroment value is not allowed');
     }
-
-    // const { year, month, dayOfMonth, hourOfDay, minute, second } = decomposeTime(options.timestamp);
-
-    // DEFAULT VALUES
-    // this.setID(id);
-    // this.setProfileID('DIAN 2.1'); // mandatory
-    // this.setProfileExecutionID(this.options.enviroment); // DIAN enviroment
-
-    // this.setIssueDate(`${year}-${month}-${dayOfMonth}`);
-    // this.setIssueTime(`${hourOfDay}:${minute}:${second}Z`);
-    // this.setUBLVersionID('UBL 2.1');
-    // this.setDocumentCurrencyCode('COP'); // Divisa de toda la factura
-    // this.calculateDianExtension(); // fill Dian extension content
-    // DEFAULT VALUES
-
-    // this.fillEmptyExtensionForSignature();
   }
 
   addProperty(key: string, value: string): Invoice {

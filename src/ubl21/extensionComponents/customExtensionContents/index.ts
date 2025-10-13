@@ -1,3 +1,5 @@
+// NOTICE: Dian Extensions are specific to Colombia and may not be applicable in other regions.
+
 'use strict';
 
 import { DianExtensions, DianExtensionsParams } from './DianExtensions';

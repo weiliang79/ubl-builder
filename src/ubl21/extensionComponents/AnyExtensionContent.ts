@@ -1,7 +1,7 @@
 import GenericAggregateComponent, {
   IGenericKeyValue,
   ParamsMapValues,
-} from '../CommonAggregateComponents/GenericAggregateComponent';
+} from "../CommonAggregateComponents/GenericAggregateComponent";
 
 /**
  * Any element [1..1] Namespace: ##other, Process Contents: lax
@@ -9,9 +9,14 @@ import GenericAggregateComponent, {
 export default class AnyExtensionContent extends GenericAggregateComponent {
   /**
    * @param {any} content
+   * @param {IGenericKeyValue<ParamsMapValues>} ParamsMap
    * @param {string} name
    */
-  constructor(content: any, ParamsMap: IGenericKeyValue<ParamsMapValues>, extensionName: string) {
-    super(content, ParamsMap, extensionName);
+  constructor(
+    content: any,
+    ParamsMap: IGenericKeyValue<ParamsMapValues>,
+    name: string,
+  ) {
+    super(content, ParamsMap, name);
   }
 }
