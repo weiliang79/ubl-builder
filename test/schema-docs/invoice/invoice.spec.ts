@@ -1,7 +1,6 @@
 import {
   AccountingCustomerParty,
   AccountingSupplierParty,
-  AdditionalDocumentReference,
   AddressLine,
   Contact,
   Country,
@@ -17,33 +16,14 @@ import {
 } from '../../../src/ubl21/CommonAggregateComponents';
 import { CommodityClassification } from '../../../src/ubl21/CommonAggregateComponents/CommodityClassification';
 import { ItemPriceExtension } from '../../../src/ubl21/CommonAggregateComponents/ItemPriceExtension';
-import { Invoice, InvoiceOptions } from '../../../src/ubl21/schemaDocuments';
+import { Invoice } from '../../../src/ubl21/schemaDocuments';
 import {
   UdtAmount,
   UdtCode,
   UdtIdentifier,
-  UdtName,
   UdtQuantity,
   UdtText,
 } from '../../../src/ubl21/types/UnqualifiedDataTypes';
-
-const invoiceOpts: InvoiceOptions = {
-  enviroment: '1',
-  issuer: {
-    prefix: '4999',
-    resolutionNumber: '321654987',
-    startDate: '2025-01-01',
-    endDate: '2025-01-01',
-    startRange: '1000',
-    endRange: '1000',
-    technicalKey: '123123123123',
-  },
-  software: {
-    id: '123123',
-    pin: '123456789',
-    providerNit: '91919191-90',
-  },
-};
 
 describe('Invoice', () => {
   it('should construct a simple invoice XML document', () => {
@@ -111,9 +91,8 @@ describe('Invoice', () => {
         postalZone: '11700',
         countrySubentityCode: '07',
         addressLine: [
-          new AddressLine({ line: '74, Lorong Pekaka 4' }),
-          new AddressLine({ line: 'Taman Desa Baru' }),
-          new AddressLine({ line: 'Sungai Dua' }),
+          new AddressLine({ line: 'The Summit Batu Pahat 88 Jalan Bakau Condong' }),
+          new AddressLine({ line: 'Batu Pahat' }),
         ],
         country: new Country({
           identificationCode: new UdtCode('MYS', { listID: 'ISO3166-1', listAgencyID: '6' }),
@@ -133,12 +112,12 @@ describe('Invoice', () => {
 
     supplier
       .addPartyIdentification({
-        id: new UdtIdentifier('IG50094460010', {
+        id: new UdtIdentifier('IG10024460070', {
           schemeID: 'TIN',
         }),
       })
       .addPartyIdentification({
-        id: new UdtIdentifier('000326070501', {
+        id: new UdtIdentifier('000131071234', {
           schemeID: 'NRIC',
         }),
       })
@@ -166,9 +145,8 @@ describe('Invoice', () => {
         postalZone: '11700',
         countrySubentityCode: '07',
         addressLine: [
-          new AddressLine({ line: '74, Lorong Pekaka 4' }),
-          new AddressLine({ line: 'Taman Desa Baru' }),
-          new AddressLine({ line: 'Sungai Dua' }),
+          new AddressLine({ line: 'The Summit Batu Pahat 88 Jalan Bakau Condong' }),
+          new AddressLine({ line: 'Batu Pahat' }),
         ],
         country: new Country({
           identificationCode: new UdtCode('MYS', { listID: 'ISO3166-1', listAgencyID: '6' }),
@@ -188,12 +166,12 @@ describe('Invoice', () => {
 
     customer
       .addPartyIdentification({
-        id: new UdtIdentifier('IG50094460010', {
+        id: new UdtIdentifier('IG10024460070', {
           schemeID: 'TIN',
         }),
       })
       .addPartyIdentification({
-        id: new UdtIdentifier('000326070501', {
+        id: new UdtIdentifier('000131071234', {
           schemeID: 'NRIC',
         }),
       })
