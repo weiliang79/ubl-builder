@@ -10,7 +10,7 @@ export default class XsdAnySimpleType implements IXsdAnySimpleType {
    */
   constructor(content: string | number | boolean, attributes?: any) {
     /** Simple content as string */
-    this.content = content || '';
+    this.content = content !== null && content !== undefined ? content : '';
     this.applyAttributes(attributes || {});
   }
 

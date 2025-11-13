@@ -1,6 +1,15 @@
-import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from './GenericAggregateComponent';
-import { UdtCode, UdtIdentifier, UdtText, UdtIndicator, UdtAmount } from '../types/UnqualifiedDataTypes/';
-import { TaxCategory } from './TaxCategoryTypeGroup';
+import {
+  UdtAmount,
+  UdtCode,
+  UdtIdentifier,
+  UdtIndicator,
+  UdtText,
+} from "../types/UnqualifiedDataTypes/";
+import GenericAggregateComponent, {
+  IGenericKeyValue,
+  ParamsMapValues,
+} from "./GenericAggregateComponent";
+import { TaxCategory } from "./TaxCategoryTypeGroup";
 
 /* TODO GANERIC CLASSES */
 /*
@@ -22,22 +31,65 @@ import { TaxCategory } from './TaxCategoryTypeGroup';
 */
 
 const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
-  id: { order: 1, attributeName: 'cbc:ID', min: 0, max: 1, classRef: UdtIdentifier },
-  chargeIndicator: { order: 2, attributeName: 'cbc:ChargeIndicator', min: 1, max: 1, classRef: UdtIndicator },
+  id: {
+    order: 1,
+    attributeName: "cbc:ID",
+    min: 0,
+    max: 1,
+    classRef: UdtIdentifier,
+  },
+  chargeIndicator: {
+    order: 2,
+    attributeName: "cbc:ChargeIndicator",
+    min: 1,
+    max: 1,
+    classRef: UdtIndicator,
+  },
   allowanceChargeReasonCode: {
     order: 3,
-    attributeName: 'cbc:AllowanceChargeReasonCode',
-    min: 1,
+    attributeName: "cbc:AllowanceChargeReasonCode",
+    min: 0,
     max: 1,
     classRef: UdtCode,
   },
-  allowanceChargeReason: { order: 4, attributeName: 'cbc:AllowanceChargeReason', min: 1, max: 1, classRef: UdtText },
+  allowanceChargeReason: {
+    order: 4,
+    attributeName: "cbc:AllowanceChargeReason",
+    min: 0,
+    max: 1,
+    classRef: UdtText,
+  },
+  multiplierFactorNumeric: {
+    order: 5,
+    attributeName: "cbc:MultiplierFactorNumeric",
+    min: 0,
+    max: 1,
+    classRef: UdtAmount,
+  },
 
-  amount: { order: 8, attributeName: 'cbc:Amount', min: 1, max: 1, classRef: UdtAmount },
+  amount: {
+    order: 8,
+    attributeName: "cbc:Amount",
+    min: 1,
+    max: 1,
+    classRef: UdtAmount,
+  },
 
-  baseAmount: { order: 9, attributeName: 'cbc:BaseAmount', min: 0, max: 1, classRef: UdtAmount },
+  baseAmount: {
+    order: 9,
+    attributeName: "cbc:BaseAmount",
+    min: 0,
+    max: 1,
+    classRef: UdtAmount,
+  },
 
-  taxCategory: { order: 13, attributeName: 'cac:TaxCategory', min: 0, max: 1, classRef: TaxCategory },
+  taxCategory: {
+    order: 13,
+    attributeName: "cac:TaxCategory",
+    min: 0,
+    max: 1,
+    classRef: TaxCategory,
+  },
 };
 
 type AllowedParams = {
@@ -46,16 +98,18 @@ type AllowedParams = {
   /** An indicator that this AllowanceCharge describes a charge (true) or a discount (false) */
   chargeIndicator: boolean | UdtIndicator;
   /** A mutually agreed code signifying the reason for this allowance or charge */
-  allowanceChargeReasonCode: string | UdtCode;
+  allowanceChargeReasonCode?: string | UdtCode;
   /** The reason for this allowance or charge */
-  allowanceChargeReason: string | UdtText;
+  allowanceChargeReason?: string | UdtText;
+  /** A number by which the base amount is multiplied to calculate the actual amount of this allowance or charge */
+  multiplierFactorNumeric?: string | UdtAmount;
 
   /*  */
   amount: string | UdtAmount;
   /*  */
   baseAmount?: string | UdtAmount;
 
-  taxCategory: TaxCategory;
+  taxCategory?: TaxCategory;
 };
 
 /**
@@ -67,7 +121,7 @@ class AllowanceCharge extends GenericAggregateComponent {
    * @param {string} name
    */
   constructor(content: AllowedParams) {
-    super(content, ParamsMap, 'cac:AllowanceCharge');
+    super(content, ParamsMap, "cac:AllowanceCharge");
   }
 }
 /*
