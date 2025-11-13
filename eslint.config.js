@@ -9,7 +9,7 @@ export default defineConfig(
   eslintConfigPrettier,
   {
     rules: {
-      "@typescript/no-explicit-any": "warn",
+      "@typescript-eslint/no-explicit-any": "warn",
     },
   },
 );
