@@ -1,16 +1,6 @@
-import GenericAggregateComponent, { ParamsMapValues, IGenericKeyValue } from './GenericAggregateComponent';
+import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from './GenericAggregateComponent';
 
-import {
-  UdtCode,
-  UdtCodeAttributes,
-  UdtIdentifier,
-  UdtIdentifierAttributes,
-  UdtDate,
-  UdtText,
-  UdtTextAttributes,
-  UdtTime,
-  UdtName,
-} from '../types/UnqualifiedDataTypes';
+import { UdtCode, UdtIdentifier, UdtIdentifierAttributes, UdtName, UdtText } from '../types/UnqualifiedDataTypes';
 
 /* TODO GENERIC CLASSES */
 import { AddressLine } from './AddressLine';
@@ -130,8 +120,8 @@ Element cac:ReturnAddress
 export {
   Address,
   Address as AddressParams,
-  Address as RegistrationAddress,
-  Address as JurisdictionRegionAddress,
   Address as DeliveryAddress,
   Address as DespatchAddress,
+  Address as JurisdictionRegionAddress,
+  Address as RegistrationAddress,
 };

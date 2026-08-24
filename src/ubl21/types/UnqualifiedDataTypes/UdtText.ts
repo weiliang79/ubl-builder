@@ -1,4 +1,4 @@
-import { CctTextType, AllowedAttributes } from './essentials/cct/CctText';
+import { AllowedAttributes, CctTextType } from './essentials/cct/CctText';
 
 export type UdtTextAttributes = AllowedAttributes;
 

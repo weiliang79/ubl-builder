@@ -1,11 +1,11 @@
 // 'use strict'
 
-import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from './GenericAggregateComponent';
-import { UdtIdentifier, UdtName, UdtCode, UdtText, UdtMeasure } from '../types/UnqualifiedDataTypes';
-import { UdtPercent } from '../types/UnqualifiedDataTypes/UdtPercent';
+import { UdtCode, UdtIdentifier, UdtMeasure, UdtName, UdtText } from '../types/UnqualifiedDataTypes';
 import { UdtAmount } from '../types/UnqualifiedDataTypes/UdtAmount';
-import { TaxScheme } from './TaxScheme';
+import { UdtPercent } from '../types/UnqualifiedDataTypes/UdtPercent';
+import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from './GenericAggregateComponent';
 import { TaxCategoryType } from './TaxCategoryType';
+import { TaxScheme } from './TaxScheme';
 
 /*
 
@@ -74,9 +74,9 @@ class ClassifiedTaxCategoryType extends GenericAggregateComponent {
 }
 
 export {
-  TaxCategoryType as TaxCategory,
-  AllowedParams as TaxCategoryTypeParams,
   ClassifiedTaxCategoryType as ClassifiedTaxCategory,
   AllowedParams as ClassifiedTaxCategoryTypeParams,
+  TaxCategoryType as TaxCategory,
+  AllowedParams as TaxCategoryTypeParams,
   ParamsMap as TaxCategoryTypeParamsMap,
 };

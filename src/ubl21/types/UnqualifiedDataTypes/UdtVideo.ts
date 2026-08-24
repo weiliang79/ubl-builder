@@ -1,4 +1,4 @@
-import { CctBinaryObjectType, AllowedAttributes } from './essentials/cct/CctBinaryObject';
+import { AllowedAttributes, CctBinaryObjectType } from './essentials/cct/CctBinaryObject';
 
 export type UdtVideoAttributes = AllowedAttributes;
 

@@ -1,5 +1,5 @@
+import { UdtCode, UdtDate, UdtIdentifier, UdtName, UdtText, UdtTime } from '../types/UnqualifiedDataTypes';
 import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from './GenericAggregateComponent';
-import { UdtDate, UdtIdentifier, UdtText, UdtTime, UdtCode, UdtName } from '../types/UnqualifiedDataTypes';
 
 const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
   URI: { order: 1, attributeName: 'cbc:URI', min: 0, max: 1, classRef: UdtIdentifier },

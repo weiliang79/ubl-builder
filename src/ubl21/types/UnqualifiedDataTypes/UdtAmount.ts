@@ -1,4 +1,4 @@
-import { CctAmountType, AllowedAttributes } from './essentials/cct/CctAmount';
+import { AllowedAttributes, CctAmountType } from './essentials/cct/CctAmount';
 
 export type UdtAmountAttributes = AllowedAttributes;
 /**

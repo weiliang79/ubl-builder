@@ -1,6 +1,6 @@
-import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from './GenericAggregateComponent';
+import { UdtIndicator } from '../types/UnqualifiedDataTypes';
 import { UdtAmount } from '../types/UnqualifiedDataTypes/UdtAmount';
-import { UdtIndicator, UdtIdentifier } from '../types/UnqualifiedDataTypes';
+import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from './GenericAggregateComponent';
 import { TaxSubtotal } from './TaxSubtotal';
 
 /*

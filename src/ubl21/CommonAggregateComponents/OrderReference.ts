@@ -1,6 +1,6 @@
-import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from './GenericAggregateComponent';
-import { UdtIdentifier, UdtIndicator, UdtDate, UdtTime, UdtText, UdtCode } from '../types/UnqualifiedDataTypes';
+import { UdtCode, UdtDate, UdtIdentifier, UdtIndicator, UdtText, UdtTime } from '../types/UnqualifiedDataTypes';
 import { DocumentReference } from './DocumentReferenceGroup';
+import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from './GenericAggregateComponent';
 
 const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
   id: { order: 1, attributeName: 'cbc:ID', min: 1, max: 1, classRef: UdtIdentifier },

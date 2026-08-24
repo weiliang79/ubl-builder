@@ -1,11 +1,11 @@
 // 'use strict'
 
-import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from './GenericAggregateComponent';
-import { UdtIdentifier, UdtDate, UdtTime, UdtText } from '../types/UnqualifiedDataTypes';
+import { UdtDate, UdtIdentifier, UdtText, UdtTime } from '../types/UnqualifiedDataTypes';
 import { DespatchAddress } from './AddressTypeGroup';
-import { DespatchLocation } from './LocationTypeGroup';
-import { DespatchParty, CarrierParty, NotifyParty } from './PartyTypeGroup';
 import { Contact } from './ContactTypeGroup';
+import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from './GenericAggregateComponent';
+import { DespatchLocation } from './LocationTypeGroup';
+import { CarrierParty, DespatchParty, NotifyParty } from './PartyTypeGroup';
 import { EstimatedDespatchPeriod } from './PeriodTypeGroup';
 
 /*

@@ -1,87 +1,66 @@
 import {
-  InvoiceLine,
-  InvoiceLineParams,
-  TaxTotal,
-  TaxTotalTypeParams,
-  LegalMonetaryTotal,
-  MonetaryTotalParams,
-  PrepaidPayment,
-  PaymentTypeParams,
-  PaymentExchangeRate,
-  ExchangeRateParams,
-  PaymentTerms,
-  PaymentTermsTypeParams,
-  DeliveryTerms,
-  DeliveryTermsParams,
-  PaymentMeans,
-  PaymentMeansParams,
-  Delivery,
-  DeliveryTypeParams,
-  TaxRepresentativeParty,
-  PartyParams,
   AccountingCustomerParty,
-  CustomerPartyParams,
   AccountingSupplierParty,
-  SupplierPartyTypeParams,
-  Signature,
-  SignatureParams,
-  ProjectReference,
-  ProjectReferenceParams,
   AdditionalDocumentReference,
   AdditionalDocumentReferenceParams,
-  ContractDocumentReference,
-  ContractDocumentReferenceParams,
-  OriginatorDocumentReference,
-  OriginatorDocumentReferenceParams,
-  StatementDocumentReference,
-  StatementDocumentReferenceParams,
-  ReceiptDocumentReference,
-  ReceiptDocumentReferenceParams,
-  DespatchDocumentReference,
-  DespatchDocumentReferenceParams,
+  AllowanceCharge,
   BillingReference,
   BillingReferenceParams,
-  PeriodTypeParams,
-  PeriodType,
+  ContractDocumentReference,
+  ContractDocumentReferenceParams,
+  Delivery,
+  DeliveryTerms,
+  DeliveryTermsParams,
+  DeliveryTypeParams,
+  DespatchDocumentReference,
+  DespatchDocumentReferenceParams,
+  ExchangeRateParams,
+  InvoiceLine,
+  InvoiceLineParams,
+  LegalMonetaryTotal,
+  MonetaryTotalParams,
   OrderReference,
   OrderReferenceParams,
-  TaxSubtotal,
-  TaxCategory,
-  TaxScheme,
-  AllowanceCharge,
+  OriginatorDocumentReference,
+  OriginatorDocumentReferenceParams,
+  PartyParams,
+  PaymentExchangeRate,
+  PaymentMeans,
+  PaymentMeansParams,
+  PaymentTypeParams,
+  PeriodType,
+  PeriodTypeParams,
+  PrepaidPayment,
+  ProjectReference,
+  ProjectReferenceParams,
+  ReceiptDocumentReference,
+  ReceiptDocumentReferenceParams,
+  Signature,
+  SignatureParams,
+  StatementDocumentReference,
+  StatementDocumentReferenceParams,
+  SupplierPartyTypeParams,
+  TaxRepresentativeParty,
+  TaxTotal,
+  TaxTotalTypeParams,
 } from '../CommonAggregateComponents';
 
-import {
-  InvoiceControl,
-  InvoiceControlParams,
-  AuthorizedInvoices,
-  UBLExtensions,
-  UBLExtensionType,
-  DianExtensions,
-  DianExtensionsContent,
-  InvoiceSource,
-  SoftwareProvider,
-  SoftwareProviderParams,
-  AuthorizationProvider,
-} from '../extensionComponents';
+import { UBLExtensions } from '../extensionComponents';
 
 import {
-  UdtName,
-  UdtIdentifier,
-  UdtCode,
-  UdtCodeAttributes,
-  UdtText,
-  UdtTextAttributes,
-  UdtDate,
-  UdtIndicator,
-  UdtTime,
-  UdtIdentifierAttributes,
-  UdtAmount,
-  UdtQuantity,
   UBLVersionID,
   UBLVersionIDAttributes,
+  UdtCode,
+  UdtCodeAttributes,
+  UdtDate,
+  UdtIdentifier,
+  UdtIdentifierAttributes,
+  UdtIndicator,
   UdtNumeric,
   UdtNumericAttributes,
+  UdtText,
+  UdtTextAttributes,
+  UdtTime,
 } from '../types/UnqualifiedDataTypes';
 
 import { create } from 'xmlbuilder2';
@@ -921,7 +900,7 @@ export default class Invoice {
   //     { name: 'CodImp1', value: '01' },
   //     /* Valor impuesto 01 - IVA, con punto decimal, con decimales a dos (2) dígitos, sin separadores
   //       de miles, ni símbolo pesos. Si no esta referenciado el impuesto 01 – IVA este valor se
-  //       representa con 0.00 
+  //       representa con 0.00
   //     */
   //     { name: 'Valor Impuesto 1', value: ivaTaxAmount },
   //     // 04 Este valor es fijo.
@@ -938,7 +917,7 @@ export default class Invoice {
   //       representa con 0.00 */
   //     { name: 'ValImp3', value: icaTaxAmount }, // todo
   //     /* Valor Total, con punto decimal, con decimales a dos (2) dígitos, sin separadores de miles, ni
-  //       símbolo pesos 
+  //       símbolo pesos
   //       /Invoice/cac:LegalMonetaryTotal/cbc:PayableAmount/>
   //     */
   //     { name: 'ValTot', value: this.children.legalMonetaryTotal.getPayableAmount() },
@@ -951,14 +930,14 @@ export default class Invoice {
   //       /Invoice/ cac:AccountingCustomerParty/cac:Party/cac:PartyTaxScheme/cbc:CompanyID/>
   //     */
   //     { name: 'NumAdq', value: this.children.accountingCustomerParty.getParty().getTaxSchemes()[0].getCompanyID() },
-  //     /* 
+  //     /*
   //       La clave técnica se encuentra en la consultar del rango de numeración que se hacer a
   //       trevés del Web Service, la cual no esta expuesto dentro del XML
   //       Clave técnica del rango de facturación.
   //     */
   //     { name: 'ClTec', value: codeToHash },
   //     /* Número de identificación del ambiente utilizado por el contribuyente para emitir la factura
-  //       validar el numeral 6.1.1. 
+  //       validar el numeral 6.1.1.
   //     */
   //     { name: 'TipoAmbiente', value: this.options.enviroment }, // 1: produccion, 2: pruebas
   //   ];

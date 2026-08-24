@@ -1,6 +1,6 @@
-import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from './GenericAggregateComponent';
 import { UdtBinaryObject } from '../types/UnqualifiedDataTypes';
 import { ExternalReference } from './ExternalReference';
+import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from './GenericAggregateComponent';
 
 const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
   embeddedDocumentBinaryObject: {

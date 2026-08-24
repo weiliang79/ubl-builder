@@ -1,10 +1,10 @@
-import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from './GenericAggregateComponent';
-import { UdtText, UdtQuantity, UdtIndicator, UdtName, UdtIdentifier } from '../types/UnqualifiedDataTypes';
+import { UdtIndicator, UdtName, UdtQuantity, UdtText } from '../types/UnqualifiedDataTypes';
 import { UdtNumeric } from '../types/UnqualifiedDataTypes/UdtNumeric';
+import { CommodityClassification } from './CommodityClassification';
+import { Country } from './CountryTypeGroup';
+import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from './GenericAggregateComponent';
 import { SellersItemIdentification } from './SellersItemIdentification';
 import { ClassifiedTaxCategory } from './TaxCategoryTypeGroup';
-import { Country } from './CountryTypeGroup';
-import { CommodityClassification } from './CommodityClassification';
 
 /*
     1   cbc:Description [0..*]    Text describing this item.

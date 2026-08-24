@@ -1,7 +1,7 @@
 // 'use strict'
 
+import { UdtIndicator, UdtQuantity } from '../types/UnqualifiedDataTypes';
 import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from './GenericAggregateComponent';
-import { UdtQuantity, UdtIndicator } from '../types/UnqualifiedDataTypes';
 /*
 
 cbc:BatchQuantity [1..1]    The quantity of ordered Items that constitutes a batch for delivery purposes.
@@ -40,6 +40,6 @@ class DeliveryUnitType extends GenericAggregateComponent {
 export {
   DeliveryUnitType as DeliveryUnit,
   AllowedParams as DeliveryUnitTypeParams,
-  DeliveryUnitType as MinimumDeliveryUnit,
   DeliveryUnitType as MaximumDeliveryUnit,
+  DeliveryUnitType as MinimumDeliveryUnit,
 };

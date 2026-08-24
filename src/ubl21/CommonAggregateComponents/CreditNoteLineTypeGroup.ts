@@ -1,18 +1,18 @@
-import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from './GenericAggregateComponent';
-import { UdtIdentifier, UdtText, UdtQuantity, UdtDate, UdtCode, UdtIndicator } from '../types/UnqualifiedDataTypes';
+import { UdtCode, UdtDate, UdtIdentifier, UdtIndicator, UdtQuantity, UdtText } from '../types/UnqualifiedDataTypes';
 import { UdtAmount } from '../types/UnqualifiedDataTypes/UdtAmount';
 import { BillingReference } from './BillingReference';
-import { DocumentReference } from './DocumentReferenceGroup';
-import { Party } from './PartyTypeGroup';
-import { Price } from './PriceTypeGroup';
-import { PeriodType } from './PeriodTypeGroup';
-import { OrderLineReference } from './OrderLineReference';
-import { DespatchLineReference, ReceiptLineReference } from './LineReferenceTypeGroup';
-import { Delivery } from './DeliveryTypeGroup';
-import { PaymentTerms } from './PaymentTermsTypeGroup';
-import { TaxTotal } from './TaxTotalTypeGroup';
-import { Item } from './ItemTypeGroup';
 import { DeliveryTerms } from './DeliveryTerms';
+import { Delivery } from './DeliveryTypeGroup';
+import { DocumentReference } from './DocumentReferenceGroup';
+import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from './GenericAggregateComponent';
+import { Item } from './ItemTypeGroup';
+import { DespatchLineReference, ReceiptLineReference } from './LineReferenceTypeGroup';
+import { OrderLineReference } from './OrderLineReference';
+import { Party } from './PartyTypeGroup';
+import { PaymentTerms } from './PaymentTermsTypeGroup';
+import { PeriodType } from './PeriodTypeGroup';
+import { Price } from './PriceTypeGroup';
+import { TaxTotal } from './TaxTotalTypeGroup';
 
 /*
   1    cbc:ID [1..1]    An identifier for this credit note line.

@@ -17,13 +17,7 @@ import {
 import { CommodityClassification } from '../../../src/ubl21/CommonAggregateComponents/CommodityClassification';
 import { ItemPriceExtension } from '../../../src/ubl21/CommonAggregateComponents/ItemPriceExtension';
 import { Invoice } from '../../../src/ubl21/schemaDocuments';
-import {
-  UdtAmount,
-  UdtCode,
-  UdtIdentifier,
-  UdtQuantity,
-  UdtText,
-} from '../../../src/ubl21/types/UnqualifiedDataTypes';
+import { UdtAmount, UdtCode, UdtIdentifier, UdtQuantity, UdtText } from '../../../src/ubl21/types/UnqualifiedDataTypes';
 
 describe('Invoice', () => {
   it('should construct a simple invoice XML document', () => {

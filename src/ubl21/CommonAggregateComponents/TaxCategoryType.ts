@@ -1,6 +1,6 @@
+import { UdtPercent } from '../types/UnqualifiedDataTypes/UdtPercent';
 import GenericAggregateComponent from './GenericAggregateComponent';
 import { TaxCategoryTypeParams as AllowedParams, TaxCategoryTypeParamsMap as ParamsMap } from './TaxCategoryTypeGroup';
-import { UdtPercent } from '../types/UnqualifiedDataTypes/UdtPercent';
 import { TaxScheme } from './TaxScheme';
 
 export class TaxCategoryType extends GenericAggregateComponent {

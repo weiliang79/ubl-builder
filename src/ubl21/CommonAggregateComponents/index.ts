@@ -1,37 +1,37 @@
+import { BillingReference, BillingReferenceParams } from './BillingReference';
+import { Language, LanguageParams } from './Language';
 import { OrderReference, OrderReferenceParams } from './OrderReference';
-import {
-  PeriodType,
-  PeriodTypeParams,
-  InvoicePeriodBasic,
-  RequestedDeliveryPeriod,
-  EstimatedDeliveryPeriod,
-  EstimatedDespatchPeriod,
-  RequestedDespatchPeriod,
-  PromisedDeliveryPeriod,
-  ValidityPeriod,
-} from './PeriodTypeGroup';
 import { PartyIdentification, PartyIdentificationParams } from './PartyIdentification';
 import { PartyName, PartyNameParams } from './PartyName';
-import { Language, LanguageParams } from './Language';
-import { BillingReference, BillingReferenceParams } from './BillingReference';
+import {
+  EstimatedDeliveryPeriod,
+  EstimatedDespatchPeriod,
+  InvoicePeriodBasic,
+  PeriodType,
+  PeriodTypeParams,
+  PromisedDeliveryPeriod,
+  RequestedDeliveryPeriod,
+  RequestedDespatchPeriod,
+  ValidityPeriod,
+} from './PeriodTypeGroup';
 
 import {
+  AdditionalDocumentReference,
+  AdditionalDocumentReferenceParams,
+  ContractDocumentReference,
+  ContractDocumentReferenceParams,
   DespatchDocumentReference,
   DespatchDocumentReferenceParams,
   DocumentReference,
   DocumentReferenceParams,
   InvoiceDocumentReference,
   InvoiceDocumentReferenceParams,
+  OriginatorDocumentReference,
+  OriginatorDocumentReferenceParams,
   ReceiptDocumentReference,
   ReceiptDocumentReferenceParams,
   StatementDocumentReference,
   StatementDocumentReferenceParams,
-  OriginatorDocumentReference,
-  OriginatorDocumentReferenceParams,
-  ContractDocumentReference,
-  ContractDocumentReferenceParams,
-  AdditionalDocumentReference,
-  AdditionalDocumentReferenceParams,
 } from './DocumentReferenceGroup';
 
 import { ProjectReference, ProjectReferenceParams } from './ProjectReference';
@@ -40,40 +40,40 @@ import { Signature, SignatureParams } from './Signature';
 import { AccountingSupplierParty, SupplierPartyTypeParams } from './SupplierPartyTypeGroup';
 
 import {
+  CarrierParty,
+  DeliveryParty,
+  DespatchParty,
+  IssuerParty,
+  NotifyParty,
   Party,
   PartyParams,
   TaxRepresentativeParty,
-  CarrierParty,
-  IssuerParty,
-  DeliveryParty,
-  NotifyParty,
-  DespatchParty,
 } from './PartyTypeGroup';
 
 import { AddressLine, AddressLineParams } from './AddressLine';
 import { Country, CountryParams } from './CountryTypeGroup';
 
 import {
-  PhysicalLocation,
-  LocationTypeParams,
-  DeliveryLocation,
-  AlternativeDeliveryLocation,
-  DespatchLocation,
-} from './LocationTypeGroup';
-import {
   Address,
   AddressParams,
-  RegistrationAddress,
-  JurisdictionRegionAddress,
   DeliveryAddress,
   DespatchAddress,
+  JurisdictionRegionAddress,
+  RegistrationAddress,
 } from './AddressTypeGroup';
-import { TaxScheme, TaxSchemeParams } from './TaxScheme';
-import { PartyTaxScheme, PartyTaxSchemeParams } from './PartyTaxScheme';
-import { PartyLegalEntity, PartyLegalEntityParams } from './PartyLegalEntity';
 import { CorporateRegistrationScheme, CorporateRegistrationSchemeParams } from './CorporateRegistrationScheme';
+import {
+  AlternativeDeliveryLocation,
+  DeliveryLocation,
+  DespatchLocation,
+  LocationTypeParams,
+  PhysicalLocation,
+} from './LocationTypeGroup';
+import { PartyLegalEntity, PartyLegalEntityParams } from './PartyLegalEntity';
+import { PartyTaxScheme, PartyTaxSchemeParams } from './PartyTaxScheme';
+import { TaxScheme, TaxSchemeParams } from './TaxScheme';
 
-import { Contact, ContactTypeParams, DeliveryContact, AccountingContact, BuyerContact } from './ContactTypeGroup';
+import { AccountingContact, BuyerContact, Contact, ContactTypeParams, DeliveryContact } from './ContactTypeGroup';
 
 import { PostalAddress, PostalAddressTypeParams } from './PostalAddressTypeGroup';
 
@@ -88,189 +88,189 @@ import {
   MinimumDeliveryUnit,
 } from './DeliveryUnitTypeGroup';
 
-import { ShipmentType, ShipmentTypeParams } from './ShipmentTypeGroup';
 import { Delivery, DeliveryTypeParams } from './DeliveryTypeGroup';
+import { ShipmentType, ShipmentTypeParams } from './ShipmentTypeGroup';
 
 import { DeliveryTerms, DeliveryTermsParams } from './DeliveryTerms';
-import { PaymentMeans, PaymentMeansParams } from './PaymentMeans';
-import { PaymentTerms, PaymentTermsTypeParams } from './PaymentTermsTypeGroup';
-import { PaymentType, PaymentTypeParams, PrepaidPayment } from './PaymentTypeGroup';
 import { ExchangeRate, ExchangeRateParams, PaymentExchangeRate, PricingExchangeRate } from './ExchangeRateTypeGroup';
-import { TaxTotal, TaxTotalTypeParams, WithholdingTaxTotal } from './TaxTotalTypeGroup';
 import {
-  TaxCategory,
-  TaxCategoryTypeParams,
-  ClassifiedTaxCategory,
-  ClassifiedTaxCategoryTypeParams,
-} from './TaxCategoryTypeGroup';
-import { TaxSubtotal, TaxSubtotalParams } from './TaxSubtotal';
-import { MonetaryTotal, MonetaryTotalParams, LegalMonetaryTotal } from './MonetaryTotalTypeGroup';
-import { OrderLineReference, OrderLineReferenceParams } from './OrderLineReference';
-import {
-  LineReference,
-  LineReferenceParams,
-  DespatchLineReference,
   CallForTendersLineReference,
   CatalogueLineReference,
   DependentLineReference,
+  DespatchLineReference,
+  LineReference,
+  LineReferenceParams,
   ParentDocumentLineReference,
   QuotationLineReference,
   ReceiptLineReference,
   RequestLineReference,
 } from './LineReferenceTypeGroup';
+import { LegalMonetaryTotal, MonetaryTotal, MonetaryTotalParams } from './MonetaryTotalTypeGroup';
+import { OrderLineReference, OrderLineReferenceParams } from './OrderLineReference';
+import { PaymentMeans, PaymentMeansParams } from './PaymentMeans';
+import { PaymentTerms, PaymentTermsTypeParams } from './PaymentTermsTypeGroup';
+import { PaymentType, PaymentTypeParams, PrepaidPayment } from './PaymentTypeGroup';
 import { PriceList, PriceListParams } from './PriceListTypeGroup';
+import {
+  ClassifiedTaxCategory,
+  ClassifiedTaxCategoryTypeParams,
+  TaxCategory,
+  TaxCategoryTypeParams,
+} from './TaxCategoryTypeGroup';
+import { TaxSubtotal, TaxSubtotalParams } from './TaxSubtotal';
+import { TaxTotal, TaxTotalTypeParams, WithholdingTaxTotal } from './TaxTotalTypeGroup';
 
-import { Item, ItemTypeParams, SupplyItem } from './ItemTypeGroup';
 import { AllowanceCharge, AllowanceChargeParams } from './AllowanceChargeTypeGroup';
+import { Item, ItemTypeParams, SupplyItem } from './ItemTypeGroup';
 
-import { Price, PriceParams } from './PriceTypeGroup';
-import { InvoiceLine, InvoiceLineParams } from './InvoiceLineTypeGroup';
-import { CreditNoteLine, SubCreditNoteLine, CreditNoteLineParams } from './CreditNoteLineTypeGroup';
+import { CreditNoteLine, CreditNoteLineParams, SubCreditNoteLine } from './CreditNoteLineTypeGroup';
 import { DebitNoteLine, DebitNoteLineParams } from './DebitNoteLineTypeGroup';
+import { InvoiceLine, InvoiceLineParams } from './InvoiceLineTypeGroup';
+import { Price, PriceParams } from './PriceTypeGroup';
 
 export {
-  OrderReference,
-  OrderReferenceParams,
-  DocumentReference,
-  DocumentReferenceParams,
-  PeriodType,
-  ValidityPeriod,
-  PeriodTypeParams,
-  RequestedDeliveryPeriod,
-  PromisedDeliveryPeriod,
-  EstimatedDeliveryPeriod,
-  InvoicePeriodBasic,
-  EstimatedDespatchPeriod,
-  RequestedDespatchPeriod,
-  PriceList,
-  PriceListParams,
-  PartyIdentification,
-  PartyIdentificationParams,
-  PartyName,
-  PartyNameParams,
-  Language,
-  LanguageParams,
-  BillingReference,
-  BillingReferenceParams,
-  InvoiceDocumentReference,
-  InvoiceDocumentReferenceParams,
-  DespatchDocumentReference,
-  DespatchDocumentReferenceParams,
-  ReceiptDocumentReference,
-  ReceiptDocumentReferenceParams,
-  StatementDocumentReference,
-  StatementDocumentReferenceParams,
-  OriginatorDocumentReference,
-  OriginatorDocumentReferenceParams,
-  ContractDocumentReference,
-  ContractDocumentReferenceParams,
+  AccountingContact,
+  AccountingCustomerParty,
+  AccountingSupplierParty,
   AdditionalDocumentReference,
   AdditionalDocumentReferenceParams,
-  ProjectReference,
-  ProjectReferenceParams,
-  Signature,
-  SignatureParams,
-  AccountingSupplierParty,
-  SupplierPartyTypeParams,
-  Party,
-  PartyParams,
-  CarrierParty,
-  IssuerParty,
-  DeliveryParty,
-  NotifyParty,
-  DespatchParty,
+  Address,
   AddressLine,
   AddressLineParams,
-  Country,
-  CountryParams,
-  PhysicalLocation,
-  LocationTypeParams,
-  DeliveryLocation,
-  AlternativeDeliveryLocation,
-  DespatchLocation,
-  Address,
   AddressParams,
-  RegistrationAddress,
-  JurisdictionRegionAddress,
-  DeliveryAddress,
-  DespatchAddress,
-  TaxScheme,
-  TaxSchemeParams,
-  PartyTaxScheme,
-  PartyTaxSchemeParams,
-  TaxRepresentativeParty,
-  PartyLegalEntity,
-  PartyLegalEntityParams,
-  CorporateRegistrationScheme,
-  CorporateRegistrationSchemeParams,
-  PostalAddress,
-  PostalAddressTypeParams,
+  AllowanceCharge,
+  AllowanceChargeParams,
+  AlternativeDeliveryLocation,
+  BillingReference,
+  BillingReferenceParams,
+  BuyerContact,
+  CallForTendersLineReference,
+  CarrierParty,
+  CatalogueLineReference,
+  ClassifiedTaxCategory,
+  ClassifiedTaxCategoryTypeParams,
   Contact,
   ContactTypeParams,
-  DeliveryContact,
-  AccountingContact,
-  BuyerContact,
-  AccountingCustomerParty,
+  ContractDocumentReference,
+  ContractDocumentReferenceParams,
+  CorporateRegistrationScheme,
+  CorporateRegistrationSchemeParams,
+  Country,
+  CountryParams,
+  CreditNoteLine,
+  CreditNoteLineParams,
   CustomerPartyParams,
-  Despatch,
-  DespatchParams,
-  DeliveryUnit,
-  DeliveryUnitTypeParams,
-  MaximumDeliveryUnit,
-  MinimumDeliveryUnit,
-  ShipmentType,
-  ShipmentTypeParams,
+  DebitNoteLine,
+  DebitNoteLineParams,
   Delivery,
-  DeliveryTypeParams,
+  DeliveryAddress,
+  DeliveryContact,
+  DeliveryLocation,
+  DeliveryParty,
   DeliveryTerms,
   DeliveryTermsParams,
+  DeliveryTypeParams,
+  DeliveryUnit,
+  DeliveryUnitTypeParams,
+  DependentLineReference,
+  Despatch,
+  DespatchAddress,
+  DespatchDocumentReference,
+  DespatchDocumentReferenceParams,
+  DespatchLineReference,
+  DespatchLocation,
+  DespatchParams,
+  DespatchParty,
+  DocumentReference,
+  DocumentReferenceParams,
+  EstimatedDeliveryPeriod,
+  EstimatedDespatchPeriod,
+  ExchangeRate,
+  ExchangeRateParams,
+  InvoiceDocumentReference,
+  InvoiceDocumentReferenceParams,
+  InvoiceLine,
+  InvoiceLineParams,
+  InvoicePeriodBasic,
+  IssuerParty,
+  Item,
+  ItemTypeParams,
+  JurisdictionRegionAddress,
+  Language,
+  LanguageParams,
+  LegalMonetaryTotal,
+  LineReference,
+  LineReferenceParams,
+  LocationTypeParams,
+  MaximumDeliveryUnit,
+  MinimumDeliveryUnit,
+  MonetaryTotal,
+  MonetaryTotalParams,
+  NotifyParty,
+  OrderLineReference,
+  OrderLineReferenceParams,
+  OrderReference,
+  OrderReferenceParams,
+  OriginatorDocumentReference,
+  OriginatorDocumentReferenceParams,
+  ParentDocumentLineReference,
+  Party,
+  PartyIdentification,
+  PartyIdentificationParams,
+  PartyLegalEntity,
+  PartyLegalEntityParams,
+  PartyName,
+  PartyNameParams,
+  PartyParams,
+  PartyTaxScheme,
+  PartyTaxSchemeParams,
+  PaymentExchangeRate,
   PaymentMeans,
   PaymentMeansParams,
   PaymentTerms,
   PaymentTermsTypeParams,
   PaymentType,
   PaymentTypeParams,
+  PeriodType,
+  PeriodTypeParams,
+  PhysicalLocation,
+  PostalAddress,
+  PostalAddressTypeParams,
   PrepaidPayment,
-  ExchangeRate,
-  ExchangeRateParams,
-  PaymentExchangeRate,
+  Price,
+  PriceList,
+  PriceListParams,
+  PriceParams,
   PricingExchangeRate,
-  TaxTotal,
-  TaxTotalTypeParams,
-  WithholdingTaxTotal,
+  ProjectReference,
+  ProjectReferenceParams,
+  PromisedDeliveryPeriod,
+  QuotationLineReference,
+  ReceiptDocumentReference,
+  ReceiptDocumentReferenceParams,
+  ReceiptLineReference,
+  RegistrationAddress,
+  RequestedDeliveryPeriod,
+  RequestedDespatchPeriod,
+  RequestLineReference,
+  ShipmentType,
+  ShipmentTypeParams,
+  Signature,
+  SignatureParams,
+  StatementDocumentReference,
+  StatementDocumentReferenceParams,
+  SubCreditNoteLine,
+  SupplierPartyTypeParams,
+  SupplyItem,
   TaxCategory,
   TaxCategoryTypeParams,
-  ClassifiedTaxCategory,
-  ClassifiedTaxCategoryTypeParams,
+  TaxRepresentativeParty,
+  TaxScheme,
+  TaxSchemeParams,
   TaxSubtotal,
   TaxSubtotalParams,
-  MonetaryTotal,
-  MonetaryTotalParams,
-  LegalMonetaryTotal,
-  OrderLineReference,
-  OrderLineReferenceParams,
-  LineReference,
-  LineReferenceParams,
-  DespatchLineReference,
-  CallForTendersLineReference,
-  CatalogueLineReference,
-  DependentLineReference,
-  ParentDocumentLineReference,
-  QuotationLineReference,
-  ReceiptLineReference,
-  RequestLineReference,
-  Item,
-  ItemTypeParams,
-  SupplyItem,
-  AllowanceCharge,
-  AllowanceChargeParams,
-  Price,
-  PriceParams,
-  InvoiceLine,
-  InvoiceLineParams,
-  CreditNoteLine,
-  SubCreditNoteLine,
-  CreditNoteLineParams,
-  DebitNoteLine,
-  DebitNoteLineParams,
+  TaxTotal,
+  TaxTotalTypeParams,
+  ValidityPeriod,
+  WithholdingTaxTotal,
 };

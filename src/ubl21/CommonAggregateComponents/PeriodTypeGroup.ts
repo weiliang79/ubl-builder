@@ -1,5 +1,5 @@
+import { UdtCode, UdtDate, UdtMeasure, UdtText, UdtTime } from '../types/UnqualifiedDataTypes';
 import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from './GenericAggregateComponent';
-import { UdtDate, UdtTime, UdtMeasure, UdtCode, UdtText, UdtIdentifier } from '../types/UnqualifiedDataTypes';
 
 const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
   startDate: { order: 1, attributeName: 'cbc:StartDate', min: 0, max: 1, classRef: UdtDate },
@@ -44,13 +44,13 @@ class InvoicePeriodBasic extends PeriodType {
 }
 
 export {
-  PeriodType,
-  AllowedParams as PeriodTypeParams,
-  InvoicePeriodBasic,
-  PeriodType as RequestedDeliveryPeriod,
-  PeriodType as PromisedDeliveryPeriod,
   PeriodType as EstimatedDeliveryPeriod,
   PeriodType as EstimatedDespatchPeriod,
+  InvoicePeriodBasic,
+  PeriodType,
+  AllowedParams as PeriodTypeParams,
+  PeriodType as PromisedDeliveryPeriod,
+  PeriodType as RequestedDeliveryPeriod,
   PeriodType as RequestedDespatchPeriod,
   PeriodType as ValidityPeriod,
 };

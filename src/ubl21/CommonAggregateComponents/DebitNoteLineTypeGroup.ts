@@ -1,15 +1,15 @@
 // 'use strict'
 
-import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from './GenericAggregateComponent';
-import { UdtIdentifier, UdtQuantity, UdtText, UdtDate, UdtCode } from '../types/UnqualifiedDataTypes';
+import { UdtCode, UdtDate, UdtIdentifier, UdtQuantity, UdtText } from '../types/UnqualifiedDataTypes';
 import { UdtAmount } from '../types/UnqualifiedDataTypes/UdtAmount';
-import { DespatchLineReference, ReceiptLineReference } from './LineReferenceTypeGroup';
 import { BillingReference } from './BillingReference';
-import { DocumentReference } from './DocumentReferenceGroup';
 import { Delivery } from './DeliveryTypeGroup';
-import { TaxTotal } from './TaxTotalTypeGroup';
+import { DocumentReference } from './DocumentReferenceGroup';
+import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from './GenericAggregateComponent';
 import { Item } from './ItemTypeGroup';
+import { DespatchLineReference, ReceiptLineReference } from './LineReferenceTypeGroup';
 import { Price } from './PriceTypeGroup';
+import { TaxTotal } from './TaxTotalTypeGroup';
 
 /*
   01 cbc:ID [1..1]    An identifier for this debit note line.
@@ -124,8 +124,4 @@ class DebitNoteLineType extends GenericAggregateComponent {
   }
 }
 
-export {
-  DebitNoteLineType as DebitNoteLine,
-  AllowedParams as DebitNoteLineParams,
-  //  SubCreditNoteLine: CreditNoteLineType
-};
+export { DebitNoteLineType as DebitNoteLine, AllowedParams as DebitNoteLineParams };

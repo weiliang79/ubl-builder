@@ -1,8 +1,8 @@
 // 'use strict'
 
-import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from './GenericAggregateComponent';
-import { UdtIdentifier, UdtCode } from '../types/UnqualifiedDataTypes';
+import { UdtCode, UdtIdentifier } from '../types/UnqualifiedDataTypes';
 import { DocumentReference } from './DocumentReferenceGroup';
+import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from './GenericAggregateComponent';
 
 /* TODO GANERIC CLASSES */
 
@@ -38,14 +38,14 @@ class LineReference extends GenericAggregateComponent {
 }
 
 export {
-  LineReference,
-  AllowedParams as LineReferenceParams,
-  LineReference as DespatchLineReference,
-  LineReference as ReceiptLineReference,
   LineReference as CallForTendersLineReference,
   LineReference as CatalogueLineReference,
   LineReference as DependentLineReference,
+  LineReference as DespatchLineReference,
+  LineReference,
+  AllowedParams as LineReferenceParams,
   LineReference as ParentDocumentLineReference,
   LineReference as QuotationLineReference,
+  LineReference as ReceiptLineReference,
   LineReference as RequestLineReference,
 };

@@ -1,7 +1,7 @@
-import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from './GenericAggregateComponent';
-import { UdtIdentifier, UdtText, UdtCode, UdtName } from '../types/UnqualifiedDataTypes';
-import { ValidityPeriod } from './ValidityPeriod';
+import { UdtCode, UdtIdentifier, UdtName, UdtText } from '../types/UnqualifiedDataTypes';
 import { Address } from './AddressTypeGroup';
+import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from './GenericAggregateComponent';
+import { ValidityPeriod } from './ValidityPeriod';
 
 /*http://www.datypic.com/sc/ubl21/e-cac_PhysicalLocation.html
 cbc:ID [0..1]    An identifier for this location, e.g., the EAN Location Number, GLN.
@@ -70,9 +70,9 @@ class LocationType extends GenericAggregateComponent {
 }
 
 export {
-  LocationType as PhysicalLocation,
-  AllowedParams as LocationTypeParams,
-  LocationType as DeliveryLocation,
   LocationType as AlternativeDeliveryLocation,
+  LocationType as DeliveryLocation,
   LocationType as DespatchLocation,
+  AllowedParams as LocationTypeParams,
+  LocationType as PhysicalLocation,
 };

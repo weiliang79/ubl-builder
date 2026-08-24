@@ -1,8 +1,8 @@
 // 'use strict'
 
-import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from './GenericAggregateComponent';
-import { UdtName, UdtIdentifier, UdtCode, UdtText } from '../types/UnqualifiedDataTypes';
+import { UdtCode, UdtIdentifier, UdtName, UdtText } from '../types/UnqualifiedDataTypes';
 import { RegistrationAddress } from './AddressTypeGroup';
+import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from './GenericAggregateComponent';
 import { TaxScheme } from './TaxScheme';
 
 // const GenericAggregateComponent = require("./GenericAggregateComponent");

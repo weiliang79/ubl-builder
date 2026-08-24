@@ -1,5 +1,5 @@
-import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from './GenericAggregateComponent';
 import { UdtName } from '../types/UnqualifiedDataTypes';
+import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from './GenericAggregateComponent';
 
 const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
   name: { order: 1, attributeName: 'cbc:Name', min: 1, max: 1, classRef: UdtName },

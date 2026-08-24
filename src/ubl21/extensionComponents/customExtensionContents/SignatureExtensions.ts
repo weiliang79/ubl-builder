@@ -1,7 +1,7 @@
 // 'use strict'
 
-import AnyExtensionContent from '../AnyExtensionContent';
 import { IGenericKeyValue, ParamsMapValues } from '../../CommonAggregateComponents/GenericAggregateComponent';
+import AnyExtensionContent from '../AnyExtensionContent';
 
 // const { AnyExtensionContent } = require("../AnyExtensionContent");
 // const { SignatureExtensionsContent, SignatureExtensionsContentParams } = require("./DianExtensionContent");

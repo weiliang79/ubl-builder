@@ -1,5 +1,5 @@
-import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from './GenericAggregateComponent';
 import { UdtIdentifier, UdtName, UdtText } from '../types/UnqualifiedDataTypes';
+import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from './GenericAggregateComponent';
 
 /*
 
@@ -49,9 +49,9 @@ class ContactType extends GenericAggregateComponent {
 }
 
 export {
+  ContactType as AccountingContact,
+  ContactType as BuyerContact,
   ContactType as Contact,
   AllowedParams as ContactTypeParams,
   ContactType as DeliveryContact,
-  ContactType as AccountingContact,
-  ContactType as BuyerContact,
 };

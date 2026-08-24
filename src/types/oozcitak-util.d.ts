@@ -1,6 +1,6 @@
-import "typescript";
+import 'typescript';
 
-declare module "@oozcitak/util/lib/FixedSizeSet" {
+declare module '@oozcitak/util/lib/FixedSizeSet' {
   interface FixedSizeSet<T> {
     keys(): SetIterator<T>;
     values(): SetIterator<T>;
