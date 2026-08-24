@@ -39,7 +39,6 @@ import {
   SignatureParams,
   StatementDocumentReference,
   StatementDocumentReferenceParams,
-  SupplierPartyTypeParams,
   TaxRepresentativeParty,
   TaxTotal,
   TaxTotalTypeParams,
@@ -656,7 +655,7 @@ export default class Invoice {
    * @param { any } input
    * @returns {Invoice}
    */
-  setPayeeParty(input: any) {
+  setPayeeParty(_input: any) {
     throw new Error('not implemented');
   }
 
@@ -665,7 +664,7 @@ export default class Invoice {
    * @param { any } input
    * @returns {Invoice}
    */
-  setBuyerCustomerParty(input: any) {
+  setBuyerCustomerParty(_input: any) {
     throw new Error('not implemented');
   }
 
@@ -674,7 +673,7 @@ export default class Invoice {
    * @param { any } input
    * @returns {Invoice}
    */
-  setSellerSupplierParty(input: any) {
+  setSellerSupplierParty(_input: any) {
     throw new Error('not implemented');
   }
 
@@ -728,7 +727,7 @@ export default class Invoice {
    * 44 PrepaidPayment, PaymentTypeParams
    * @param value
    */
-  addPaymentTerm(value: any) {
+  addPaymentTerm(_value: any) {
     throw new Error('not implemented');
   }
 
@@ -762,7 +761,7 @@ export default class Invoice {
    * 47 A discount or charge that applies to a price component..
    * @param value
    */
-  setTaxExchangeRate(value: any) {
+  setTaxExchangeRate(_value: any) {
     throw new Error('not implemented');
   }
 
@@ -770,7 +769,7 @@ export default class Invoice {
    * 48 The exchange rate between the document currency and the pricing currency..
    * @param value
    */
-  setPricingExchangeRate(value: any) {
+  setPricingExchangeRate(_value: any) {
     throw new Error('not implemented');
   }
 
@@ -787,7 +786,7 @@ export default class Invoice {
    * 50 The exchange rate between the document currency and the payment alternative currency.
    * @param { any } value
    */
-  setPaymentAlternativeExchangeRate(value: any) {
+  setPaymentAlternativeExchangeRate(_value: any) {
     throw new Error('not implemented');
   }
 
@@ -809,7 +808,7 @@ export default class Invoice {
    * 52 the total withholding tax
    * @param { any } value
    */
-  addWithholdingTaxTotal(value: any) {
+  addWithholdingTaxTotal(_value: any) {
     throw new Error('not implemented');
   }
 

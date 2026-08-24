@@ -35,7 +35,7 @@ describe('Invoice', () => {
 
     const xml = invoice.getXml(false, true);
     expect(xml).toStrictEqual(
-      `<Invoice xmlns=\"urn:oasis:names:specification:ubl:schema:xsd:Invoice-2\" xmlns:cac=\"urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2\" xmlns:cbc=\"urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2\"><cbc:ID>12345</cbc:ID><cbc:IssueDate>2025-01-01</cbc:IssueDate><cbc:IssueTime>00:00:00Z</cbc:IssueTime></Invoice>`,
+      `<Invoice xmlns="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2" xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"><cbc:ID>12345</cbc:ID><cbc:IssueDate>2025-01-01</cbc:IssueDate><cbc:IssueTime>00:00:00Z</cbc:IssueTime></Invoice>`,
     );
   });
 

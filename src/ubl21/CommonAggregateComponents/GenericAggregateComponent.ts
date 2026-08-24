@@ -25,7 +25,7 @@ export default class GenericAggregateComponent {
    * @param paramsMap Params Map
    * @param [name="GenericAggregateComponent"] Class name
    */
-  constructor(content: any, paramsMap: IGenericKeyValue<ParamsMapValues>, name = 'GenericAggregateComponent') {
+  constructor(content: any, paramsMap: IGenericKeyValue<ParamsMapValues>, _name = 'GenericAggregateComponent') {
     // this.classRefName = name;
     this.paramsMap = paramsMap;
     this.assignContent(content);
@@ -40,7 +40,6 @@ export default class GenericAggregateComponent {
         if (Array.isArray(this.attributes[attKey]) && max !== undefined) {
           throw new Error('array given and max is defined validate structure');
         }
-        const attType = typeof this.attributes[attKey];
         jsonResponse[attributeName] = Array.isArray(this.attributes[attKey])
           ? this.attributes[attKey].map((e: any) => e.parseToJson())
           : this.attributes[attKey].parseToJson();
@@ -88,7 +87,7 @@ export default class GenericAggregateComponent {
   /**
    * @param {boolean} [deep=false] true for deep print
    */
-  getAsJson(deep = false) {
+  getAsJson(_deep = false) {
     return this.parseToJson();
   }
 }
