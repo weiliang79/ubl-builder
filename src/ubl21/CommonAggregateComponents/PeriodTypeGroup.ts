@@ -35,6 +35,28 @@ class PeriodType extends GenericAggregateComponent {
   constructor(content: AllowedParams) {
     super(content, ParamsMap, 'cac:InvoicePeriod');
   }
+
+  /** The date on which this period begins. */
+  setStartDate(value: string | UdtDate) {
+    this.attributes.startDate = value instanceof UdtDate ? value : new UdtDate(value);
+    return this;
+  }
+
+  /** Alias of {@link setStartDate}; a period has at most one start date. */
+  addStartDate(value: string | UdtDate) {
+    return this.setStartDate(value);
+  }
+
+  /** The date on which this period ends. */
+  setEndDate(value: string | UdtDate) {
+    this.attributes.endDate = value instanceof UdtDate ? value : new UdtDate(value);
+    return this;
+  }
+
+  /** Alias of {@link setEndDate}; a period has at most one end date. */
+  addEndDate(value: string | UdtDate) {
+    return this.setEndDate(value);
+  }
 }
 
 class InvoicePeriodBasic extends PeriodType {

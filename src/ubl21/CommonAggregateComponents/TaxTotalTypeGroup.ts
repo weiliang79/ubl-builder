@@ -71,9 +71,16 @@ class TaxTotalType extends GenericAggregateComponent {
     this.attributes.taxSubtotals = taxSubtotals;
   }
 
-  calculateTotalTaxAmount() {
-    return this.attributes.taxSubtotals.reduce((acc: number, current: TaxSubtotal) => {
-      return acc + current.getTaxAmount();
+  /**
+   * Sum of the tax amounts of this total's subtotals.
+   *
+   * getTaxAmount() yields the raw content, which is a string, so the previous
+   * implementation concatenated instead of adding: ['10', '2.5'] produced
+   * '0102.5' rather than 12.5.
+   */
+  calculateTotalTaxAmount(): number {
+    return (this.attributes.taxSubtotals || []).reduce((acc: number, current: TaxSubtotal) => {
+      return acc + Number(current.getTaxAmount());
     }, 0);
   }
 }
