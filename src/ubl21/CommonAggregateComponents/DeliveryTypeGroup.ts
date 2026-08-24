@@ -1,14 +1,14 @@
 // 'use strict'
 
-import { UdtIdentifier, UdtQuantity, UdtDate, UdtTime } from '../types/UnqualifiedDataTypes';
+import { UdtDate, UdtIdentifier, UdtQuantity, UdtTime } from '../types/UnqualifiedDataTypes';
 import { DeliveryAddress } from './AddressTypeGroup';
-import { DeliveryLocation, AlternativeDeliveryLocation } from './LocationTypeGroup';
-import { RequestedDeliveryPeriod, PromisedDeliveryPeriod, EstimatedDeliveryPeriod } from './PeriodTypeGroup';
-import { CarrierParty, DeliveryParty, NotifyParty } from './PartyTypeGroup';
+import { MaximumDeliveryUnit, MinimumDeliveryUnit } from './DeliveryUnitTypeGroup';
 import { Despatch } from './Despatch';
-import { MinimumDeliveryUnit, MaximumDeliveryUnit } from './DeliveryUnitTypeGroup';
-import { ShipmentType } from './ShipmentTypeGroup';
 import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from './GenericAggregateComponent';
+import { AlternativeDeliveryLocation, DeliveryLocation } from './LocationTypeGroup';
+import { CarrierParty, DeliveryParty, NotifyParty } from './PartyTypeGroup';
+import { EstimatedDeliveryPeriod, PromisedDeliveryPeriod, RequestedDeliveryPeriod } from './PeriodTypeGroup';
+import { ShipmentType } from './ShipmentTypeGroup';
 
 /*
 

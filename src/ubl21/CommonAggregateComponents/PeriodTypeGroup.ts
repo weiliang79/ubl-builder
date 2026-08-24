@@ -1,5 +1,5 @@
+import { UdtCode, UdtDate, UdtMeasure, UdtText, UdtTime } from '../types/UnqualifiedDataTypes';
 import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from './GenericAggregateComponent';
-import { UdtDate, UdtTime, UdtMeasure, UdtCode, UdtText, UdtIdentifier } from '../types/UnqualifiedDataTypes';
 
 const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
   startDate: { order: 1, attributeName: 'cbc:StartDate', min: 0, max: 1, classRef: UdtDate },
@@ -35,6 +35,28 @@ class PeriodType extends GenericAggregateComponent {
   constructor(content: AllowedParams) {
     super(content, ParamsMap, 'cac:InvoicePeriod');
   }
+
+  /** The date on which this period begins. */
+  setStartDate(value: string | UdtDate) {
+    this.attributes.startDate = value instanceof UdtDate ? value : new UdtDate(value);
+    return this;
+  }
+
+  /** Alias of {@link setStartDate}; a period has at most one start date. */
+  addStartDate(value: string | UdtDate) {
+    return this.setStartDate(value);
+  }
+
+  /** The date on which this period ends. */
+  setEndDate(value: string | UdtDate) {
+    this.attributes.endDate = value instanceof UdtDate ? value : new UdtDate(value);
+    return this;
+  }
+
+  /** Alias of {@link setEndDate}; a period has at most one end date. */
+  addEndDate(value: string | UdtDate) {
+    return this.setEndDate(value);
+  }
 }
 
 class InvoicePeriodBasic extends PeriodType {
@@ -44,13 +66,13 @@ class InvoicePeriodBasic extends PeriodType {
 }
 
 export {
-  PeriodType,
-  AllowedParams as PeriodTypeParams,
-  InvoicePeriodBasic,
-  PeriodType as RequestedDeliveryPeriod,
-  PeriodType as PromisedDeliveryPeriod,
   PeriodType as EstimatedDeliveryPeriod,
   PeriodType as EstimatedDespatchPeriod,
+  InvoicePeriodBasic,
+  PeriodType,
+  AllowedParams as PeriodTypeParams,
+  PeriodType as PromisedDeliveryPeriod,
+  PeriodType as RequestedDeliveryPeriod,
   PeriodType as RequestedDespatchPeriod,
   PeriodType as ValidityPeriod,
 };

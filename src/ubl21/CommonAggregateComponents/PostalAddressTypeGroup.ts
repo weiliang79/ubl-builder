@@ -1,7 +1,7 @@
-import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from './GenericAggregateComponent';
-import { UdtIdentifier, UdtName, UdtText } from '../types/UnqualifiedDataTypes';
-import { Country } from './CountryTypeGroup';
+import { UdtIdentifier, UdtText } from '../types/UnqualifiedDataTypes';
 import { AddressLine } from './AddressLine';
+import { Country } from './CountryTypeGroup';
+import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from './GenericAggregateComponent';
 
 /**
    cac:PostalAddress
@@ -106,11 +106,4 @@ class PostalAddress extends GenericAggregateComponent {
   }
 }
 
-export {
-  PostalAddress,
-  AllowedParams as PostalAddressTypeParams,
-  /*   PostalAddressType as DeliveryContact,
-  PostalAddressType as AccountingContact,
-  PostalAddressType as BuyerContact,
- */
-};
+export { PostalAddress, AllowedParams as PostalAddressTypeParams };

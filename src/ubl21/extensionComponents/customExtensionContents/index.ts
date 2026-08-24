@@ -2,27 +2,27 @@
 
 'use strict';
 
-import { DianExtensions, DianExtensionsParams } from './DianExtensions';
-import { DianExtensionsContent, DianExtensionsContentParams } from './DianExtensionContent';
-import { InvoiceSource, InvoiceSourceParams } from './InvoiceSource';
-import { InvoiceControl, InvoiceControlParams } from './InvoiceControl';
-import { AuthorizedInvoices, AuthorizedInvoicesParams } from './AuthorizedInvoices';
-import { SoftwareProvider, SoftwareProviderParams } from './SoftwareProvider';
 import { AuthorizationProvider, AuthorizationProviderParams } from './AuthorizationProvider';
+import { AuthorizedInvoices, AuthorizedInvoicesParams } from './AuthorizedInvoices';
+import { DianExtensionsContent, DianExtensionsContentParams } from './DianExtensionContent';
+import { DianExtensions, DianExtensionsParams } from './DianExtensions';
+import { InvoiceControl, InvoiceControlParams } from './InvoiceControl';
+import { InvoiceSource, InvoiceSourceParams } from './InvoiceSource';
+import { SoftwareProvider, SoftwareProviderParams } from './SoftwareProvider';
 
 export {
+  AuthorizationProvider,
+  AuthorizationProviderParams,
+  AuthorizedInvoices,
+  AuthorizedInvoicesParams,
   DianExtensions,
-  DianExtensionsParams,
   DianExtensionsContent,
   DianExtensionsContentParams,
+  DianExtensionsParams,
+  InvoiceControl,
+  InvoiceControlParams,
   InvoiceSource,
   InvoiceSourceParams,
   SoftwareProvider,
   SoftwareProviderParams,
-  AuthorizationProvider,
-  AuthorizationProviderParams,
-  InvoiceControl,
-  InvoiceControlParams,
-  AuthorizedInvoices,
-  AuthorizedInvoicesParams,
 };

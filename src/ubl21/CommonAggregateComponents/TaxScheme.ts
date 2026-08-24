@@ -1,6 +1,6 @@
-import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from './GenericAggregateComponent';
-import { UdtIdentifier, UdtName, UdtCode } from '../types/UnqualifiedDataTypes';
+import { UdtCode, UdtIdentifier, UdtName } from '../types/UnqualifiedDataTypes';
 import { JurisdictionRegionAddress } from './AddressTypeGroup';
+import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from './GenericAggregateComponent';
 
 /*
   cbc:ID [0..1]    An identifier for this taxation scheme.

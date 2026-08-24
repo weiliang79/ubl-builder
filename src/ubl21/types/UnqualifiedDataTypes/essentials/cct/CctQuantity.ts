@@ -1,4 +1,4 @@
-import { XsdDecimal, XsdAnySimpleType } from '../xsd';
+import { XsdDecimal } from '../xsd';
 
 export type AllowedAttributes = {
   /** The unit of the quantity */

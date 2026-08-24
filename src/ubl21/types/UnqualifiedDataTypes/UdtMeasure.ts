@@ -1,4 +1,4 @@
-import { CctMeasureType, AllowedAttributes } from './essentials/cct/CctMeasure';
+import { AllowedAttributes, CctMeasureType } from './essentials/cct/CctMeasure';
 
 export type UdtMeasureAttributes = AllowedAttributes;
 /**

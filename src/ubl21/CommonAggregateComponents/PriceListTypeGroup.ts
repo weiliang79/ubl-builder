@@ -1,5 +1,5 @@
+import { UdtCode, UdtIdentifier } from '../types/UnqualifiedDataTypes';
 import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from './GenericAggregateComponent';
-import { UdtIdentifier, UdtCode } from '../types/UnqualifiedDataTypes';
 import { ValidityPeriod } from './ValidityPeriod';
 
 /*

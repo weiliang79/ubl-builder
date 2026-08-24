@@ -1,7 +1,7 @@
 // 'use strict'
 
-import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from './GenericAggregateComponent';
 import { UdtAmount } from '../types/UnqualifiedDataTypes/UdtAmount';
+import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from './GenericAggregateComponent';
 
 /*
   1  cbc:LineExtensionAmount [0..1]    The monetary amount of an extended transaction line, net of tax and settlement discounts, but inclusive of any applicable rounding amount.
@@ -74,4 +74,4 @@ class MonetaryTotal extends GenericAggregateComponent {
   }
 }
 
-export { MonetaryTotal, AllowedParams as MonetaryTotalParams, MonetaryTotal as LegalMonetaryTotal };
+export { MonetaryTotal as LegalMonetaryTotal, MonetaryTotal, AllowedParams as MonetaryTotalParams };

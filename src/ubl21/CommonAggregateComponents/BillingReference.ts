@@ -1,5 +1,5 @@
-import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from './GenericAggregateComponent';
 import { AdditionalDocumentReference, InvoiceDocumentReference } from './DocumentReferenceGroup';
+import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from './GenericAggregateComponent';
 
 const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
   invoiceDocumentReference: {

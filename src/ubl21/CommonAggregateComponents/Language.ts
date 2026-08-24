@@ -1,4 +1,4 @@
-import { UdtIdentifier, UdtName, UdtCode } from '../types/UnqualifiedDataTypes';
+import { UdtCode, UdtIdentifier, UdtName } from '../types/UnqualifiedDataTypes';
 import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from './GenericAggregateComponent';
 
 const ParamsMap: IGenericKeyValue<ParamsMapValues> = {

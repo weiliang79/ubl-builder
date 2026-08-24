@@ -1,4 +1,4 @@
-import GenericAggregateComponent, { ParamsMapValues, IGenericKeyValue } from './GenericAggregateComponent';
+import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from './GenericAggregateComponent';
 
 /* TODO GANERIC CLASSES */
 import { UdtText } from '../types/UnqualifiedDataTypes';

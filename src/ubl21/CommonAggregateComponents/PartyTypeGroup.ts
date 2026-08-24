@@ -1,12 +1,12 @@
+import { UdtCode, UdtIdentifier, UdtIndicator } from '../types/UnqualifiedDataTypes';
+import { Contact } from './ContactTypeGroup';
 import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from './GenericAggregateComponent';
-import { UdtCode, UdtIndicator, UdtIdentifier } from '../types/UnqualifiedDataTypes';
-import { PartyIdentification, PartyIdentificationParams } from './PartyIdentification';
-import { PartyName } from './PartyName';
 import { Language } from './Language';
 import { PhysicalLocation } from './LocationTypeGroup';
-import { PartyTaxScheme, PartyTaxSchemeParams } from './PartyTaxScheme';
+import { PartyIdentification, PartyIdentificationParams } from './PartyIdentification';
 import { PartyLegalEntity } from './PartyLegalEntity';
-import { Contact } from './ContactTypeGroup';
+import { PartyName } from './PartyName';
+import { PartyTaxScheme, PartyTaxSchemeParams } from './PartyTaxScheme';
 import { PostalAddress } from './PostalAddressTypeGroup';
 
 /*
@@ -197,13 +197,13 @@ class Party extends GenericAggregateComponent {
 }
 
 export {
-  Party,
-  AllowedParams as PartyParams,
-  Party as IssuerParty,
-  AllowedParams as IssuerPartyParams,
-  Party as TaxRepresentativeParty,
   Party as CarrierParty,
   Party as DeliveryParty,
-  Party as NotifyParty,
   Party as DespatchParty,
+  Party as IssuerParty,
+  AllowedParams as IssuerPartyParams,
+  Party as NotifyParty,
+  Party,
+  AllowedParams as PartyParams,
+  Party as TaxRepresentativeParty,
 };

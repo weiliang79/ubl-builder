@@ -1,5 +1,5 @@
+import { UdtDate, UdtIdentifier, UdtText, UdtTime } from '../types/UnqualifiedDataTypes';
 import GenericAggregateComponent from './GenericAggregateComponent';
-import { UdtIdentifier, UdtText, UdtDate, UdtTime } from '../types/UnqualifiedDataTypes';
 
 const ParamsMap = {
   name: { order: 1, attributeName: 'cbc:ID', min: 1, max: 1, classRef: UdtIdentifier },

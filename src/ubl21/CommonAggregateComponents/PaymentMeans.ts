@@ -1,5 +1,5 @@
+import { UdtCode, UdtDate, UdtIdentifier, UdtText } from '../types/UnqualifiedDataTypes';
 import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from './GenericAggregateComponent';
-import { UdtIdentifier, UdtCode, UdtDate, UdtText } from '../types/UnqualifiedDataTypes';
 import { PayeeFinancialAccount } from './PayeeFinancialAccount';
 
 /*

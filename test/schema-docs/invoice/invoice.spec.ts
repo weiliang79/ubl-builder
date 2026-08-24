@@ -17,13 +17,7 @@ import {
 import { CommodityClassification } from '../../../src/ubl21/CommonAggregateComponents/CommodityClassification';
 import { ItemPriceExtension } from '../../../src/ubl21/CommonAggregateComponents/ItemPriceExtension';
 import { Invoice } from '../../../src/ubl21/schemaDocuments';
-import {
-  UdtAmount,
-  UdtCode,
-  UdtIdentifier,
-  UdtQuantity,
-  UdtText,
-} from '../../../src/ubl21/types/UnqualifiedDataTypes';
+import { UdtAmount, UdtCode, UdtIdentifier, UdtQuantity, UdtText } from '../../../src/ubl21/types/UnqualifiedDataTypes';
 
 describe('Invoice', () => {
   it('should construct a simple invoice XML document', () => {
@@ -41,7 +35,7 @@ describe('Invoice', () => {
 
     const xml = invoice.getXml(false, true);
     expect(xml).toStrictEqual(
-      `<Invoice xmlns=\"urn:oasis:names:specification:ubl:schema:xsd:Invoice-2\" xmlns:cac=\"urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2\" xmlns:cbc=\"urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2\"><cbc:ID>12345</cbc:ID><cbc:IssueDate>2025-01-01</cbc:IssueDate><cbc:IssueTime>00:00:00Z</cbc:IssueTime></Invoice>`,
+      `<Invoice xmlns="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2" xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"><cbc:ID>12345</cbc:ID><cbc:IssueDate>2025-01-01</cbc:IssueDate><cbc:IssueTime>00:00:00Z</cbc:IssueTime></Invoice>`,
     );
   });
 

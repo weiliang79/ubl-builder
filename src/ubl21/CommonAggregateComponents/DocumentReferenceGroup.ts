@@ -1,8 +1,8 @@
 /* tslint:disable:max-classes-per-file */
 
 /* TODO GANERIC CLASSES */
+import { UdtCode, UdtDate, UdtIdentifier, UdtIndicator, UdtText, UdtTime } from '../types/UnqualifiedDataTypes';
 import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from './GenericAggregateComponent';
-import { UdtIdentifier, UdtIndicator, UdtDate, UdtTime, UdtCode, UdtText } from '../types/UnqualifiedDataTypes';
 /* TODO GANERIC CLASSES */
 
 import { Attachment } from './Attachment';
@@ -161,20 +161,20 @@ class AdditionalDocumentReference extends GenericAggregateComponent {
 }
 
 export {
+  AdditionalDocumentReference,
+  AllowedParams as AdditionalDocumentReferenceParams,
+  ContractDocumentReference,
+  AllowedParams as ContractDocumentReferenceParams,
   DespatchDocumentReference,
   AllowedParams as DespatchDocumentReferenceParams,
   DocumentReference,
   AllowedParams as DocumentReferenceParams,
   InvoiceDocumentReference,
   AllowedParams as InvoiceDocumentReferenceParams,
+  OriginatorDocumentReference,
+  AllowedParams as OriginatorDocumentReferenceParams,
   ReceiptDocumentReference,
   AllowedParams as ReceiptDocumentReferenceParams,
   StatementDocumentReference,
   AllowedParams as StatementDocumentReferenceParams,
-  OriginatorDocumentReference,
-  AllowedParams as OriginatorDocumentReferenceParams,
-  ContractDocumentReference,
-  AllowedParams as ContractDocumentReferenceParams,
-  AdditionalDocumentReference,
-  AllowedParams as AdditionalDocumentReferenceParams,
 };

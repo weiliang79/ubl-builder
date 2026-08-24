@@ -1,4 +1,4 @@
-import { CctIdentifierType, AllowedAttributes } from './essentials/cct/CctIdentifier';
+import { AllowedAttributes, CctIdentifierType } from './essentials/cct/CctIdentifier';
 
 /**
  * udt:IdentifierType

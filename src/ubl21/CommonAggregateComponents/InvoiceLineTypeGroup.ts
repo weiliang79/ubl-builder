@@ -1,22 +1,22 @@
 // 'use strict'
 
-import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from './GenericAggregateComponent';
-import { UdtIdentifier, UdtText, UdtQuantity, UdtDate, UdtCode, UdtIndicator } from '../types/UnqualifiedDataTypes';
+import { UdtCode, UdtDate, UdtIdentifier, UdtIndicator, UdtQuantity, UdtText } from '../types/UnqualifiedDataTypes';
 import { UdtAmount } from '../types/UnqualifiedDataTypes/UdtAmount';
-import { PeriodType } from './PeriodTypeGroup';
-import { OrderLineReference } from './OrderLineReference';
-import { DespatchLineReference, ReceiptLineReference } from './LineReferenceTypeGroup';
-import { BillingReference } from './BillingReference';
-import { DocumentReference } from './DocumentReferenceGroup';
-import { Party } from './PartyTypeGroup';
-import { Delivery } from './DeliveryTypeGroup';
-import { PaymentTerms } from './PaymentTermsTypeGroup';
-import { TaxTotal, WithholdingTaxTotal } from './TaxTotalTypeGroup';
-import { Item } from './ItemTypeGroup';
-import { Price } from './PriceTypeGroup';
-import { DeliveryTerms } from './DeliveryTerms';
-import { ItemPriceExtension } from './ItemPriceExtension';
 import { AllowanceCharge } from './AllowanceChargeTypeGroup';
+import { BillingReference } from './BillingReference';
+import { DeliveryTerms } from './DeliveryTerms';
+import { Delivery } from './DeliveryTypeGroup';
+import { DocumentReference } from './DocumentReferenceGroup';
+import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from './GenericAggregateComponent';
+import { ItemPriceExtension } from './ItemPriceExtension';
+import { Item } from './ItemTypeGroup';
+import { DespatchLineReference, ReceiptLineReference } from './LineReferenceTypeGroup';
+import { OrderLineReference } from './OrderLineReference';
+import { Party } from './PartyTypeGroup';
+import { PaymentTerms } from './PaymentTermsTypeGroup';
+import { PeriodType } from './PeriodTypeGroup';
+import { Price } from './PriceTypeGroup';
+import { TaxTotal, WithholdingTaxTotal } from './TaxTotalTypeGroup';
 
 /*
   1    cbc:ID [1..1]    An identifier for this invoice line.
@@ -107,7 +107,13 @@ const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
   originatorParty: { order: 18, attributeName: 'cac:OriginatorParty', min: 0, max: undefined, classRef: Party },
   delivery: { order: 19, attributeName: 'cac:Delivery', min: 0, max: undefined, classRef: Delivery },
   paymentTerms: { order: 20, attributeName: 'cac:PaymentTerms', min: 0, max: undefined, classRef: PaymentTerms },
-  allowanceCharges: { order: 21,  attributeName: 'cac:AllowanceCharge', min: 0, max: undefined, classRef: AllowanceCharge },
+  allowanceCharges: {
+    order: 21,
+    attributeName: 'cac:AllowanceCharge',
+    min: 0,
+    max: undefined,
+    classRef: AllowanceCharge,
+  },
   taxTotals: { order: 22, attributeName: 'cac:TaxTotal', min: 0, max: undefined, classRef: TaxTotal },
   withholdingTaxTotal: {
     order: 23,

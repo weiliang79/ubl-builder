@@ -1,9 +1,9 @@
-import { UdtMeasure, UdtText } from "../types/UnqualifiedDataTypes";
-import { UdtAmount } from "../types/UnqualifiedDataTypes/UdtAmount";
-import { UdtNumeric } from "../types/UnqualifiedDataTypes/UdtNumeric";
-import { UdtPercent } from "../types/UnqualifiedDataTypes/UdtPercent";
-import GenericAggregateComponent from "./GenericAggregateComponent";
-import { TaxCategory } from "./TaxCategoryTypeGroup";
+import { UdtMeasure, UdtText } from '../types/UnqualifiedDataTypes';
+import { UdtAmount } from '../types/UnqualifiedDataTypes/UdtAmount';
+import { UdtNumeric } from '../types/UnqualifiedDataTypes/UdtNumeric';
+import { UdtPercent } from '../types/UnqualifiedDataTypes/UdtPercent';
+import GenericAggregateComponent from './GenericAggregateComponent';
+import { TaxCategory } from './TaxCategoryTypeGroup';
 
 /*
 
@@ -23,70 +23,70 @@ import { TaxCategory } from "./TaxCategoryTypeGroup";
 const ParamsMap = {
   taxableAmount: {
     order: 1,
-    attributeName: "cbc:TaxableAmount",
+    attributeName: 'cbc:TaxableAmount',
     min: 0,
     max: 1,
     classRef: UdtAmount,
   },
   taxAmount: {
     order: 2,
-    attributeName: "cbc:TaxAmount",
+    attributeName: 'cbc:TaxAmount',
     min: 1,
     max: 1,
     classRef: UdtAmount,
   },
   calculationSequenceNumeric: {
     order: 3,
-    attributeName: "cbc:CalculationSequenceNumeric",
+    attributeName: 'cbc:CalculationSequenceNumeric',
     min: 0,
     max: 1,
     classRef: UdtNumeric,
   },
   transactionCurrencyTaxAmount: {
     order: 4,
-    attributeName: "cbc:TransactionCurrencyTaxAmount",
+    attributeName: 'cbc:TransactionCurrencyTaxAmount',
     min: 0,
     max: 1,
     classRef: UdtAmount,
   },
   percent: {
     order: 5,
-    attributeName: "cbc:Percent",
+    attributeName: 'cbc:Percent',
     min: 0,
     max: 1,
     classRef: UdtPercent,
   },
   baseUnitMeasure: {
     order: 6,
-    attributeName: "cbc:BaseUnitMeasure",
+    attributeName: 'cbc:BaseUnitMeasure',
     min: 0,
     max: 1,
     classRef: UdtMeasure,
   },
   perUnitAmount: {
     order: 7,
-    attributeName: "cbc:PerUnitAmount",
+    attributeName: 'cbc:PerUnitAmount',
     min: 0,
     max: 1,
     classRef: UdtAmount,
   },
   tierRange: {
     order: 8,
-    attributeName: "cbc:TierRange",
+    attributeName: 'cbc:TierRange',
     min: 0,
     max: 1,
     classRef: UdtText,
   },
   tierRatePercent: {
     order: 9,
-    attributeName: "cbc:TierRatePercent",
+    attributeName: 'cbc:TierRatePercent',
     min: 0,
     max: 1,
     classRef: UdtPercent,
   },
   taxCategory: {
     order: 10,
-    attributeName: "cac:TaxCategory",
+    attributeName: 'cac:TaxCategory',
     min: 1,
     max: 1,
     classRef: TaxCategory,
@@ -115,7 +115,7 @@ class TaxSubtotal extends GenericAggregateComponent {
    * @param {string} name
    */
   constructor(content: AllowedParams) {
-    super(content, ParamsMap, "cac:TaxSubtotal");
+    super(content, ParamsMap, 'cac:TaxSubtotal');
   }
 
   /**
@@ -123,14 +123,11 @@ class TaxSubtotal extends GenericAggregateComponent {
    * @param {boolean} rawValue
    */
   getTaxableAmount(rawValue = true) {
-    return rawValue
-      ? this.attributes.taxableAmount.content
-      : this.attributes.taxableAmount;
+    return rawValue ? this.attributes.taxableAmount.content : this.attributes.taxableAmount;
   }
 
   setTaxableAmount(value: string | UdtAmount) {
-    this.attributes.taxableAmount =
-      value instanceof UdtAmount ? value : new UdtAmount(value);
+    this.attributes.taxableAmount = value instanceof UdtAmount ? value : new UdtAmount(value);
   }
 
   /**
@@ -139,9 +136,7 @@ class TaxSubtotal extends GenericAggregateComponent {
    *
    */
   getTaxAmount(rawValue = true) {
-    return rawValue
-      ? this.attributes.taxAmount.content
-      : this.attributes.taxAmount;
+    return rawValue ? this.attributes.taxAmount.content : this.attributes.taxAmount;
   }
 
   /**
@@ -149,8 +144,7 @@ class TaxSubtotal extends GenericAggregateComponent {
    * @param { UdtAmount | string } value
    */
   setTaxAmount(value: string | UdtAmount) {
-    this.attributes.taxAmount =
-      value instanceof UdtAmount ? value : new UdtAmount(value);
+    this.attributes.taxAmount = value instanceof UdtAmount ? value : new UdtAmount(value);
   }
 
   /**
@@ -158,9 +152,7 @@ class TaxSubtotal extends GenericAggregateComponent {
    * @param {*} rawValue
    */
   getPercent(rawValue = true) {
-    return rawValue
-      ? this.attributes.percent.content
-      : this.attributes.percentage;
+    return rawValue ? this.attributes.percent.content : this.attributes.percentage;
   }
 
   /**
@@ -168,8 +160,7 @@ class TaxSubtotal extends GenericAggregateComponent {
    * @param { UdtPercent | string} value
    */
   setPercent(value: string | UdtPercent) {
-    this.attributes.percent =
-      value instanceof UdtPercent ? value : new UdtPercent(value);
+    this.attributes.percent = value instanceof UdtPercent ? value : new UdtPercent(value);
   }
 
   /**
@@ -177,8 +168,7 @@ class TaxSubtotal extends GenericAggregateComponent {
    * @param {TaxCategory} value
    */
   setTaxCategory(value: TaxCategory) {
-    if (!(value instanceof TaxCategory))
-      throw new Error("Value must be instace of TaxCategory");
+    if (!(value instanceof TaxCategory)) throw new Error('Value must be instace of TaxCategory');
 
     this.attributes.taxCategory = value;
   }

@@ -1,8 +1,8 @@
 import XsdAnySimpleType from './XsdAnySimpleType';
-import XsdDecimal from './XsdDecimal';
-import XsdString from './XsdString';
 import XsdAnyURI from './XsdAnyURI';
-import XsdNormalizedString from './XsdNormalizedString';
 import XsdDate from './XsdDate';
+import XsdDecimal from './XsdDecimal';
+import XsdNormalizedString from './XsdNormalizedString';
+import XsdString from './XsdString';
 
-export { XsdAnySimpleType, XsdDecimal, XsdAnyURI, XsdNormalizedString, XsdString, XsdDate };
+export { XsdAnySimpleType, XsdAnyURI, XsdDate, XsdDecimal, XsdNormalizedString, XsdString };

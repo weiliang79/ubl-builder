@@ -1,4 +1,4 @@
-import { CctNumericType, AllowedAttributes } from './essentials/cct/CctNumeric';
+import { AllowedAttributes, CctNumericType } from './essentials/cct/CctNumeric';
 
 export type UdtPercentAttributes = AllowedAttributes;
 /**

@@ -1,5 +1,5 @@
-import GenericAggregateComponent from './GenericAggregateComponent';
 import { UdtIdentifier } from '../types/UnqualifiedDataTypes';
+import GenericAggregateComponent from './GenericAggregateComponent';
 import { OrderReference } from './OrderReference';
 
 // const GenericAggregateComponent = require("./GenericAggregateComponent");

@@ -28,7 +28,7 @@ class DianExtensions extends AnyExtensionContent {
     super(content, ParamsMap, 'cac:DianExtensions');
   }
 
-  setDianExtensionsContent(value: DianExtensionsContent | DianExtensionsContentParams) {
+  setDianExtensionsContent(_value: DianExtensionsContent | DianExtensionsContentParams) {
     // console.log(value);
     throw new Error('not implemented');
   }

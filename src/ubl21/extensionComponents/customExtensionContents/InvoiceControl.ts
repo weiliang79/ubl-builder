@@ -1,8 +1,8 @@
 // 'use strict'
 
+import { PeriodType } from '../../CommonAggregateComponents';
 import GenericAggregateComponent from '../../CommonAggregateComponents/GenericAggregateComponent';
 import { UdtText } from '../../types/UnqualifiedDataTypes';
-import { PeriodType } from '../../CommonAggregateComponents';
 import { AuthorizedInvoices } from './AuthorizedInvoices';
 
 const ParamsMap = {
