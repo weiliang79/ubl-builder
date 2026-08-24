@@ -13,18 +13,11 @@ import {
   TaxScheme,
   TaxSubtotal,
   TaxTotal,
-} from '../../src/ubl21/CommonAggregateComponents';
-import { CommodityClassification } from '../../src/ubl21/CommonAggregateComponents/CommodityClassification';
-import { ItemPriceExtension } from '../../src/ubl21/CommonAggregateComponents/ItemPriceExtension';
-import { Invoice } from '../../src/ubl21/schemaDocuments';
-import {
-  UdtAmount,
-  UdtCode,
-  UdtIdentifier,
-  UdtPercent,
-  UdtQuantity,
-  UdtText,
-} from '../../src/ubl21/types/UnqualifiedDataTypes';
+} from '../../src/cac';
+import { CommodityClassification } from '../../src/cac/CommodityClassification';
+import { ItemPriceExtension } from '../../src/cac/ItemPriceExtension';
+import { UdtAmount, UdtCode, UdtIdentifier, UdtPercent, UdtQuantity, UdtText } from '../../src/datatypes/udt';
+import { Invoice } from '../../src/documents';
 
 /**
  * Reproduces the element structure of a MyInvois v1.0 invoice that LHDN

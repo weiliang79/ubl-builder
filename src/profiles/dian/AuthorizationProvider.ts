@@ -1,0 +1,31 @@
+import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from '../../core/GenericAggregateComponent';
+import { UdtIdentifier } from '../../datatypes/udt/UdtIdentifier';
+
+const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
+  authorizationProviderID: {
+    order: 1,
+    attributeName: 'sts:AuthorizationProviderID',
+    min: 0,
+    max: 1,
+    classRef: UdtIdentifier,
+  },
+};
+
+type AllowedParams = {
+  authorizationProviderID: string | UdtIdentifier;
+};
+
+/**
+ * Body of Dian extension content
+ */
+class AuthorizationProvider extends GenericAggregateComponent {
+  /**     *
+   * @param {AllowedParams} content
+   * @param {string} name
+   */
+  constructor(content: AllowedParams) {
+    super(content, ParamsMap, 'sts:AuthorizationProvider');
+  }
+}
+
+export { AuthorizationProvider, AllowedParams as AuthorizationProviderParams };

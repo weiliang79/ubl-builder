@@ -1,8 +1,5 @@
-import GenericAggregateComponent, {
-  IGenericKeyValue,
-  ParamsMapValues,
-} from '../../src/ubl21/CommonAggregateComponents/GenericAggregateComponent';
-import { UdtIdentifier, UdtName } from '../../src/ubl21/types/UnqualifiedDataTypes';
+import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from '../../src/core/GenericAggregateComponent';
+import { UdtIdentifier, UdtName } from '../../src/datatypes/udt';
 
 const singleId: IGenericKeyValue<ParamsMapValues> = {
   id: { order: 1, attributeName: 'cbc:ID', min: 0, max: 1, classRef: UdtIdentifier },

@@ -1,4 +1,4 @@
-import { UdtText } from '../../src/ubl21/types/UnqualifiedDataTypes';
+import { UdtText } from '../../src/datatypes/udt';
 
 describe('UdtText', () => {
   it('should construct JSON correctly', () => {

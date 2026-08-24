@@ -1,4 +1,4 @@
-import { PeriodType } from '../../src/ubl21/CommonAggregateComponents';
+import { PeriodType } from '../../src/cac';
 
 describe('PeriodType', () => {
   it('serializes start and end dates from the constructor payload', () => {

@@ -1,10 +1,10 @@
-import { CctAmountType, CctBinaryObjectType } from './ubl21/types/UnqualifiedDataTypes/essentials/cct';
+import { CctAmountType, CctBinaryObjectType } from './datatypes/cct';
 
-import { AddressLine } from './ubl21/CommonAggregateComponents/AddressLine';
-import { Address } from './ubl21/CommonAggregateComponents/AddressTypeGroup';
+import { AddressLine } from './cac/AddressLine';
+import { Address } from './cac/AddressTypeGroup';
 
-import { Invoice } from './ubl21/schemaDocuments';
-import * as UdtTypes from './ubl21/types/UnqualifiedDataTypes';
+import * as UdtTypes from './datatypes/udt';
+import { Invoice } from './documents';
 
 export { Invoice };
 

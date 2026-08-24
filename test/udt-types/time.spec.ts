@@ -1,4 +1,4 @@
-import { UdtTime } from '../../src/ubl21/types/UnqualifiedDataTypes';
+import { UdtTime } from '../../src/datatypes/udt';
 
 describe('UdtTime', () => {
   it('should construct JSON correctly', () => {

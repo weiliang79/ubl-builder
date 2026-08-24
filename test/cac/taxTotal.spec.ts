@@ -1,5 +1,5 @@
-import { TaxCategory, TaxScheme, TaxSubtotal, TaxTotal } from '../../src/ubl21/CommonAggregateComponents';
-import { UdtIdentifier } from '../../src/ubl21/types/UnqualifiedDataTypes';
+import { TaxCategory, TaxScheme, TaxSubtotal, TaxTotal } from '../../src/cac';
+import { UdtIdentifier } from '../../src/datatypes/udt';
 
 // cac:TaxCategory is [1..1] on TaxSubtotal, so every subtotal needs one.
 const category = () =>
