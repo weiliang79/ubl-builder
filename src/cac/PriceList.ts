@@ -1,6 +1,6 @@
 import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from '../core/GenericAggregateComponent';
 import { UdtCode, UdtIdentifier } from '../datatypes/udt';
-import { ValidityPeriod } from './ValidityPeriod';
+import { ValidityPeriod } from './Period';
 
 /*
     http://www.datypic.com/sc/ubl21/t-cac_PriceListType.html

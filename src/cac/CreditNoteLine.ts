@@ -4,7 +4,7 @@ import { UdtAmount } from '../datatypes/udt/UdtAmount';
 import { BillingReference } from './BillingReference';
 import { Delivery } from './Delivery';
 import { DeliveryTerms } from './DeliveryTerms';
-import { DocumentReference } from './DocumentReferenceGroup';
+import { DocumentReference } from './DocumentReference';
 import { Item } from './Item';
 import { DespatchLineReference, ReceiptLineReference } from './LineReference';
 import { OrderLineReference } from './OrderLineReference';

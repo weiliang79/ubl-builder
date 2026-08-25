@@ -32,7 +32,7 @@ import {
   ReceiptDocumentReferenceParams,
   StatementDocumentReference,
   StatementDocumentReferenceParams,
-} from './DocumentReferenceGroup';
+} from './DocumentReference';
 
 import { ProjectReference, ProjectReferenceParams } from './ProjectReference';
 import { Signature, SignatureParams } from './Signature';

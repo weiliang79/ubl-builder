@@ -2,7 +2,7 @@
 
 import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from '../core/GenericAggregateComponent';
 import { UdtCode, UdtIdentifier } from '../datatypes/udt';
-import { DocumentReference } from './DocumentReferenceGroup';
+import { DocumentReference } from './DocumentReference';
 
 /* TODO GANERIC CLASSES */
 

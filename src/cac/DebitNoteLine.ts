@@ -5,7 +5,7 @@ import { UdtCode, UdtDate, UdtIdentifier, UdtQuantity, UdtText } from '../dataty
 import { UdtAmount } from '../datatypes/udt/UdtAmount';
 import { BillingReference } from './BillingReference';
 import { Delivery } from './Delivery';
-import { DocumentReference } from './DocumentReferenceGroup';
+import { DocumentReference } from './DocumentReference';
 import { Item } from './Item';
 import { DespatchLineReference, ReceiptLineReference } from './LineReference';
 import { Price } from './Price';

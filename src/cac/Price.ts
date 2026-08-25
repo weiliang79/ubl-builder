@@ -4,8 +4,8 @@ import { UdtAmount } from '../datatypes/udt/UdtAmount';
 import { UdtRate } from '../datatypes/udt/UdtRate';
 import { AllowanceCharge } from './AllowanceCharge';
 import { PricingExchangeRate } from './ExchangeRate';
+import { ValidityPeriod } from './Period';
 import { PriceList } from './PriceList';
-import { ValidityPeriod } from './ValidityPeriod';
 
 /*
 

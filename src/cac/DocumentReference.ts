@@ -6,7 +6,7 @@ import { UdtCode, UdtDate, UdtIdentifier, UdtIndicator, UdtText, UdtTime } from 
 /* TODO GANERIC CLASSES */
 
 import { Attachment } from './Attachment';
-import { ValidityPeriod } from './ValidityPeriod';
+import { ValidityPeriod } from './Period';
 
 // const { ValidityPeriod, ValidityPeriodParams } = require("./ValidityPeriod");
 // const { IssuerParty, IssuerPartyParams } = require("./Party");

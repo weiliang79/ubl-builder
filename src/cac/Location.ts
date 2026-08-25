@@ -1,7 +1,7 @@
 import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from '../core/GenericAggregateComponent';
 import { UdtCode, UdtIdentifier, UdtName, UdtText } from '../datatypes/udt';
 import { Address } from './Address';
-import { ValidityPeriod } from './ValidityPeriod';
+import { ValidityPeriod } from './Period';
 
 /*http://www.datypic.com/sc/ubl21/e-cac_PhysicalLocation.html
 cbc:ID [0..1]    An identifier for this location, e.g., the EAN Location Number, GLN.

@@ -7,7 +7,7 @@ import { AllowanceCharge } from './AllowanceCharge';
 import { BillingReference } from './BillingReference';
 import { Delivery } from './Delivery';
 import { DeliveryTerms } from './DeliveryTerms';
-import { DocumentReference } from './DocumentReferenceGroup';
+import { DocumentReference } from './DocumentReference';
 import { Item } from './Item';
 import { ItemPriceExtension } from './ItemPriceExtension';
 import { DespatchLineReference, ReceiptLineReference } from './LineReference';
