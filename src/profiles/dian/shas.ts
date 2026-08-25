@@ -1,199 +1,105 @@
-import * as crypto from 'crypto';
+/**
+ * Message digests, on Web Crypto rather than Node's `crypto`.
+ *
+ * `crypto.createHash` is Node-only and would have made this the single import
+ * that stops the package bundling for a browser. `crypto.subtle` is available
+ * in Node 15+ and in every browser, so the same code runs in both.
+ *
+ * The trade is that Web Crypto is asynchronous, so `getHash` returns a
+ * promise. That suits where this is heading: XAdES signing is async anyway,
+ * since the signer callback may reach a smartcard, an HSM or a cloud KMS.
+ *
+ * `getAlgorithmName()` returns the XML Signature URI for the algorithm, which
+ * is what a `ds:SignatureMethod` element carries.
+ */
 
-/* tslint:disable:max-classes-per-file */
-export class SHA256 {
-  /**
-   *
-   * @param content string to hash
-   * @param inputEncoding input encoding "utf8" | "base64" | "binary" | "hex"
-   * @param outputEncoding output "utf8" | "base64" | "binary" | "hex"
-   */
-  getHash(content: string, inputEncoding: any = 'utf8', outputEncoding: any = 'base64') {
-    const shasum = crypto.createHash('sha256');
-    shasum.update(content, inputEncoding);
-    const res = shasum.digest(outputEncoding);
-    return res;
-  }
+export type HashInputEncoding = 'utf8' | 'binary' | 'hex' | 'base64';
+export type HashOutputEncoding = 'hex' | 'base64';
 
-  getAlgorithmName() {
-    return 'http://www.w3.org/2001/04/xmlenc#sha256';
-  }
-}
+type Algorithm = 'SHA-1' | 'SHA-256' | 'SHA-384' | 'SHA-512';
 
-export class SHA384 {
-  /**
-   *
-   * @param content string to hash
-   * @param inputEncoding input encoding "utf8" | "base64" | "binary" | "hex"
-   * @param outputEncoding output encoding "utf8" | "base64" | "binary" | "hex"
-   */
-  getHash(content: string, inputEncoding: any = 'utf8', outputEncoding: any = 'hex') {
-    const shasum = crypto.createHash('SHA384');
-    shasum.update(content, inputEncoding);
-    const res = shasum.digest(outputEncoding);
-    return res;
-  }
-
-  getAlgorithmName() {
-    return 'http://www.w3.org/2001/04/xmlenc#sha256';
+function decode(content: string, encoding: HashInputEncoding): Uint8Array {
+  switch (encoding) {
+    case 'utf8':
+      return new TextEncoder().encode(content);
+    case 'binary':
+      // one byte per code unit, as Node's 'binary'/'latin1' does
+      return Uint8Array.from(content, (char) => char.charCodeAt(0) & 0xff);
+    case 'hex': {
+      const bytes = content.match(/.{1,2}/g) ?? [];
+      return Uint8Array.from(bytes, (pair) => parseInt(pair, 16));
+    }
+    case 'base64':
+      return Uint8Array.from(atob(content), (char) => char.charCodeAt(0));
   }
 }
 
-export class SHA1 {
+function encode(bytes: Uint8Array, encoding: HashOutputEncoding): string {
+  if (encoding === 'hex') {
+    return Array.from(bytes, (byte) => byte.toString(16).padStart(2, '0')).join('');
+  }
+  let binary = '';
+  bytes.forEach((byte) => {
+    binary += String.fromCharCode(byte);
+  });
+  return btoa(binary);
+}
+
+async function digest(
+  algorithm: Algorithm,
+  content: string,
+  inputEncoding: HashInputEncoding,
+  outputEncoding: HashOutputEncoding,
+): Promise<string> {
+  const bytes = decode(content, inputEncoding);
+  const hashed = await crypto.subtle.digest(algorithm, bytes as unknown as ArrayBuffer);
+  return encode(new Uint8Array(hashed), outputEncoding);
+}
+
+abstract class Digest {
+  protected abstract readonly algorithm: Algorithm;
+  protected abstract readonly uri: string;
+  protected abstract readonly defaultOutput: HashOutputEncoding;
+
   /**
-   *
-   * @param content string to hash
-   * @param inputEncoding input encoding "utf8" | "base64" | "binary" | "hex"
-   * @param outputEncoding output encoding "utf8" | "base64" | "binary" | "hex"
+   * @param content the string to hash
+   * @param inputEncoding how to read `content` into bytes
+   * @param outputEncoding how to render the digest
    */
-  getHash(content: string, inputEncoding: any = 'utf8', outputEncoding: any = 'base64') {
-    const shasum = crypto.createHash('sha1');
-    shasum.update(content, inputEncoding);
-    const res = shasum.digest(outputEncoding);
-    return res;
+  getHash(
+    content: string,
+    inputEncoding: HashInputEncoding = 'utf8',
+    outputEncoding: HashOutputEncoding = this.defaultOutput,
+  ): Promise<string> {
+    return digest(this.algorithm, content, inputEncoding, outputEncoding);
   }
 
-  getAlgorithmName() {
-    return 'http://www.w3.org/2000/09/xmldsig#sha1';
+  /** The XML Signature URI for this algorithm. */
+  getAlgorithmName(): string {
+    return this.uri;
   }
 }
 
-export class SHA512 {
-  /**
-   *
-   * @param content string to hash
-   * @param inputEncoding input encoding "utf8" | "base64" | "binary" | "hex"
-   * @param outputEncoding output encoding "utf8" | "base64" | "binary" | "hex"
-   */
-  getHash(content: string, inputEncoding: any = 'utf8', outputEncoding: any = 'base64') {
-    const shasum = crypto.createHash('sha512');
-    shasum.update(content, inputEncoding);
-    const res = shasum.digest(outputEncoding);
-    return res;
-  }
-
-  getAlgorithmName() {
-    return 'http://www.w3.org/2001/04/xmlenc#sha512';
-  }
+export class SHA1 extends Digest {
+  protected readonly algorithm = 'SHA-1' as const;
+  protected readonly uri = 'http://www.w3.org/2000/09/xmldsig#sha1';
+  protected readonly defaultOutput = 'base64' as const;
 }
 
-// /**
-//  * Signature algorithm implementation
-//  *
-//  */
-// function RSASHA1() {
+export class SHA256 extends Digest {
+  protected readonly algorithm = 'SHA-256' as const;
+  protected readonly uri = 'http://www.w3.org/2001/04/xmlenc#sha256';
+  protected readonly defaultOutput = 'base64' as const;
+}
 
-//   /**
-//   * Sign the given string using the given key
-//   *
-//   */
-//   this.getSignature = function(signedInfo, signingKey) {
-//     var signer = crypto.createSign("RSA-SHA1")
-//     signer.update(signedInfo)
-//     var res = signer.sign(signingKey, 'base64')
-//     return res
-//   }
+export class SHA384 extends Digest {
+  protected readonly algorithm = 'SHA-384' as const;
+  protected readonly uri = 'http://www.w3.org/2001/04/xmldsig-more#sha384';
+  protected readonly defaultOutput = 'hex' as const;
+}
 
-//   /**
-//   * Verify the given signature of the given string using key
-//   *
-//   */
-//   this.verifySignature = function(str, key, signatureValue) {
-//     var verifier = crypto.createVerify("RSA-SHA1")
-//     verifier.update(str)
-//     var res = verifier.verify(key, signatureValue, 'base64')
-//     return res
-//   }
-
-//   this.getAlgorithmName = function() {
-//     return "http://www.w3.org/2000/09/xmldsig#rsa-sha1"
-//   }
-
-// }
-
-// /**
-//  * Signature algorithm implementation
-//  *
-//  */
-// function RSASHA256() {
-
-//   /**
-//   * Sign the given string using the given key
-//   *
-//   */
-//   this.getSignature = function(signedInfo, signingKey) {
-//     var signer = crypto.createSign("RSA-SHA256")
-//     signer.update(signedInfo)
-//     var res = signer.sign(signingKey, 'base64')
-//     return res
-//   }
-
-//   /**
-//   * Verify the given signature of the given string using key
-//   *
-//   */
-//   this.verifySignature = function(str, key, signatureValue) {
-//     var verifier = crypto.createVerify("RSA-SHA256")
-//     verifier.update(str)
-//     var res = verifier.verify(key, signatureValue, 'base64')
-//     return res
-//   }
-
-//   this.getAlgorithmName = function() {
-//     return "http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"
-//   }
-
-// }
-
-// /**
-//  * Signature algorithm implementation
-//  *
-//  */
-// function RSASHA512() {
-
-//   /**
-//   * Sign the given string using the given key
-//   *
-//   */
-//   this.getSignature = function(signedInfo, signingKey) {
-//     var signer = crypto.createSign("RSA-SHA512")
-//     signer.update(signedInfo)
-//     var res = signer.sign(signingKey, 'base64')
-//     return res
-//   }
-
-//   /**
-//   * Verify the given signature of the given string using key
-//   *
-//   */
-//   this.verifySignature = function(str, key, signatureValue) {
-//     var verifier = crypto.createVerify("RSA-SHA512")
-//     verifier.update(str)
-//     var res = verifier.verify(key, signatureValue, 'base64')
-//     return res
-//   }
-
-//   this.getAlgorithmName = function() {
-//     return "http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"
-//   }
-// }
-
-// function HMACSHA1() {
-//     this.verifySignature = function(str, key, signatureValue) {
-//         var verifier = crypto.createHmac("SHA1", key);
-//         verifier.update(str);
-//         var res = verifier.digest('base64');
-//         return res === signatureValue;
-//     };
-
-//     this.getAlgorithmName = function() {
-//         return "http://www.w3.org/2000/09/xmldsig#hmac-sha1";
-//     };
-
-//     this.getSignature = function(signedInfo, signingKey) {
-//         var verifier = crypto.createHmac("SHA1", signingKey);
-//         verifier.update(signedInfo);
-//         var res = verifier.digest('base64');
-//         return res;
-//     };
-// }
+export class SHA512 extends Digest {
+  protected readonly algorithm = 'SHA-512' as const;
+  protected readonly uri = 'http://www.w3.org/2001/04/xmlenc#sha512';
+  protected readonly defaultOutput = 'base64' as const;
+}
