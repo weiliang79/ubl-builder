@@ -1,5 +1,5 @@
-import { AddressLine } from '../../src/ubl21/CommonAggregateComponents';
-import { UdtText } from '../../src/ubl21/types/UnqualifiedDataTypes';
+import { AddressLine } from '../../src/cac';
+import { UdtText } from '../../src/datatypes/udt';
 
 describe('AddressLine', () => {
   it('accepts a UdtText instance', () => {

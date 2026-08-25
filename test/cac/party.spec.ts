@@ -1,5 +1,5 @@
-import { Party, PartyIdentification, PartyName } from '../../src/ubl21/CommonAggregateComponents';
-import { UdtIdentifier } from '../../src/ubl21/types/UnqualifiedDataTypes';
+import { Party, PartyIdentification, PartyName } from '../../src/cac';
+import { UdtIdentifier } from '../../src/datatypes/udt';
 
 describe('Party', () => {
   it('adds a party name from a string', () => {

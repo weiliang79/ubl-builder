@@ -1,4 +1,4 @@
-import { InvoiceLine, Item, Price, TaxTotal } from '../../src/ubl21/CommonAggregateComponents';
+import { InvoiceLine, Item, Price, TaxTotal } from '../../src/cac';
 
 const line = () =>
   new InvoiceLine({
