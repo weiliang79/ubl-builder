@@ -18,7 +18,7 @@ const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
   roundingAmount: { order: 2, attributeName: 'cbc:RoundingAmount', min: 0, max: 1, classRef: UdtAmount },
   taxEvidenceIndicator: { order: 3, attributeName: 'cbc:TaxEvidenceIndicator', min: 0, max: 1, classRef: UdtIndicator },
   taxIncludedIndicator: { order: 4, attributeName: 'cbc:TaxIncludedIndicator', min: 0, max: 1, classRef: UdtIndicator },
-  taxSubtotals: { order: 5, attributeName: 'cac:TaxSubtotal', min: 0, max: undefined, classRef: TaxSubtotal },
+  taxSubtotals: { order: 5, attributeName: 'cac:TaxSubtotal', min: 0, max: undefined, classRef: () => TaxSubtotal },
 };
 
 type AllowedParams = {

@@ -26,7 +26,13 @@ const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
   },
   lossRisks: { order: 4, attributeName: 'cbc:LossRisk', min: 0, max: undefined, classRef: UdtText },
   amount: { order: 5, attributeName: 'cbc:Amount', min: 0, max: 1, classRef: UdtAmount },
-  deliveryLocation: { order: 6, attributeName: 'cac:DeliveryLocation', min: 0, max: 1, classRef: DeliveryLocation },
+  deliveryLocation: {
+    order: 6,
+    attributeName: 'cac:DeliveryLocation',
+    min: 0,
+    max: 1,
+    classRef: () => DeliveryLocation,
+  },
   // allowanceCharge: { order: 7,  attributeName: 'cac:AllowanceCharge', min: 0, max: 1, classRef: AllowanceCharge },
 
   // ##################################  TODO CAC MISSING ################################################

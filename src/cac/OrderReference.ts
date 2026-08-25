@@ -11,7 +11,13 @@ const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
   issueTime: { order: 6, attributeName: 'cbc:IssueTime', min: 0, max: 1, classRef: UdtTime },
   customerReference: { order: 7, attributeName: 'cbc:CustomerReference', min: 0, max: 1, classRef: UdtText },
   orderTypeCode: { order: 8, attributeName: 'cbc:OrderTypeCode', min: 0, max: 1, classRef: UdtCode },
-  documentReference: { order: 9, attributeName: 'cac:DocumentReference', min: 0, max: 1, classRef: DocumentReference },
+  documentReference: {
+    order: 9,
+    attributeName: 'cac:DocumentReference',
+    min: 0,
+    max: 1,
+    classRef: () => DocumentReference,
+  },
 };
 
 type AllowedParams = {

@@ -1,3 +1,4 @@
+import { AllowanceCharge } from './AllowanceCharge';
 // 'use strict'
 
 import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from '../core/GenericAggregateComponent';
@@ -37,6 +38,13 @@ import { TaxTotal } from './TaxTotal';
 
 // ##################################  TODO CAC MISSING ################################################
 const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
+  allowanceCharges: {
+    order: 18,
+    attributeName: 'cac:AllowanceCharge',
+    min: 0,
+    max: undefined,
+    classRef: () => AllowanceCharge,
+  },
   id: { order: 1, attributeName: 'cbc:ID', min: 1, max: 1, classRef: UdtIdentifier },
   uuid: { order: 2, attributeName: 'cbc:UUID', min: 0, max: 1, classRef: UdtIdentifier },
   notes: { order: 3, attributeName: 'cbc:Note', min: 0, max: undefined, classRef: UdtText },
@@ -52,39 +60,41 @@ const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
     attributeName: 'cac:DespatchLineReference',
     min: 0,
     max: undefined,
-    classRef: DespatchLineReference,
+    classRef: () => DespatchLineReference,
   },
   receiptLineReferences: {
     order: 12,
     attributeName: 'cac:ReceiptLineReference',
     min: 0,
     max: undefined,
-    classRef: ReceiptLineReference,
+    classRef: () => ReceiptLineReference,
   },
   billingReferences: {
     order: 13,
     attributeName: 'cac:BillingReference',
     min: 0,
     max: undefined,
-    classRef: BillingReference,
+    classRef: () => BillingReference,
   },
   documentReferences: {
     order: 14,
     attributeName: 'cac:DocumentReference',
     min: 0,
     max: undefined,
-    classRef: DocumentReference,
+    classRef: () => DocumentReference,
   },
   // pricingReference: { order: 15,  attributeName: 'cac:PricingReference', min: 0, max: 1, classRef: undefined },
-  deliveries: { order: 16, attributeName: 'cac:Delivery', min: 0, max: undefined, classRef: Delivery },
-  taxTotals: { order: 17, attributeName: 'cac:TaxTotal', min: 0, max: undefined, classRef: TaxTotal },
-  // allowanceCharges: { order: 18,  attributeName: 'cac:TaxTotal', min: 0, max: undefined, classRef: AllowanceCharge },
-  item: { order: 19, attributeName: 'cac:Item', min: 0, max: 1, classRef: Item },
-  price: { order: 20, attributeName: 'cac:Price', min: 0, max: 1, classRef: Price },
+  deliveries: { order: 16, attributeName: 'cac:Delivery', min: 0, max: undefined, classRef: () => Delivery },
+  taxTotals: { order: 17, attributeName: 'cac:TaxTotal', min: 0, max: undefined, classRef: () => TaxTotal },
+  // allowanceCharges: { order: 18,  attributeName: 'cac:TaxTotal', min: 0, max: undefined, classRef: () => AllowanceCharge },
+  item: { order: 19, attributeName: 'cac:Item', min: 0, max: 1, classRef: () => Item },
+  price: { order: 20, attributeName: 'cac:Price', min: 0, max: 1, classRef: () => Price },
   // subDebitNoteLine: { order: 21,  attributeName: 'cac:SubDebitNoteLine', min: 0, max: undefined, classRef: undefined },
 };
 
 type AllowedParams = {
+  /** An allowance or charge associated with this debit note. */
+  allowanceCharges?: AllowanceCharge[];
   id: string | UdtIdentifier;
   uuid: string | UdtIdentifier;
   notes: string | UdtText;

@@ -27,8 +27,14 @@ const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
   locationTypeCode: { order: 6, attributeName: 'cbc:LocationTypeCode', min: 0, max: 1, classRef: UdtCode },
   informationURI: { order: 7, attributeName: 'cbc:InformationURI', min: 0, max: 1, classRef: UdtIdentifier },
   name: { order: 8, attributeName: 'cbc:Name', min: 0, max: 1, classRef: UdtName },
-  validityPeriod: { order: 9, attributeName: 'cac:ValidityPeriod', min: 0, max: undefined, classRef: ValidityPeriod },
-  address: { order: 10, attributeName: 'cac:Address', min: 0, max: 1, classRef: Address },
+  validityPeriod: {
+    order: 9,
+    attributeName: 'cac:ValidityPeriod',
+    min: 0,
+    max: undefined,
+    classRef: () => ValidityPeriod,
+  },
+  address: { order: 10, attributeName: 'cac:Address', min: 0, max: 1, classRef: () => Address },
 
   // ##################################  TODO CAC MISSING ################################################
 

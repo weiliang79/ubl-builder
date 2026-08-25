@@ -20,7 +20,7 @@ const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
     attributeName: 'cac:JurisdictionRegionAddress',
     min: 0,
     max: undefined,
-    classRef: JurisdictionRegionAddress,
+    classRef: () => JurisdictionRegionAddress,
   },
 };
 

@@ -57,8 +57,8 @@ const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
   postalZone: { order: 5, attributeName: 'cbc:PostalZone', min: 0, max: 1, classRef: UdtText },
   countrySubentity: { order: 6, attributeName: 'cbc:CountrySubentity', min: 0, max: 1, classRef: UdtText },
   countrySubentityCode: { order: 7, attributeName: 'cbc:CountrySubentityCode', min: 0, max: 1, classRef: UdtText },
-  addressLine: { order: 8, attributeName: 'cac:AddressLine', min: 0, max: undefined, classRef: AddressLine },
-  country: { order: 9, attributeName: 'cac:Country', min: 0, max: 1, classRef: Country },
+  addressLine: { order: 8, attributeName: 'cac:AddressLine', min: 0, max: undefined, classRef: () => AddressLine },
+  country: { order: 9, attributeName: 'cac:Country', min: 0, max: 1, classRef: () => Country },
 };
 
 interface AllowedParams {

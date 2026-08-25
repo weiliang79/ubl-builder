@@ -21,6 +21,8 @@ export interface SchemaChild {
   maxOccurs: number | null;
   /** Resolved type, e.g. `udt:IdentifierType` or `cac:AddressType`. */
   type: string;
+  /** The ccts:Definition carried by the element ref, for generated docs. */
+  definition: string;
 }
 
 export interface SchemaType {
@@ -73,11 +75,13 @@ function readComplexTypes(doc: Document, prefix: string, into: Map<string, Schem
         .map((el) => {
           const ref = el.getAttribute('ref') as string;
           const max = el.getAttribute('maxOccurs');
+          const definition = children(el, 'ccts:Definition')[0];
           return {
             name: ref,
             minOccurs: Number(el.getAttribute('minOccurs') ?? '1'),
             maxOccurs: max === 'unbounded' ? null : Number(max ?? '1'),
             type: '', // resolved once every module is loaded
+            definition: (definition?.textContent ?? '').replace(/\s+/g, ' ').trim(),
           };
         });
 

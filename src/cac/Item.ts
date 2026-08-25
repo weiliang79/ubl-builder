@@ -3,6 +3,9 @@ import { UdtIndicator, UdtName, UdtQuantity, UdtText } from '../datatypes/udt';
 import { UdtNumeric } from '../datatypes/udt/UdtNumeric';
 import { CommodityClassification } from './CommodityClassification';
 import { Country } from './Country';
+import { DocumentReference } from './DocumentReference';
+import { Party } from './Party';
+import { PostalAddress } from './PostalAddress';
 import { SellersItemIdentification } from './SellersItemIdentification';
 import { ClassifiedTaxCategory } from './TaxCategory';
 
@@ -42,6 +45,76 @@ import { ClassifiedTaxCategory } from './TaxCategory';
 // ##################################  TODO CAC MISSING ################################################
 
 const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
+  buyersItemIdentification: {
+    order: 11,
+    attributeName: 'cac:BuyersItemIdentification',
+    min: 0,
+    max: 1,
+    classRef: () => SellersItemIdentification,
+  },
+  manufacturersItemIdentifications: {
+    order: 13,
+    attributeName: 'cac:ManufacturersItemIdentification',
+    min: 0,
+    max: undefined,
+    classRef: () => SellersItemIdentification,
+  },
+  standardItemIdentification: {
+    order: 14,
+    attributeName: 'cac:StandardItemIdentification',
+    min: 0,
+    max: 1,
+    classRef: () => SellersItemIdentification,
+  },
+  catalogueItemIdentification: {
+    order: 15,
+    attributeName: 'cac:CatalogueItemIdentification',
+    min: 0,
+    max: 1,
+    classRef: () => SellersItemIdentification,
+  },
+  additionalItemIdentifications: {
+    order: 16,
+    attributeName: 'cac:AdditionalItemIdentification',
+    min: 0,
+    max: undefined,
+    classRef: () => SellersItemIdentification,
+  },
+  catalogueDocumentReference: {
+    order: 17,
+    attributeName: 'cac:CatalogueDocumentReference',
+    min: 0,
+    max: 1,
+    classRef: () => DocumentReference,
+  },
+  itemSpecificationDocumentReferences: {
+    order: 18,
+    attributeName: 'cac:ItemSpecificationDocumentReference',
+    min: 0,
+    max: undefined,
+    classRef: () => DocumentReference,
+  },
+  manufacturerParties: {
+    order: 25,
+    attributeName: 'cac:ManufacturerParty',
+    min: 0,
+    max: undefined,
+    classRef: () => Party,
+  },
+  informationContentProviderParty: {
+    order: 26,
+    attributeName: 'cac:InformationContentProviderParty',
+    min: 0,
+    max: 1,
+    classRef: () => Party,
+  },
+  originAddresses: {
+    order: 27,
+    attributeName: 'cac:OriginAddress',
+    min: 0,
+    max: undefined,
+    classRef: () => PostalAddress,
+  },
   descriptions: { order: 1, attributeName: 'cbc:Description', min: 0, max: undefined, classRef: UdtText },
   packQuantity: { order: 2, attributeName: 'cbc:PackQuantity', min: 0, max: 1, classRef: UdtQuantity },
   packSizeNumeric: { order: 3, attributeName: 'cbc:PackSizeNumeric', min: 0, max: 1, classRef: UdtNumeric },
@@ -69,34 +142,54 @@ const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
     attributeName: 'cac:SellersItemIdentification',
     min: 0,
     max: 1,
-    classRef: SellersItemIdentification,
+    classRef: () => SellersItemIdentification,
   },
   originCountry: {
     order: 19,
     attributeName: 'cac:OriginCountry',
     min: 0,
     max: 1,
-    classRef: Country,
+    classRef: () => Country,
   },
   commodityClassification: {
     order: 20,
     attributeName: 'cac:CommodityClassification',
     min: 0,
     max: undefined,
-    classRef: CommodityClassification,
+    classRef: () => CommodityClassification,
   },
   classifiedTaxCategory: {
     order: 23,
     attributeName: 'cac:ClassifiedTaxCategory',
     min: 0,
     max: undefined,
-    classRef: ClassifiedTaxCategory,
+    classRef: () => ClassifiedTaxCategory,
   },
   // ItemIdentificationType
 };
 
 // ##################################  TODO CAC MISSING ################################################
 type AllowedParams = {
+  /** Identifying information for this item, assigned by the buyer. */
+  buyersItemIdentification?: SellersItemIdentification;
+  /** Identifying information for this item, assigned by the manufacturer. */
+  manufacturersItemIdentifications?: SellersItemIdentification[];
+  /** Identifying information for this item, assigned according to a standard system. */
+  standardItemIdentification?: SellersItemIdentification;
+  /** Identifying information for this item, assigned according to a cataloguing system. */
+  catalogueItemIdentification?: SellersItemIdentification;
+  /** An additional identifier for this item. */
+  additionalItemIdentifications?: SellersItemIdentification[];
+  /** A reference to the catalogue in which this item appears. */
+  catalogueDocumentReference?: DocumentReference;
+  /** A reference to a specification document for this item. */
+  itemSpecificationDocumentReferences?: DocumentReference[];
+  /** The manufacturer of this item. */
+  manufacturerParties?: Party[];
+  /** The party responsible for specification of this item. */
+  informationContentProviderParty?: Party;
+  /** A region (not country) of origin of this item. */
+  originAddresses?: PostalAddress[];
   name?: string | UdtName;
   descriptions?: UdtText[];
   packQuantity?: string | UdtQuantity;

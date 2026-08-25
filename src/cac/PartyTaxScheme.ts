@@ -37,9 +37,9 @@ const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
     attributeName: 'cac:RegistrationAddress',
     min: 0,
     max: 1,
-    classRef: RegistrationAddress,
+    classRef: () => RegistrationAddress,
   },
-  taxScheme: { order: 7, attributeName: 'cac:TaxScheme', min: 1, max: 1, classRef: TaxScheme },
+  taxScheme: { order: 7, attributeName: 'cac:TaxScheme', min: 1, max: 1, classRef: () => TaxScheme },
 };
 
 type AllowedParams = {

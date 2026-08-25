@@ -35,21 +35,27 @@ const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
     max: 1,
     classRef: UdtRate,
   },
-  validityPeriods: { order: 7, attributeName: 'cac:ValidityPeriod', min: 0, max: undefined, classRef: ValidityPeriod },
-  priceList: { order: 8, attributeName: 'cac:PriceList', min: 0, max: 1, classRef: PriceList },
+  validityPeriods: {
+    order: 7,
+    attributeName: 'cac:ValidityPeriod',
+    min: 0,
+    max: undefined,
+    classRef: () => ValidityPeriod,
+  },
+  priceList: { order: 8, attributeName: 'cac:PriceList', min: 0, max: 1, classRef: () => PriceList },
   allowanceCharges: {
     order: 9,
     attributeName: 'cac:AllowanceCharge',
     min: 0,
     max: undefined,
-    classRef: AllowanceCharge,
+    classRef: () => AllowanceCharge,
   },
   pricingExchangeRate: {
     order: 10,
     attributeName: 'cac:PricingExchangeRate',
     min: 0,
     max: 1,
-    classRef: PricingExchangeRate,
+    classRef: () => PricingExchangeRate,
   },
 
   // ##################################  TODO CAC MISSING ################################################

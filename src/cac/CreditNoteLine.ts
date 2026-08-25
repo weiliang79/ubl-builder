@@ -6,6 +6,7 @@ import { Delivery } from './Delivery';
 import { DeliveryTerms } from './DeliveryTerms';
 import { DocumentReference } from './DocumentReference';
 import { Item } from './Item';
+import { ItemPriceExtension } from './ItemPriceExtension';
 import { DespatchLineReference, ReceiptLineReference } from './LineReference';
 import { OrderLineReference } from './OrderLineReference';
 import { Party } from './Party';
@@ -47,6 +48,13 @@ import { TaxTotal } from './TaxTotal';
 
 // ##################################  TODO CAC MISSING ################################################
 const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
+  itemPriceExtension: {
+    order: 28,
+    attributeName: 'cac:ItemPriceExtension',
+    min: 0,
+    max: 1,
+    classRef: () => ItemPriceExtension,
+  },
   id: { order: 1, attributeName: 'cbc:ID', min: 1, max: 1, classRef: UdtIdentifier },
   uuid: { order: 2, attributeName: 'cbc:UUID', min: 0, max: 1, classRef: UdtIdentifier },
   notes: { order: 3, attributeName: 'cbc:Note', min: 0, max: undefined, classRef: UdtText },
@@ -63,13 +71,13 @@ const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
     max: 1,
     classRef: UdtIndicator,
   },
-  invoicePeriods: { order: 11, attributeName: 'cac:InvoicePeriod', min: 0, max: undefined, classRef: PeriodType },
+  invoicePeriods: { order: 11, attributeName: 'cac:InvoicePeriod', min: 0, max: undefined, classRef: () => PeriodType },
   orderLineReferences: {
     order: 12,
     attributeName: 'cac:OrderLineReference',
     min: 0,
     max: undefined,
-    classRef: OrderLineReference,
+    classRef: () => OrderLineReference,
   },
   // DiscrepancyResponses: { order: 13,  attributeName: 'cac:DiscrepancyResponse', min: 0, max: undefined, classRef: null },
   despatchLineReferences: {
@@ -77,41 +85,49 @@ const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
     attributeName: 'cac:DespatchLineReference',
     min: 0,
     max: undefined,
-    classRef: DespatchLineReference,
+    classRef: () => DespatchLineReference,
   },
   receiptLineReferences: {
     order: 15,
     attributeName: 'cac:ReceiptLineReference',
     min: 0,
     max: undefined,
-    classRef: ReceiptLineReference,
+    classRef: () => ReceiptLineReference,
   },
   billingReferences: {
     order: 16,
     attributeName: 'cac:BillingReference',
     min: 0,
     max: undefined,
-    classRef: BillingReference,
+    classRef: () => BillingReference,
   },
   documentReferences: {
     order: 17,
     attributeName: 'cac:DocumentReference',
     min: 0,
     max: undefined,
-    classRef: DocumentReference,
+    classRef: () => DocumentReference,
   },
   // PricingReference: { order: 18,  attributeName: 'cac:PricingReference', min: 0, max: 1, classRef: PricingReference },
-  originatorParty: { order: 19, attributeName: 'cac:OriginatorParty', min: 0, max: 1, classRef: Party },
-  deliveries: { order: 20, attributeName: 'cac:Delivery', min: 0, max: undefined, classRef: Delivery },
-  paymentTerms: { order: 21, attributeName: 'cac:PaymentTerms', min: 0, max: undefined, classRef: PaymentTerms },
-  taxTotals: { order: 22, attributeName: 'cac:TaxTotal', min: 0, max: undefined, classRef: TaxTotal },
+  originatorParty: { order: 19, attributeName: 'cac:OriginatorParty', min: 0, max: 1, classRef: () => Party },
+  deliveries: { order: 20, attributeName: 'cac:Delivery', min: 0, max: undefined, classRef: () => Delivery },
+  paymentTerms: { order: 21, attributeName: 'cac:PaymentTerms', min: 0, max: undefined, classRef: () => PaymentTerms },
+  taxTotals: { order: 22, attributeName: 'cac:TaxTotal', min: 0, max: undefined, classRef: () => TaxTotal },
   // allowanceCharges: { order: 23,  attributeName: 'cac:AllowanceCharge', min: 0, max: undefined, classRef: null },
-  item: { order: 24, attributeName: 'cac:Item', min: 0, max: 1, classRef: Item },
-  price: { order: 25, attributeName: 'cac:Price', min: 0, max: 1, classRef: Price },
-  deliveryTerms: { order: 26, attributeName: 'cac:DeliveryTerms', min: 0, max: undefined, classRef: DeliveryTerms },
+  item: { order: 24, attributeName: 'cac:Item', min: 0, max: 1, classRef: () => Item },
+  price: { order: 25, attributeName: 'cac:Price', min: 0, max: 1, classRef: () => Price },
+  deliveryTerms: {
+    order: 26,
+    attributeName: 'cac:DeliveryTerms',
+    min: 0,
+    max: undefined,
+    classRef: () => DeliveryTerms,
+  },
 };
 
 type AllowedParams = {
+  /** The price extension, calculated by multiplying the price per unit by the quantity of items on this credit note line. */
+  itemPriceExtension?: ItemPriceExtension;
   id: string | UdtIdentifier;
   uuid: string | UdtIdentifier;
   notes: string[] | UdtText[];

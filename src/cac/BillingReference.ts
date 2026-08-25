@@ -1,5 +1,5 @@
 import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from '../core/GenericAggregateComponent';
-import { AdditionalDocumentReference, InvoiceDocumentReference } from './DocumentReference';
+import { AdditionalDocumentReference, DocumentReference, InvoiceDocumentReference } from './DocumentReference';
 
 const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
   invoiceDocumentReference: {
@@ -7,51 +7,57 @@ const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
     attributeName: 'cac:InvoiceDocumentReference',
     min: 0,
     max: 1,
-    classRef: InvoiceDocumentReference,
+    classRef: () => InvoiceDocumentReference,
   },
   selfBilledInvoiceDocumentReference: {
     order: 2,
     attributeName: 'cac:SelfBilledInvoiceDocumentReference',
     min: 0,
     max: 1,
-    classRef: null,
+    classRef: () => DocumentReference,
   },
   creditNoteDocumentReference: {
     order: 3,
     attributeName: 'cac:CreditNoteDocumentReference',
     min: 0,
     max: 1,
-    classRef: null,
+    classRef: () => DocumentReference,
   },
   selfBilledCreditNoteDocumentReference: {
     order: 4,
     attributeName: 'cac:SelfBilledCreditNoteDocumentReference',
     min: 0,
     max: 1,
-    classRef: null,
+    classRef: () => DocumentReference,
   },
   debitNoteDocumentReference: {
     order: 5,
     attributeName: 'cac:DebitNoteDocumentReference',
     min: 0,
     max: 1,
-    classRef: null,
+    classRef: () => DocumentReference,
   },
   reminderDocumentReference: {
     order: 6,
     attributeName: 'cac:ReminderDocumentReference',
     min: 0,
     max: 1,
-    classRef: null,
+    classRef: () => DocumentReference,
   },
   additionalDocumentReference: {
     order: 7,
     attributeName: 'cac:AdditionalDocumentReference',
     min: 0,
     max: 1,
-    classRef: AdditionalDocumentReference,
+    classRef: () => AdditionalDocumentReference,
   },
-  billingReferenceLine: { order: 8, attributeName: 'cac:BillingReferenceLine', min: 0, max: undefined, classRef: null },
+  billingReferenceLine: {
+    order: 8,
+    attributeName: 'cac:BillingReferenceLine',
+    min: 0,
+    max: undefined,
+    classRef: null /* cac:BillingReferenceLineType has no component class yet */,
+  },
 };
 
 type AllowedParams = {

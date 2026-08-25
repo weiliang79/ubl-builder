@@ -14,6 +14,24 @@ export interface IGenericKeyValue<T> {
 }
 
 /**
+ * Resolve a classRef that may be deferred.
+ *
+ * UBL's type graph has cycles — a Party contains an AgentParty, a
+ * BillingReference contains DocumentReferences that lead back to it — and a
+ * params map is a module-level constant, so an eager reference across a cycle
+ * captures `undefined` before the other module has finished loading. Six
+ * entries in BillingReference were broken this way, throwing "classRef is
+ * required" for anyone who used them.
+ *
+ * Writing such a reference as `() => Thing` defers it to first use, by which
+ * point both modules are loaded. Classes are told apart from arrow functions
+ * by `prototype`, which only the former has.
+ */
+export function resolveClassRef(classRef: any): any {
+  return typeof classRef === 'function' && !classRef.prototype ? classRef() : classRef;
+}
+
+/**
  * Generic class to avoid repeat several code in all CommonAggregateComponent files
  */
 export default class GenericAggregateComponent {
@@ -97,7 +115,8 @@ export default class GenericAggregateComponent {
           throw new Error(`attribute ${att} is not allowed`);
         }
 
-        const { classRef: AbstractClass, max } = mapValue;
+        const AbstractClass = resolveClassRef(mapValue.classRef);
+        const { max } = mapValue;
         if (!AbstractClass) {
           throw new Error('classRef is required');
         }

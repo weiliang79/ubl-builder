@@ -31,8 +31,8 @@ const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
     max: undefined,
     classRef: UdtIdentifier,
   },
-  attachment: { order: 14, attributeName: 'cac:Attachment', min: 0, max: 1, classRef: Attachment },
-  validityPeriod: { order: 15, attributeName: 'cac:ValidityPeriod', min: 0, max: 1, classRef: ValidityPeriod },
+  attachment: { order: 14, attributeName: 'cac:Attachment', min: 0, max: 1, classRef: () => Attachment },
+  validityPeriod: { order: 15, attributeName: 'cac:ValidityPeriod', min: 0, max: 1, classRef: () => ValidityPeriod },
   // issuerParty: { order: 16, attributeName: 'cac:IssuerParty', min: 0, max: 1, classRef: IssuerParty },
   //                                   TODO CAC MISSING
   // resultOfVerification: { order: 17, attributeName: 'cac:ResultOfVerification', min: 0, max: 1, classRef: null },
