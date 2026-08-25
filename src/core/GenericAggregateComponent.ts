@@ -16,17 +16,32 @@ export interface IGenericKeyValue<T> {
  * Generic class to avoid repeat several code in all CommonAggregateComponent files
  */
 export default class GenericAggregateComponent {
-  // private classRefName: string;
   private paramsMap: IGenericKeyValue<ParamsMapValues> = {};
   protected attributes: IGenericKeyValue<any> = {};
+
   /**
+   * Default element name used when this component is serialized on its own.
    *
+   * It is only a default. A component's element name is decided by its
+   * *parent* — the `attributeName` in the parent's params map — because the
+   * same UBL type appears under different names depending on position:
+   * PeriodType is cac:InvoicePeriod under Invoice and cac:ValidityPeriod
+   * under Price. Pass an explicit name to getAsXml() when the default is
+   * not the one you want.
+   */
+  protected readonly elementName: string;
+
+  /**
    * @param content component content
    * @param paramsMap Params Map
-   * @param [name="GenericAggregateComponent"] Class name
+   * @param [elementName="GenericAggregateComponent"] default element name
    */
-  constructor(content: any, paramsMap: IGenericKeyValue<ParamsMapValues>, _name = 'GenericAggregateComponent') {
-    // this.classRefName = name;
+  constructor(
+    content: any,
+    paramsMap: IGenericKeyValue<ParamsMapValues>,
+    elementName = 'GenericAggregateComponent',
+  ) {
+    this.elementName = elementName;
     this.paramsMap = paramsMap;
     this.assignContent(content);
   }
@@ -90,14 +105,26 @@ export default class GenericAggregateComponent {
   }
 
   /**
-   * @param {boolean} [pretty=true] true for print pretty. true by default
-   * @param {boolean} [headless=false] false for print pretty. true by default
+   * Serialize this component on its own, wrapped in a single root element.
    *
+   * The wrapper is required: parseToJson() returns one key per child, and an
+   * XML document cannot have more than one root. Without it this threw
+   * "Document already has a document element" for every component with more
+   * than one child, and silently emitted a bare, unwrapped child for the rest.
+   *
+   * @param {boolean} [pretty=true] pretty-print the output
+   * @param {boolean} [headless=false] omit the XML declaration
+   * @param {string} [elementName] override the default element name; see
+   *        {@link elementName} for why the default may not be the right one
    */
-  getAsXml(pretty = true, headless = false) {
-    const xmlRef = this.parseToJson();
-    const xml = create(xmlRef, { encoding: 'UTF-8', standalone: false, headless }).end({ prettyPrint: pretty });
-    return xml; // console.log(xml);
+  getAsXml(pretty = true, headless = false, elementName: string = this.elementName) {
+    const xmlRef = { [elementName]: this.parseToJson() };
+    // headless belongs to end(), not create(); passing it to create() silently
+    // did nothing, so the declaration was emitted regardless of the argument.
+    return create({ version: '1.0', encoding: 'UTF-8', standalone: false }, xmlRef).end({
+      headless,
+      prettyPrint: pretty,
+    });
   }
 
   /**
