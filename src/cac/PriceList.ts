@@ -13,7 +13,7 @@ import { ValidityPeriod } from './Period';
 const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
   id: { order: 1, attributeName: 'cbc:ID', min: 0, max: 1, classRef: UdtIdentifier },
   statusCode: { order: 2, attributeName: 'cbc:StatusCode', min: 0, max: 1, classRef: UdtCode },
-  validityPeriods: { order: 3, attributeName: 'cac:ValidityPeriod', min: 0, max: 1, classRef: ValidityPeriod },
+  validityPeriods: { order: 3, attributeName: 'cac:ValidityPeriod', min: 0, max: undefined, classRef: ValidityPeriod },
   // id: { order: 1,  attributeName: 'cbc:ID', min: 0, max:1, classRef: UdtIdentifier },
 
   // ##################################  TODO CAC MISSING ################################################

@@ -100,7 +100,7 @@ const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
     max: undefined,
     classRef: DocumentReference,
   },
-  // PricingReference: { order: 18,  attributeName: 'cac:PricingReference', min: 0, max: undefined, classRef: PricingReference },
+  // PricingReference: { order: 18,  attributeName: 'cac:PricingReference', min: 0, max: 1, classRef: PricingReference },
   originatorParty: { order: 19, attributeName: 'cac:OriginatorParty', min: 0, max: 1, classRef: Party },
   deliveries: { order: 20, attributeName: 'cac:Delivery', min: 0, max: undefined, classRef: Delivery },
   paymentTerms: { order: 21, attributeName: 'cac:PaymentTerms', min: 0, max: undefined, classRef: PaymentTerms },

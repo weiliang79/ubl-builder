@@ -103,8 +103,8 @@ const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
     max: undefined,
     classRef: DocumentReference,
   },
-  // PricingReference: { order: 17,  attributeName: 'cac:PricingReference', min: 0, max: undefined, classRef: PricingReference },
-  originatorParty: { order: 18, attributeName: 'cac:OriginatorParty', min: 0, max: undefined, classRef: Party },
+  // PricingReference: { order: 17,  attributeName: 'cac:PricingReference', min: 0, max: 1, classRef: PricingReference },
+  originatorParty: { order: 18, attributeName: 'cac:OriginatorParty', min: 0, max: 1, classRef: Party },
   delivery: { order: 19, attributeName: 'cac:Delivery', min: 0, max: undefined, classRef: Delivery },
   paymentTerms: { order: 20, attributeName: 'cac:PaymentTerms', min: 0, max: undefined, classRef: PaymentTerms },
   allowanceCharges: {
@@ -122,9 +122,9 @@ const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
     max: undefined,
     classRef: WithholdingTaxTotal,
   },
-  item: { order: 24, attributeName: 'cac:Item', min: 0, max: undefined, classRef: Item },
-  price: { order: 25, attributeName: 'cac:Price', min: 0, max: undefined, classRef: Price },
-  deliveryTerms: { order: 26, attributeName: 'cac:DeliveryTerms', min: 0, max: undefined, classRef: DeliveryTerms },
+  item: { order: 24, attributeName: 'cac:Item', min: 1, max: 1, classRef: Item },
+  price: { order: 25, attributeName: 'cac:Price', min: 0, max: 1, classRef: Price },
+  deliveryTerms: { order: 26, attributeName: 'cac:DeliveryTerms', min: 0, max: 1, classRef: DeliveryTerms },
   // subInvoiceLine: { order: 27,  attributeName: 'cac:SubInvoiceLine', min: 0, max: undefined, classRef: SubInvoiceLine },
   itemPriceExtension: {
     order: 28,

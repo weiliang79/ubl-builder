@@ -26,16 +26,16 @@ const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
   documentStatusCode: { order: 12, attributeName: 'cbc:DocumentStatusCode', min: 0, max: 1, classRef: UdtCode },
   documentDescription: {
     order: 13,
-    attributeName: 'cbc:documentDescription',
+    attributeName: 'cbc:DocumentDescription',
     min: 0,
     max: undefined,
     classRef: UdtIdentifier,
   },
   attachment: { order: 14, attributeName: 'cac:Attachment', min: 0, max: 1, classRef: Attachment },
-  validityPeriod: { order: 15, attributeName: 'cac:PeriodType', min: 0, max: 1, classRef: ValidityPeriod },
-  // issuerParty: { order: 16, attributeName: 'cac:IssuerParty', min: 0, max:1, classRef: IssuerParty },
+  validityPeriod: { order: 15, attributeName: 'cac:ValidityPeriod', min: 0, max: 1, classRef: ValidityPeriod },
+  // issuerParty: { order: 16, attributeName: 'cac:IssuerParty', min: 0, max: 1, classRef: IssuerParty },
   //                                   TODO CAC MISSING
-  // resultOfVerification: { order: 17, attributeName: 'cac:ResultOfVerification', min: 0, max:1, classRef: null },
+  // resultOfVerification: { order: 17, attributeName: 'cac:ResultOfVerification', min: 0, max: 1, classRef: null },
   //                                   TODO CAC MISSING
 };
 

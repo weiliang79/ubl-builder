@@ -4,7 +4,7 @@ import { DocumentReference } from './DocumentReference';
 
 const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
   id: { order: 1, attributeName: 'cbc:ID', min: 1, max: 1, classRef: UdtIdentifier },
-  salesOrderID: { order: 2, attributeName: 'cbc:SalesOrderID', min: 1, max: 1, classRef: UdtIdentifier },
+  salesOrderID: { order: 2, attributeName: 'cbc:SalesOrderID', min: 0, max: 1, classRef: UdtIdentifier },
   copyIndicator: { order: 3, attributeName: 'cbc:CopyIndicator', min: 0, max: 1, classRef: UdtIndicator },
   uuid: { order: 4, attributeName: 'cbc:UUID', min: 0, max: 1, classRef: UdtIdentifier },
   issueDate: { order: 5, attributeName: 'cbc:IssueDate', min: 0, max: 1, classRef: UdtDate },

@@ -99,7 +99,7 @@ const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
     max: 1,
     classRef: MinimumDeliveryUnit,
   },
-  shipment: { order: 24, attributeName: 'cbc:Shipment', min: 0, max: 1, classRef: ShipmentType },
+  shipment: { order: 24, attributeName: 'cac:Shipment', min: 0, max: 1, classRef: ShipmentType },
 };
 
 type AllowedParams = {

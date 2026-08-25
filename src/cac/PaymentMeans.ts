@@ -27,10 +27,10 @@ const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
   instructionNotes: { order: 6, attributeName: 'cbc:InstructionNote', min: 0, max: undefined, classRef: UdtText },
   paymentID: { order: 7, attributeName: 'cbc:PaymentID', min: 0, max: undefined, classRef: UdtIdentifier },
   payeeFinancialAccount: {
-    order: 8,
+    order: 10,
     attributeName: 'cac:PayeeFinancialAccount',
     min: 0,
-    max: undefined,
+    max: 1,
     classRef: PayeeFinancialAccount,
   },
   // ##################################  TODO CAC MISSING ################################################

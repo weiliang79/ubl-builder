@@ -70,9 +70,9 @@ const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
     classRef: PartyLegalEntity,
   },
   contact: { order: 14, attributeName: 'cac:Contact', min: 0, max: 1, classRef: Contact },
-  // person: { order: 15,  attributeName: 'cac:Person', min: 0, max: 1, classRef: PostalAddress },
-  // serviceProviderParty: { order: 17,  attributeName: 'cac:ServiceProviderParty', min: 0, max: 1, classRef: ServiceProviderParty },
-  // powerOfAttorney: { order: 18,  attributeName: 'cac:PowerOfAttorney', min: 0, max: 1, classRef: PowerOfAttorney },
+  // person: { order: 15,  attributeName: 'cac:Person', min: 0, max: undefined, classRef: PostalAddress },
+  // serviceProviderParty: { order: 17,  attributeName: 'cac:ServiceProviderParty', min: 0, max: undefined, classRef: ServiceProviderParty },
+  // powerOfAttorney: { order: 18,  attributeName: 'cac:PowerOfAttorney', min: 0, max: undefined, classRef: PowerOfAttorney },
   // financialAccount: { order: 19,  attributeName: 'cac:FinancialAccount', min: 0, max: 1, classRef: FinancialAccount },
 
   // ##################################  TODO CAC MISSING ################################################

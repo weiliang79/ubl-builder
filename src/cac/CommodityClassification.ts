@@ -6,9 +6,9 @@ import { UdtCode } from '../datatypes/udt';
 */
 const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
   itemClassificationCode: {
-    order: 1,
+    order: 4,
     attributeName: 'cbc:ItemClassificationCode',
-    min: 1,
+    min: 0,
     max: 1,
     classRef: UdtCode,
   },

@@ -15,7 +15,7 @@ const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
   issueDate: { order: 3, attributeName: 'cbc:IssueDate', min: 0, max: 1, classRef: UdtDate },
 
   //                                   TODO CAC MISSING
-  // issueDate: { order: 3, attributeName: 'cac:WorkPhaseReference', min: 0, max:1, classRef: UdtDate },
+  // issueDate: { order: 4, attributeName: 'cac:WorkPhaseReference', min: 0, max: undefined, classRef: UdtDate },
   //                                   TODO CAC MISSING
 };
 

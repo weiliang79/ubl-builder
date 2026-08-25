@@ -40,7 +40,7 @@ import { UdtAmount } from '../datatypes/udt/UdtAmount';
 */
 
 const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
-  id: { order: 1, attributeName: 'cbc:ID', min: 0, max: 1, classRef: UdtIdentifier },
+  id: { order: 1, attributeName: 'cbc:ID', min: 1, max: 1, classRef: UdtIdentifier },
   shippingPriorityLevelCode: {
     order: 2,
     attributeName: 'cbc:ShippingPriorityLevelCode',
@@ -49,8 +49,14 @@ const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
     classRef: UdtCode,
   },
   handlingCode: { order: 3, attributeName: 'cbc:HandlingCode', min: 0, max: 1, classRef: UdtCode },
-  handlingInstructions: { order: 4, attributeName: 'cbc:HandlingInstructions', min: 0, max: 1, classRef: UdtText },
-  informations: { order: 5, attributeName: 'cbc:Information', min: 0, max: 1, classRef: UdtText },
+  handlingInstructions: {
+    order: 4,
+    attributeName: 'cbc:HandlingInstructions',
+    min: 0,
+    max: undefined,
+    classRef: UdtText,
+  },
+  informations: { order: 5, attributeName: 'cbc:Information', min: 0, max: undefined, classRef: UdtText },
   grossWeightMeasure: { order: 6, attributeName: 'cbc:GrossWeightMeasure', min: 0, max: 1, classRef: UdtMeasure },
   netWeightMeasure: { order: 7, attributeName: 'cbc:NetWeightMeasure', min: 0, max: 1, classRef: UdtMeasure },
   netNetWeightMeasure: { order: 8, attributeName: 'cbc:NetNetWeightMeasure', min: 0, max: 1, classRef: UdtMeasure },

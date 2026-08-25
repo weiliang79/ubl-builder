@@ -47,7 +47,7 @@ const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
     order: 4,
     attributeName: 'cbc:AllowanceChargeReason',
     min: 0,
-    max: 1,
+    max: undefined,
     classRef: UdtText,
   },
   multiplierFactorNumeric: {
@@ -78,7 +78,7 @@ const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
     order: 13,
     attributeName: 'cac:TaxCategory',
     min: 0,
-    max: 1,
+    max: undefined,
     classRef: TaxCategory,
   },
 };
