@@ -12,30 +12,29 @@ import { ValidityPeriod } from './Period';
 // const { IssuerParty, IssuerPartyParams } = require("./Party");
 
 const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
-  id: { order: 1, attributeName: 'cbc:ID', min: 1, max: 1, classRef: UdtIdentifier },
-  copyIndicator: { order: 2, attributeName: 'cbc:CopyIndicator', min: 0, max: 1, classRef: UdtIndicator },
-  uuid: { order: 3, attributeName: 'cbc:UUID', min: 0, max: 1, classRef: UdtIdentifier },
-  issueDate: { order: 4, attributeName: 'cbc:IssueDate', min: 0, max: 1, classRef: UdtDate },
-  issueTime: { order: 5, attributeName: 'cbc:IssueTime', min: 0, max: 1, classRef: UdtTime },
-  documentTypeCode: { order: 6, attributeName: 'cbc:DocumentTypeCode', min: 0, max: 1, classRef: UdtCode },
-  documentType: { order: 7, attributeName: 'cbc:DocumentType', min: 0, max: 1, classRef: UdtText },
-  xPath: { order: 8, attributeName: 'cbc:XPath', min: 0, max: undefined, classRef: UdtText },
-  languageID: { order: 9, attributeName: 'cbc:LanguageID', min: 0, max: 1, classRef: UdtIdentifier },
-  localeCode: { order: 10, attributeName: 'cbc:LocaleCode', min: 0, max: 1, classRef: UdtCode },
-  versionID: { order: 11, attributeName: 'cbc:VersionID', min: 0, max: 1, classRef: UdtIdentifier },
-  documentStatusCode: { order: 12, attributeName: 'cbc:DocumentStatusCode', min: 0, max: 1, classRef: UdtCode },
+  id: { order: 1, attributeName: 'cbc:ID', max: 1, classRef: UdtIdentifier },
+  copyIndicator: { order: 2, attributeName: 'cbc:CopyIndicator', max: 1, classRef: UdtIndicator },
+  uuid: { order: 3, attributeName: 'cbc:UUID', max: 1, classRef: UdtIdentifier },
+  issueDate: { order: 4, attributeName: 'cbc:IssueDate', max: 1, classRef: UdtDate },
+  issueTime: { order: 5, attributeName: 'cbc:IssueTime', max: 1, classRef: UdtTime },
+  documentTypeCode: { order: 6, attributeName: 'cbc:DocumentTypeCode', max: 1, classRef: UdtCode },
+  documentType: { order: 7, attributeName: 'cbc:DocumentType', max: 1, classRef: UdtText },
+  xPath: { order: 8, attributeName: 'cbc:XPath', max: undefined, classRef: UdtText },
+  languageID: { order: 9, attributeName: 'cbc:LanguageID', max: 1, classRef: UdtIdentifier },
+  localeCode: { order: 10, attributeName: 'cbc:LocaleCode', max: 1, classRef: UdtCode },
+  versionID: { order: 11, attributeName: 'cbc:VersionID', max: 1, classRef: UdtIdentifier },
+  documentStatusCode: { order: 12, attributeName: 'cbc:DocumentStatusCode', max: 1, classRef: UdtCode },
   documentDescription: {
     order: 13,
     attributeName: 'cbc:DocumentDescription',
-    min: 0,
     max: undefined,
     classRef: UdtIdentifier,
   },
-  attachment: { order: 14, attributeName: 'cac:Attachment', min: 0, max: 1, classRef: () => Attachment },
-  validityPeriod: { order: 15, attributeName: 'cac:ValidityPeriod', min: 0, max: 1, classRef: () => ValidityPeriod },
-  // issuerParty: { order: 16, attributeName: 'cac:IssuerParty', min: 0, max: 1, classRef: IssuerParty },
+  attachment: { order: 14, attributeName: 'cac:Attachment', max: 1, classRef: () => Attachment },
+  validityPeriod: { order: 15, attributeName: 'cac:ValidityPeriod', max: 1, classRef: () => ValidityPeriod },
+  // issuerParty: { order: 16, attributeName: 'cac:IssuerParty', max: 1, classRef: IssuerParty },
   //                                   TODO CAC MISSING
-  // resultOfVerification: { order: 17, attributeName: 'cac:ResultOfVerification', min: 0, max: 1, classRef: null },
+  // resultOfVerification: { order: 17, attributeName: 'cac:ResultOfVerification', max: 1, classRef: null },
   //                                   TODO CAC MISSING
 };
 

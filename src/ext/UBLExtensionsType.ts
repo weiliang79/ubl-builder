@@ -9,7 +9,6 @@ const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
   UBLExtensions: {
     order: 1,
     attributeName: 'ext:UBLExtension',
-    min: 0,
     max: undefined,
     classRef: UBLExtensionType,
   },

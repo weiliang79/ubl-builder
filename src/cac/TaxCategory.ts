@@ -22,16 +22,16 @@ import { TaxScheme } from './TaxScheme';
 */
 
 const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
-  id: { order: 1, attributeName: 'cbc:ID', min: 0, max: 1, classRef: UdtIdentifier },
-  name: { order: 2, attributeName: 'cbc:Name', min: 0, max: 1, classRef: UdtName },
-  percent: { order: 3, attributeName: 'cbc:Percent', min: 0, max: 1, classRef: UdtPercent },
-  baseUnitMeasure: { order: 4, attributeName: 'cbc:BaseUnitMeasure', min: 0, max: 1, classRef: UdtMeasure },
-  perUnitAmount: { order: 5, attributeName: 'cbc:PerUnitAmount', min: 0, max: 1, classRef: UdtAmount },
-  taxExemptionReasonCode: { order: 6, attributeName: 'cbc:TaxExemptionReasonCode', min: 0, max: 1, classRef: UdtCode },
-  taxExemptionReason: { order: 7, attributeName: 'cbc:TaxExemptionReason', min: 0, max: undefined, classRef: UdtText },
-  tierRange: { order: 8, attributeName: 'cbc:TierRange', min: 0, max: 1, classRef: UdtText },
-  tierRatePercent: { order: 9, attributeName: 'cbc:TierRatePercent', min: 0, max: 1, classRef: UdtPercent },
-  taxScheme: { order: 10, attributeName: 'cac:TaxScheme', min: 1, max: 1, classRef: () => TaxScheme },
+  id: { order: 1, attributeName: 'cbc:ID', max: 1, classRef: UdtIdentifier },
+  name: { order: 2, attributeName: 'cbc:Name', max: 1, classRef: UdtName },
+  percent: { order: 3, attributeName: 'cbc:Percent', max: 1, classRef: UdtPercent },
+  baseUnitMeasure: { order: 4, attributeName: 'cbc:BaseUnitMeasure', max: 1, classRef: UdtMeasure },
+  perUnitAmount: { order: 5, attributeName: 'cbc:PerUnitAmount', max: 1, classRef: UdtAmount },
+  taxExemptionReasonCode: { order: 6, attributeName: 'cbc:TaxExemptionReasonCode', max: 1, classRef: UdtCode },
+  taxExemptionReason: { order: 7, attributeName: 'cbc:TaxExemptionReason', max: undefined, classRef: UdtText },
+  tierRange: { order: 8, attributeName: 'cbc:TierRange', max: 1, classRef: UdtText },
+  tierRatePercent: { order: 9, attributeName: 'cbc:TierRatePercent', max: 1, classRef: UdtPercent },
+  taxScheme: { order: 10, attributeName: 'cac:TaxScheme', max: 1, classRef: () => TaxScheme },
 };
 
 type AllowedParams = {

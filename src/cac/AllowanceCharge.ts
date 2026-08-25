@@ -24,77 +24,65 @@ import { TaxTotal } from './TaxTotal';
 */
 
 const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
-  prepaidIndicator: { order: 6, attributeName: 'cbc:PrepaidIndicator', min: 0, max: 1, classRef: UdtIndicator },
-  sequenceNumeric: { order: 7, attributeName: 'cbc:SequenceNumeric', min: 0, max: 1, classRef: UdtNumeric },
-  accountingCostCode: { order: 10, attributeName: 'cbc:AccountingCostCode', min: 0, max: 1, classRef: UdtCode },
-  accountingCost: { order: 11, attributeName: 'cbc:AccountingCost', min: 0, max: 1, classRef: UdtText },
-  perUnitAmount: { order: 12, attributeName: 'cbc:PerUnitAmount', min: 0, max: 1, classRef: UdtAmount },
-  taxTotal: { order: 14, attributeName: 'cac:TaxTotal', min: 0, max: 1, classRef: () => TaxTotal },
-  paymentMeanses: {
-    order: 15,
-    attributeName: 'cac:PaymentMeans',
-    min: 0,
-    max: undefined,
-    classRef: () => PaymentMeans,
-  },
   id: {
     order: 1,
     attributeName: 'cbc:ID',
-    min: 0,
     max: 1,
     classRef: UdtIdentifier,
   },
   chargeIndicator: {
     order: 2,
     attributeName: 'cbc:ChargeIndicator',
-    min: 1,
     max: 1,
     classRef: UdtIndicator,
   },
   allowanceChargeReasonCode: {
     order: 3,
     attributeName: 'cbc:AllowanceChargeReasonCode',
-    min: 0,
     max: 1,
     classRef: UdtCode,
   },
   allowanceChargeReason: {
     order: 4,
     attributeName: 'cbc:AllowanceChargeReason',
-    min: 0,
     max: undefined,
     classRef: UdtText,
   },
   multiplierFactorNumeric: {
     order: 5,
     attributeName: 'cbc:MultiplierFactorNumeric',
-    min: 0,
     max: 1,
     classRef: UdtAmount,
   },
-
+  prepaidIndicator: { order: 6, attributeName: 'cbc:PrepaidIndicator', max: 1, classRef: UdtIndicator },
+  sequenceNumeric: { order: 7, attributeName: 'cbc:SequenceNumeric', max: 1, classRef: UdtNumeric },
   amount: {
     order: 8,
     attributeName: 'cbc:Amount',
-    min: 1,
     max: 1,
     classRef: UdtAmount,
   },
-
   baseAmount: {
     order: 9,
     attributeName: 'cbc:BaseAmount',
-    min: 0,
     max: 1,
     classRef: UdtAmount,
   },
-
+  accountingCostCode: { order: 10, attributeName: 'cbc:AccountingCostCode', max: 1, classRef: UdtCode },
+  accountingCost: { order: 11, attributeName: 'cbc:AccountingCost', max: 1, classRef: UdtText },
+  perUnitAmount: { order: 12, attributeName: 'cbc:PerUnitAmount', max: 1, classRef: UdtAmount },
   taxCategory: {
     order: 13,
     attributeName: 'cac:TaxCategory',
-    min: 0,
     max: undefined,
     classRef: () => TaxCategory,
+  },
+  taxTotal: { order: 14, attributeName: 'cac:TaxTotal', max: 1, classRef: () => TaxTotal },
+  paymentMeanses: {
+    order: 15,
+    attributeName: 'cac:PaymentMeans',
+    max: undefined,
+    classRef: () => PaymentMeans,
   },
 };
 

@@ -15,7 +15,6 @@ const CAC_DIR = join(__dirname, '..', '..', 'src', 'cac');
 interface HandEntry {
   key: string;
   elementName: string;
-  min: number;
   max: number | null; // null = unbounded (max omitted or undefined)
 }
 
@@ -34,14 +33,13 @@ function readHandMap(source: string): HandEntry[] {
 
   const entries: HandEntry[] = [];
   const pattern =
-    /(\w+):\s*\{[^{}]*?(?:attributeName|childName):\s*'([^']+)'[^{}]*?min:\s*(\d+)(?:[^{}]*?max:\s*(\d+|undefined))?[^{}]*?\}/g;
+    /(\w+):\s*\{[^{}]*?(?:attributeName|childName):\s*'([^']+)'(?:[^{}]*?max:\s*(\d+|undefined))?[^{}]*?\}/g;
 
   for (const match of block[1].matchAll(pattern)) {
-    const [, key, elementName, min, max] = match;
+    const [, key, elementName, max] = match;
     entries.push({
       key,
       elementName,
-      min: Number(min),
       max: max === undefined || max === 'undefined' ? null : Number(max),
     });
   }
@@ -58,9 +56,6 @@ function compare(typeName: string, schema: SchemaType, hand: HandEntry[]): strin
     if (!entry) {
       problems.push(`missing      ${child.name} [${child.minOccurs}..${child.maxOccurs ?? '*'}]`);
       return;
-    }
-    if (entry.min !== child.minOccurs) {
-      problems.push(`min          ${child.name}: have ${entry.min}, schema ${child.minOccurs}`);
     }
     if (entry.max !== child.maxOccurs) {
       const show = (v: number | null) => (v === null ? 'unbounded' : String(v));
@@ -93,7 +88,7 @@ function main(): void {
   let checked = 0;
   let clean = 0;
   const unmatched: string[] = [];
-  const totals = { missing: 0, min: 0, max: 0, order: 0, extra: 0 };
+  const totals = { missing: 0, max: 0, order: 0, extra: 0 };
 
   const sources: [string, string][] = files.map((f) => [f, readFileSync(join(CAC_DIR, f), 'utf8')]);
   sources.push(['Invoice.ts', readFileSync(join(__dirname, '..', '..', 'src', 'documents', 'ChildrenMap.ts'), 'utf8')]);
@@ -124,7 +119,6 @@ function main(): void {
     problems.forEach((p) => {
       const kind = p.split(/\s+/)[0];
       if (kind === 'missing') totals.missing += 1;
-      else if (kind === 'min') totals.min += 1;
       else if (kind === 'max') totals.max += 1;
       else if (kind === 'order') totals.order += 1;
       else totals.extra += 1;
@@ -140,7 +134,6 @@ function main(): void {
   console.log(`matching the schema   ${clean}`);
   console.log(`with differences      ${checked - clean}`);
   console.log(`\nmissing elements      ${totals.missing}`);
-  console.log(`wrong minOccurs       ${totals.min}`);
   console.log(`wrong maxOccurs       ${totals.max}`);
   console.log(`wrong sequence order  ${totals.order}`);
   console.log(`not in the schema     ${totals.extra}`);

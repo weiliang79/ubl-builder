@@ -10,12 +10,12 @@ import { UdtDate, UdtIdentifier } from '../datatypes/udt';
 // /* TODO GANERIC CLASSES */
 
 const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
-  id: { order: 1, attributeName: 'cbc:ID', min: 1, max: 1, classRef: UdtIdentifier },
-  uuid: { order: 2, attributeName: 'cbc:UUID', min: 0, max: 1, classRef: UdtIdentifier },
-  issueDate: { order: 3, attributeName: 'cbc:IssueDate', min: 0, max: 1, classRef: UdtDate },
+  id: { order: 1, attributeName: 'cbc:ID', max: 1, classRef: UdtIdentifier },
+  uuid: { order: 2, attributeName: 'cbc:UUID', max: 1, classRef: UdtIdentifier },
+  issueDate: { order: 3, attributeName: 'cbc:IssueDate', max: 1, classRef: UdtDate },
 
   //                                   TODO CAC MISSING
-  // issueDate: { order: 4, attributeName: 'cac:WorkPhaseReference', min: 0, max: undefined, classRef: UdtDate },
+  // issueDate: { order: 4, attributeName: 'cac:WorkPhaseReference', max: undefined, classRef: UdtDate },
   //                                   TODO CAC MISSING
 };
 

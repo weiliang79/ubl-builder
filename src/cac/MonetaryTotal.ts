@@ -16,18 +16,17 @@ import { UdtAmount } from '../datatypes/udt/UdtAmount';
 */
 
 const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
-  lineExtensionAmount: { order: 1, attributeName: 'cbc:LineExtensionAmount', min: 0, max: 1, classRef: UdtAmount },
-  taxExclusiveAmount: { order: 2, attributeName: 'cbc:TaxExclusiveAmount', min: 0, max: 1, classRef: UdtAmount },
-  taxInclusiveAmount: { order: 3, attributeName: 'cbc:TaxInclusiveAmount', min: 0, max: 1, classRef: UdtAmount },
-  allowanceTotalAmount: { order: 4, attributeName: 'cbc:AllowanceTotalAmount', min: 0, max: 1, classRef: UdtAmount },
-  chargeTotalAmount: { order: 5, attributeName: 'cbc:ChargeTotalAmount', min: 0, max: 1, classRef: UdtAmount },
-  prepaidAmount: { order: 6, attributeName: 'cbc:PrepaidAmount', min: 0, max: 1, classRef: UdtAmount },
-  payableRoundingAmount: { order: 7, attributeName: 'cbc:PayableRoundingAmount', min: 0, max: 1, classRef: UdtAmount },
-  payableAmount: { order: 8, attributeName: 'cbc:PayableAmount', min: 1, max: 1, classRef: UdtAmount },
+  lineExtensionAmount: { order: 1, attributeName: 'cbc:LineExtensionAmount', max: 1, classRef: UdtAmount },
+  taxExclusiveAmount: { order: 2, attributeName: 'cbc:TaxExclusiveAmount', max: 1, classRef: UdtAmount },
+  taxInclusiveAmount: { order: 3, attributeName: 'cbc:TaxInclusiveAmount', max: 1, classRef: UdtAmount },
+  allowanceTotalAmount: { order: 4, attributeName: 'cbc:AllowanceTotalAmount', max: 1, classRef: UdtAmount },
+  chargeTotalAmount: { order: 5, attributeName: 'cbc:ChargeTotalAmount', max: 1, classRef: UdtAmount },
+  prepaidAmount: { order: 6, attributeName: 'cbc:PrepaidAmount', max: 1, classRef: UdtAmount },
+  payableRoundingAmount: { order: 7, attributeName: 'cbc:PayableRoundingAmount', max: 1, classRef: UdtAmount },
+  payableAmount: { order: 8, attributeName: 'cbc:PayableAmount', max: 1, classRef: UdtAmount },
   payableAlternativeAmount: {
     order: 9,
     attributeName: 'cbc:PayableAlternativeAmount',
-    min: 0,
     max: 1,
     classRef: UdtAmount,
   },

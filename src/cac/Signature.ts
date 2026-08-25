@@ -4,31 +4,29 @@ import { Attachment } from './Attachment';
 import { DocumentReference } from './DocumentReference';
 
 const ParamsMap = {
+  name: { order: 1, attributeName: 'cbc:ID', max: 1, classRef: UdtIdentifier },
+  notes: { order: 2, attributeName: 'cbc:Note', max: undefined, classRef: UdtText },
+  validationDate: { order: 3, attributeName: 'cbc:ValidationDate', max: 1, classRef: UdtDate },
+  validationTime: { order: 4, attributeName: 'cbc:ValidationTime', max: 1, classRef: UdtTime },
+  validatorID: { order: 5, attributeName: 'cbc:ValidatorID', max: 1, classRef: UdtIdentifier },
+  canonicalizationMethod: { order: 6, attributeName: 'cbc:CanonicalizationMethod', max: 1, classRef: UdtText },
   digitalSignatureAttachment: {
     order: 9,
     attributeName: 'cac:DigitalSignatureAttachment',
-    min: 0,
     max: 1,
     classRef: () => Attachment,
   },
   originalDocumentReference: {
     order: 10,
     attributeName: 'cac:OriginalDocumentReference',
-    min: 0,
     max: 1,
     classRef: () => DocumentReference,
   },
-  name: { order: 1, attributeName: 'cbc:ID', min: 1, max: 1, classRef: UdtIdentifier },
-  notes: { order: 2, attributeName: 'cbc:Note', min: 0, max: undefined, classRef: UdtText },
-  validationDate: { order: 3, attributeName: 'cbc:ValidationDate', min: 0, max: 1, classRef: UdtDate },
-  validationTime: { order: 4, attributeName: 'cbc:ValidationTime', min: 0, max: 1, classRef: UdtTime },
-  validatorID: { order: 5, attributeName: 'cbc:ValidatorID', min: 0, max: 1, classRef: UdtIdentifier },
-  canonicalizationMethod: { order: 6, attributeName: 'cbc:CanonicalizationMethod', min: 0, max: 1, classRef: UdtText },
   //                                   TODO CAC MISSING
-  // signatureMethod: { order: 7,  attributeName: 'cbc:SignatureMethod', min: 0, max: 1, classRef: UdtText },
-  // signatoryParty: { order: 8,  attributeName: 'cac:SignatoryParty', min: 0, max: 1, classRef: UdtTime },
-  // validationTime: { order: 9,  attributeName: 'cbc:ValidationTime', min: 1, max: 1, classRef: UdtTime },
-  // validationTime: { order: 10,  attributeName: 'cbc:ValidationTime', min: 1, max: 1, classRef: UdtTime },
+  // signatureMethod: { order: 7,  attributeName: 'cbc:SignatureMethod', max: 1, classRef: UdtText },
+  // signatoryParty: { order: 8,  attributeName: 'cac:SignatoryParty', max: 1, classRef: UdtTime },
+  // validationTime: { order: 9,  attributeName: 'cbc:ValidationTime', max: 1, classRef: UdtTime },
+  // validationTime: { order: 10,  attributeName: 'cbc:ValidationTime', max: 1, classRef: UdtTime },
   //                                   TODO CAC MISSING
 };
 

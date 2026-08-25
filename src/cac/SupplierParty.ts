@@ -16,25 +16,23 @@ const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
   customerAssignedAccountID: {
     order: 1,
     attributeName: 'cbc:CustomerAssignedAccountID',
-    min: 0,
     max: 1,
     classRef: UdtIdentifier,
   },
   additionalAccountIDs: {
     order: 2,
     attributeName: 'cbc:AdditionalAccountID',
-    min: 0,
     max: undefined,
     classRef: UdtIdentifier,
   },
-  dataSendingCapability: { order: 3, attributeName: 'cbc:DataSendingCapability', min: 0, max: 1, classRef: UdtText },
-  party: { order: 4, attributeName: 'cac:Party', min: 0, max: 1, classRef: () => Party },
+  dataSendingCapability: { order: 3, attributeName: 'cbc:DataSendingCapability', max: 1, classRef: UdtText },
+  party: { order: 4, attributeName: 'cac:Party', max: 1, classRef: () => Party },
 
   // ##################################  TODO CAC MISSING ################################################
 
-  // despatchContact: { order: 5, attributeName: 'cac:DespatchContact', min: 0, max: 1, classRef: UdtText },
-  // accountingContact: { order: 6, attributeName: 'cac:AccountingContact', min: 0, max: 1, classRef: UdtText },
-  // sellerContact: { order: 7, attributeName: 'cac:SellerContact', min: 0, max: 1, classRef: UdtText },
+  // despatchContact: { order: 5, attributeName: 'cac:DespatchContact', max: 1, classRef: UdtText },
+  // accountingContact: { order: 6, attributeName: 'cac:AccountingContact', max: 1, classRef: UdtText },
+  // sellerContact: { order: 7, attributeName: 'cac:SellerContact', max: 1, classRef: UdtText },
 
   // ##################################  TODO CAC MISSING ################################################
 };

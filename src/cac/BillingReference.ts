@@ -5,56 +5,48 @@ const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
   invoiceDocumentReference: {
     order: 1,
     attributeName: 'cac:InvoiceDocumentReference',
-    min: 0,
     max: 1,
     classRef: () => InvoiceDocumentReference,
   },
   selfBilledInvoiceDocumentReference: {
     order: 2,
     attributeName: 'cac:SelfBilledInvoiceDocumentReference',
-    min: 0,
     max: 1,
     classRef: () => DocumentReference,
   },
   creditNoteDocumentReference: {
     order: 3,
     attributeName: 'cac:CreditNoteDocumentReference',
-    min: 0,
     max: 1,
     classRef: () => DocumentReference,
   },
   selfBilledCreditNoteDocumentReference: {
     order: 4,
     attributeName: 'cac:SelfBilledCreditNoteDocumentReference',
-    min: 0,
     max: 1,
     classRef: () => DocumentReference,
   },
   debitNoteDocumentReference: {
     order: 5,
     attributeName: 'cac:DebitNoteDocumentReference',
-    min: 0,
     max: 1,
     classRef: () => DocumentReference,
   },
   reminderDocumentReference: {
     order: 6,
     attributeName: 'cac:ReminderDocumentReference',
-    min: 0,
     max: 1,
     classRef: () => DocumentReference,
   },
   additionalDocumentReference: {
     order: 7,
     attributeName: 'cac:AdditionalDocumentReference',
-    min: 0,
     max: 1,
     classRef: () => AdditionalDocumentReference,
   },
   billingReferenceLine: {
     order: 8,
     attributeName: 'cac:BillingReferenceLine',
-    min: 0,
     max: undefined,
     classRef: null /* cac:BillingReferenceLineType has no component class yet */,
   },
@@ -84,6 +76,13 @@ type AllowedParams = {
 
   // /** A reference to a billing document */
   // billingReferenceLine: null;
+
+  selfBilledInvoiceDocumentReference?: DocumentReference;
+  creditNoteDocumentReference?: DocumentReference;
+  selfBilledCreditNoteDocumentReference?: DocumentReference;
+  debitNoteDocumentReference?: DocumentReference;
+  reminderDocumentReference?: DocumentReference;
+  billingReferenceLine?: null[];
 };
 
 /**

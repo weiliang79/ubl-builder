@@ -5,7 +5,7 @@ import { UdtAmount } from '../datatypes/udt';
     cbc:Amount [1..1]  The amount of the item price.
 */
 const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
-  amount: { order: 1, attributeName: 'cbc:Amount', min: 1, max: 1, classRef: UdtAmount },
+  amount: { order: 1, attributeName: 'cbc:Amount', max: 1, classRef: UdtAmount },
 };
 
 interface AllowedParams {

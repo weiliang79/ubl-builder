@@ -19,27 +19,26 @@ cac:LocationCoordinate [0..*]    The geographical coordinates of this location.
 */
 
 const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
-  id: { order: 1, attributeName: 'cbc:ID', min: 0, max: 1, classRef: UdtIdentifier },
-  description: { order: 2, attributeName: 'cbc:Description', min: 0, max: undefined, classRef: UdtText },
-  conditions: { order: 3, attributeName: 'cbc:Conditions', min: 0, max: undefined, classRef: UdtText },
-  countrySubentity: { order: 4, attributeName: 'cbc:CountrySubentity', min: 0, max: 1, classRef: UdtText },
-  countrySubentityCode: { order: 5, attributeName: 'cbc:CountrySubentityCode', min: 0, max: 1, classRef: UdtCode },
-  locationTypeCode: { order: 6, attributeName: 'cbc:LocationTypeCode', min: 0, max: 1, classRef: UdtCode },
-  informationURI: { order: 7, attributeName: 'cbc:InformationURI', min: 0, max: 1, classRef: UdtIdentifier },
-  name: { order: 8, attributeName: 'cbc:Name', min: 0, max: 1, classRef: UdtName },
+  id: { order: 1, attributeName: 'cbc:ID', max: 1, classRef: UdtIdentifier },
+  description: { order: 2, attributeName: 'cbc:Description', max: undefined, classRef: UdtText },
+  conditions: { order: 3, attributeName: 'cbc:Conditions', max: undefined, classRef: UdtText },
+  countrySubentity: { order: 4, attributeName: 'cbc:CountrySubentity', max: 1, classRef: UdtText },
+  countrySubentityCode: { order: 5, attributeName: 'cbc:CountrySubentityCode', max: 1, classRef: UdtCode },
+  locationTypeCode: { order: 6, attributeName: 'cbc:LocationTypeCode', max: 1, classRef: UdtCode },
+  informationURI: { order: 7, attributeName: 'cbc:InformationURI', max: 1, classRef: UdtIdentifier },
+  name: { order: 8, attributeName: 'cbc:Name', max: 1, classRef: UdtName },
   validityPeriod: {
     order: 9,
     attributeName: 'cac:ValidityPeriod',
-    min: 0,
     max: undefined,
     classRef: () => ValidityPeriod,
   },
-  address: { order: 10, attributeName: 'cac:Address', min: 0, max: 1, classRef: () => Address },
+  address: { order: 10, attributeName: 'cac:Address', max: 1, classRef: () => Address },
 
   // ##################################  TODO CAC MISSING ################################################
 
-  // markCareIndicator: { order: 11,  attributeName: 'cbc:MarkCareIndicator', min: 0, max:1, classRef: null  },
-  // markCareIndicator: { order: 12,  attributeName: 'cbc:MarkCareIndicator', min: 0, max:1, classRef: null }
+  // markCareIndicator: { order: 11,  attributeName: 'cbc:MarkCareIndicator', max:1, classRef: null  },
+  // markCareIndicator: { order: 12,  attributeName: 'cbc:MarkCareIndicator', max:1, classRef: null }
 
   // ##################################  TODO CAC MISSING ################################################
 };

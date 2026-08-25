@@ -32,60 +32,54 @@ import { PostalAddress } from './PostalAddress';
 */
 
 const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
-  markCareIndicator: { order: 1, attributeName: 'cbc:MarkCareIndicator', min: 0, max: 1, classRef: UdtIndicator },
+  markCareIndicator: { order: 1, attributeName: 'cbc:MarkCareIndicator', max: 1, classRef: UdtIndicator },
   markAttentionIndicator: {
     order: 2,
     attributeName: 'cbc:MarkAttentionIndicator',
-    min: 0,
     max: 1,
     classRef: UdtIndicator,
   },
-  websiteURI: { order: 3, attributeName: 'cbc:WebsiteURI', min: 0, max: 1, classRef: UdtIdentifier },
-  logoReferenceID: { order: 4, attributeName: 'cbc:LogoReferenceID', min: 0, max: 1, classRef: UdtIdentifier },
-  EndpointID: { order: 5, attributeName: 'cbc:EndpointID', min: 0, max: 1, classRef: UdtIdentifier },
+  websiteURI: { order: 3, attributeName: 'cbc:WebsiteURI', max: 1, classRef: UdtIdentifier },
+  logoReferenceID: { order: 4, attributeName: 'cbc:LogoReferenceID', max: 1, classRef: UdtIdentifier },
+  EndpointID: { order: 5, attributeName: 'cbc:EndpointID', max: 1, classRef: UdtIdentifier },
   industryClassificationCode: {
     order: 6,
     attributeName: 'cbc:IndustryClassificationCode',
-    min: 0,
     max: 1,
     classRef: UdtCode,
   },
   partyIdentifications: {
     order: 7,
     attributeName: 'cac:PartyIdentification',
-    min: 0,
     max: undefined,
     classRef: () => PartyIdentification,
   },
-  partyNames: { order: 8, attributeName: 'cac:PartyName', min: 0, max: undefined, classRef: () => PartyName },
-  language: { order: 9, attributeName: 'cac:Language', min: 0, max: 1, classRef: () => Language },
-  postalAddress: { order: 10, attributeName: 'cac:PostalAddress', min: 0, max: 1, classRef: () => PostalAddress }, //
+  partyNames: { order: 8, attributeName: 'cac:PartyName', max: undefined, classRef: () => PartyName },
+  language: { order: 9, attributeName: 'cac:Language', max: 1, classRef: () => Language },
+  postalAddress: { order: 10, attributeName: 'cac:PostalAddress', max: 1, classRef: () => PostalAddress }, //
   physicalLocation: {
     order: 11,
     attributeName: 'cac:PhysicalLocation',
-    min: 0,
     max: 1,
     classRef: () => PhysicalLocation,
   },
   partyTaxSchemes: {
     order: 12,
     attributeName: 'cac:PartyTaxScheme',
-    min: 0,
     max: undefined,
     classRef: () => PartyTaxScheme,
   },
   partyLegalEntities: {
     order: 13,
     attributeName: 'cac:PartyLegalEntity',
-    min: 0,
     max: undefined,
     classRef: () => PartyLegalEntity,
   },
-  contact: { order: 14, attributeName: 'cac:Contact', min: 0, max: 1, classRef: () => Contact },
-  // person: { order: 15,  attributeName: 'cac:Person', min: 0, max: undefined, classRef: () => PostalAddress },
-  // serviceProviderParty: { order: 17,  attributeName: 'cac:ServiceProviderParty', min: 0, max: undefined, classRef: ServiceProviderParty },
-  // powerOfAttorney: { order: 18,  attributeName: 'cac:PowerOfAttorney', min: 0, max: undefined, classRef: PowerOfAttorney },
-  // financialAccount: { order: 19,  attributeName: 'cac:FinancialAccount', min: 0, max: 1, classRef: FinancialAccount },
+  contact: { order: 14, attributeName: 'cac:Contact', max: 1, classRef: () => Contact },
+  // person: { order: 15,  attributeName: 'cac:Person', max: undefined, classRef: () => PostalAddress },
+  // serviceProviderParty: { order: 17,  attributeName: 'cac:ServiceProviderParty', max: undefined, classRef: ServiceProviderParty },
+  // powerOfAttorney: { order: 18,  attributeName: 'cac:PowerOfAttorney', max: undefined, classRef: PowerOfAttorney },
+  // financialAccount: { order: 19,  attributeName: 'cac:FinancialAccount', max: 1, classRef: FinancialAccount },
 
   // ##################################  TODO CAC MISSING ################################################
 };
@@ -112,19 +106,21 @@ type AllowedParams = {
 
   // ##################################  TODO CAC MISSING ################################################
 
-  // postalAddress: { order: 10,  attributeName: 'cac:PostalAddress', min: 0, max: 1, classRef: PostalAddress },
+  // postalAddress: { order: 10,  attributeName: 'cac:PostalAddress', max: 1, classRef: PostalAddress },
   // physicalLocation: "The physical location of this party.",
   partyTaxSchemes?: PartyTaxScheme[];
   partyLegalEntities?: PartyLegalEntity[];
   contact?: Contact;
   postalAddress?: PostalAddress;
-  // person: { order: 15,  attributeName: 'cac:Person', min: 0, max: 1, classRef: PostalAddress },
-  // postalAddress: { order: 16,  attributeName: 'cac:PostalAddress', min: 0, max: 1, classRef: Person },
-  // serviceProviderParty: { order: 17,  attributeName: 'cac:ServiceProviderParty', min: 0, max: 1, classRef: ServiceProviderParty },
-  // powerOfAttorney: { order: 18,  attributeName: 'cac:PowerOfAttorney', min: 0, max: 1, classRef: PowerOfAttorney },
-  // financialAccount: { order: 19,  attributeName: 'cac:FinancialAccount', min: 0, max: 1, classRef: FinancialAccount },
+  // person: { order: 15,  attributeName: 'cac:Person', max: 1, classRef: PostalAddress },
+  // postalAddress: { order: 16,  attributeName: 'cac:PostalAddress', max: 1, classRef: Person },
+  // serviceProviderParty: { order: 17,  attributeName: 'cac:ServiceProviderParty', max: 1, classRef: ServiceProviderParty },
+  // powerOfAttorney: { order: 18,  attributeName: 'cac:PowerOfAttorney', max: 1, classRef: PowerOfAttorney },
+  // financialAccount: { order: 19,  attributeName: 'cac:FinancialAccount', max: 1, classRef: FinancialAccount },
 
   // ##################################  TODO CAC MISSING ################################################
+
+  physicalLocation?: PhysicalLocation;
 };
 
 /**

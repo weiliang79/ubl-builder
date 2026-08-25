@@ -16,9 +16,21 @@ import XsdAnySimpleType from './XsdAnySimpleType';
  *
  * More info http://www.datypic.com/sc/xsd/t-xsd_time.html
  */
+/** hh:mm:ss with optional fractional seconds and an optional timezone. */
+const TIME = /^(?:[01]\d|2[0-4]):[0-5]\d:[0-5]\d(?:\.\d+)?(?:Z|[+-](?:[01]\d|2[0-3]):[0-5]\d)?$/;
+
 export default class XsdTime extends XsdAnySimpleType {
-  constructor(content: string, attributtes: any) {
+  constructor(content: string, attributtes?: any) {
     super(content, attributtes);
     this.validateContent();
+  }
+
+  validateContent(): void {
+    if (this.content === '') return; // unset; cardinality is not this class's job
+    if (typeof this.content !== 'string' || !TIME.test(this.content)) {
+      throw new Error(
+        `invalid xsd:time '${String(this.content)}'; expected hh:mm:ss with optional fraction and timezone`,
+      );
+    }
   }
 }

@@ -15,25 +15,23 @@ import { DeliveryLocation } from './Location';
 */
 
 const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
-  id: { order: 1, attributeName: 'cbc:ID', min: 0, max: 1, classRef: UdtIdentifier },
-  specialTerms: { order: 2, attributeName: 'cbc:SpecialTerms', min: 0, max: undefined, classRef: UdtText },
+  id: { order: 1, attributeName: 'cbc:ID', max: 1, classRef: UdtIdentifier },
+  specialTerms: { order: 2, attributeName: 'cbc:SpecialTerms', max: undefined, classRef: UdtText },
   lossRiskResponsibilityCode: {
     order: 3,
     attributeName: 'cbc:LossRiskResponsibilityCode',
-    min: 0,
     max: 1,
     classRef: UdtCode,
   },
-  lossRisks: { order: 4, attributeName: 'cbc:LossRisk', min: 0, max: undefined, classRef: UdtText },
-  amount: { order: 5, attributeName: 'cbc:Amount', min: 0, max: 1, classRef: UdtAmount },
+  lossRisks: { order: 4, attributeName: 'cbc:LossRisk', max: undefined, classRef: UdtText },
+  amount: { order: 5, attributeName: 'cbc:Amount', max: 1, classRef: UdtAmount },
   deliveryLocation: {
     order: 6,
     attributeName: 'cac:DeliveryLocation',
-    min: 0,
     max: 1,
     classRef: () => DeliveryLocation,
   },
-  // allowanceCharge: { order: 7,  attributeName: 'cac:AllowanceCharge', min: 0, max: 1, classRef: AllowanceCharge },
+  // allowanceCharge: { order: 7,  attributeName: 'cac:AllowanceCharge', max: 1, classRef: AllowanceCharge },
 
   // ##################################  TODO CAC MISSING ################################################
 };

@@ -189,7 +189,7 @@ function main(): void {
       .map(
         (a) =>
           `  ${a.key}: { order: ${type.children.indexOf(a.child) + 1}, attributeName: '${a.child.name}', ` +
-          `min: ${a.child.minOccurs}, max: ${a.child.maxOccurs === null ? 'undefined' : a.child.maxOccurs}, ` +
+          `max: ${a.child.maxOccurs === null ? 'undefined' : a.child.maxOccurs}, ` +
           `classRef: ${a.classRef} },`,
       )
       .join('\n');

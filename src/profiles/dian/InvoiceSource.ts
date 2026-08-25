@@ -10,7 +10,7 @@ import { UdtCode } from '../../datatypes/udt';
 // const { UdtCode } = require("../../types/UnqualifiedDataTypes");
 
 const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
-  identificationCode: { order: 1, attributeName: 'cbc:IdentificationCode', min: 0, max: 1, classRef: UdtCode },
+  identificationCode: { order: 1, attributeName: 'cbc:IdentificationCode', max: 1, classRef: UdtCode },
 };
 
 type AllowedParams = {

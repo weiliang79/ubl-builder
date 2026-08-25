@@ -27,19 +27,19 @@ import { UdtRate } from '../datatypes/udt/UdtRate';
 */
 
 const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
-  sourceCurrencyCode: { order: 1, attributeName: 'cbc:SourceCurrencyCode', min: 1, max: 1, classRef: UdtCode },
-  sourceCurrencyBaseRate: { order: 2, attributeName: 'cbc:SourceCurrencyBaseRate', min: 0, max: 1, classRef: UdtRate },
-  targetCurrencyCode: { order: 3, attributeName: 'cbc:TargetCurrencyCode', min: 1, max: 1, classRef: UdtCode },
-  targetCurrencyBaseRate: { order: 4, attributeName: 'cbc:TargetCurrencyBaseRate', min: 0, max: 1, classRef: UdtRate },
-  exchangeMarketID: { order: 5, attributeName: 'cbc:ExchangeMarketID', min: 0, max: 1, classRef: UdtIdentifier },
-  calculationRate: { order: 6, attributeName: 'cbc:CalculationRate', min: 0, max: 1, classRef: UdtRate },
-  mathematicOperatorCode: { order: 7, attributeName: 'cbc:MathematicOperatorCode', min: 0, max: 1, classRef: UdtCode },
-  date: { order: 8, attributeName: 'cbc:Date', min: 0, max: 1, classRef: UdtDate },
-  // ForeignExchangeContract: { order: 8,  attributeName: 'cac:ForeignExchangeContract', min: 0, max:1, classRef: ForeignExchangeContract },
+  sourceCurrencyCode: { order: 1, attributeName: 'cbc:SourceCurrencyCode', max: 1, classRef: UdtCode },
+  sourceCurrencyBaseRate: { order: 2, attributeName: 'cbc:SourceCurrencyBaseRate', max: 1, classRef: UdtRate },
+  targetCurrencyCode: { order: 3, attributeName: 'cbc:TargetCurrencyCode', max: 1, classRef: UdtCode },
+  targetCurrencyBaseRate: { order: 4, attributeName: 'cbc:TargetCurrencyBaseRate', max: 1, classRef: UdtRate },
+  exchangeMarketID: { order: 5, attributeName: 'cbc:ExchangeMarketID', max: 1, classRef: UdtIdentifier },
+  calculationRate: { order: 6, attributeName: 'cbc:CalculationRate', max: 1, classRef: UdtRate },
+  mathematicOperatorCode: { order: 7, attributeName: 'cbc:MathematicOperatorCode', max: 1, classRef: UdtCode },
+  date: { order: 8, attributeName: 'cbc:Date', max: 1, classRef: UdtDate },
+  // ForeignExchangeContract: { order: 9,  attributeName: 'cac:ForeignExchangeContract', max: 1, classRef: ForeignExchangeContract },
 
   // ##################################  TODO CAC MISSING ################################################
 
-  // postalAddress: { order: 10,  attributeName: 'cac:PostalAddress', min: 0, max: 1, classRef: PostalAddress }, //
+  // postalAddress: { order: 10,  attributeName: 'cac:PostalAddress', max: 1, classRef: PostalAddress }, //
 
   // ##################################  TODO CAC MISSING ################################################
 };

@@ -57,7 +57,8 @@
     "report:schema": "ts-node --project tsconfig.json scripts/generator/report.ts",
     "generate:cac": "ts-node --project tsconfig.json scripts/generator/emit.ts",
     "check:schema": "ts-node --project tsconfig.json scripts/generator/emit.ts --check",
-    "generate:complete": "ts-node --project tsconfig.json scripts/generator/complete.ts"
+    "generate:complete": "ts-node --project tsconfig.json scripts/generator/complete.ts",
+    "check:types": "ts-node --project tsconfig.json scripts/generator/checkTypes.ts"
   },
   "repository": {
     "type": "git",
