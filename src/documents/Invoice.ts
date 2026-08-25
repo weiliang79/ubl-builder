@@ -63,7 +63,7 @@ import {
 } from '../datatypes/udt';
 
 import { IGenericKeyValue } from '../core/GenericAggregateComponent';
-import { toXmlString } from '../core/serialize';
+import { toUblJson, toXmlString, UblJsonNamespaces } from '../core/serialize';
 import { NodeSource, XmlNode } from '../core/xmlNode';
 import { INVOICE_CHILDREN_MAP } from './ChildrenMap';
 
@@ -1122,5 +1122,16 @@ export default class Invoice {
    */
   getXml(pretty = false, headless = false): string {
     return toXmlString(this.toNode(), { pretty, headless });
+  }
+
+  /**
+   * Render as OASIS UBL JSON (Alternative Representation v2.0) — the format
+   * MyInvois accepts alongside XML.
+   *
+   * Namespaces come from the properties already set for XML output, so no
+   * additional configuration is needed.
+   */
+  getJson(namespaces?: UblJsonNamespaces): Record<string, unknown> {
+    return toUblJson(this.toNode(), namespaces);
   }
 }
