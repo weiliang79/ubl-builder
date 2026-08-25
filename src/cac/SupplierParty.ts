@@ -1,6 +1,6 @@
 import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from '../core/GenericAggregateComponent';
 import { UdtIdentifier, UdtText } from '../datatypes/udt';
-import { Party, PartyParams } from './PartyTypeGroup';
+import { Party, PartyParams } from './Party';
 
 /*
     cbc:CustomerAssignedAccountID [0..1]    An identifier for this supplier party, assigned by the customer.

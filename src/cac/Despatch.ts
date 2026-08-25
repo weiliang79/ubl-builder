@@ -2,11 +2,11 @@
 
 import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from '../core/GenericAggregateComponent';
 import { UdtDate, UdtIdentifier, UdtText, UdtTime } from '../datatypes/udt';
-import { DespatchAddress } from './AddressTypeGroup';
-import { Contact } from './ContactTypeGroup';
-import { DespatchLocation } from './LocationTypeGroup';
-import { CarrierParty, DespatchParty, NotifyParty } from './PartyTypeGroup';
-import { EstimatedDespatchPeriod } from './PeriodTypeGroup';
+import { DespatchAddress } from './Address';
+import { Contact } from './Contact';
+import { DespatchLocation } from './Location';
+import { CarrierParty, DespatchParty, NotifyParty } from './Party';
+import { EstimatedDespatchPeriod } from './Period';
 
 /*
 

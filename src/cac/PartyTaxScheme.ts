@@ -2,7 +2,7 @@
 
 import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from '../core/GenericAggregateComponent';
 import { UdtCode, UdtIdentifier, UdtName, UdtText } from '../datatypes/udt';
-import { RegistrationAddress } from './AddressTypeGroup';
+import { RegistrationAddress } from './Address';
 import { TaxScheme } from './TaxScheme';
 
 // const GenericAggregateComponent = require("./GenericAggregateComponent");
@@ -11,7 +11,7 @@ import { TaxScheme } from './TaxScheme';
 
 // const { UdtCode, UdtIdentifier, UdtDate, UdtText, UdtTime, UdtName } = require("../types/UnqualifiedDataTypes");
 
-// const { RegistrationAddress } = require("./AddressTypeGroup");
+// const { RegistrationAddress } = require("./Address");
 // const { TaxScheme, TaxSchemeParams } = require("./TaxScheme");
 /* TODO GANERIC CLASSES */
 

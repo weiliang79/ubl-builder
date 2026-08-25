@@ -13,7 +13,7 @@ import {
   RequestedDeliveryPeriod,
   RequestedDespatchPeriod,
   ValidityPeriod,
-} from './PeriodTypeGroup';
+} from './Period';
 
 import {
   AdditionalDocumentReference,
@@ -32,12 +32,12 @@ import {
   ReceiptDocumentReferenceParams,
   StatementDocumentReference,
   StatementDocumentReferenceParams,
-} from './DocumentReferenceGroup';
+} from './DocumentReference';
 
 import { ProjectReference, ProjectReferenceParams } from './ProjectReference';
 import { Signature, SignatureParams } from './Signature';
 
-import { AccountingSupplierParty, SupplierPartyTypeParams } from './SupplierPartyTypeGroup';
+import { AccountingSupplierParty, SupplierPartyTypeParams } from './SupplierParty';
 
 import {
   CarrierParty,
@@ -48,10 +48,10 @@ import {
   Party,
   PartyParams,
   TaxRepresentativeParty,
-} from './PartyTypeGroup';
+} from './Party';
 
 import { AddressLine, AddressLineParams } from './AddressLine';
-import { Country, CountryParams } from './CountryTypeGroup';
+import { Country, CountryParams } from './Country';
 
 import {
   Address,
@@ -60,7 +60,7 @@ import {
   DespatchAddress,
   JurisdictionRegionAddress,
   RegistrationAddress,
-} from './AddressTypeGroup';
+} from './Address';
 import { CorporateRegistrationScheme, CorporateRegistrationSchemeParams } from './CorporateRegistrationScheme';
 import {
   AlternativeDeliveryLocation,
@@ -68,31 +68,26 @@ import {
   DespatchLocation,
   LocationTypeParams,
   PhysicalLocation,
-} from './LocationTypeGroup';
+} from './Location';
 import { PartyLegalEntity, PartyLegalEntityParams } from './PartyLegalEntity';
 import { PartyTaxScheme, PartyTaxSchemeParams } from './PartyTaxScheme';
 import { TaxScheme, TaxSchemeParams } from './TaxScheme';
 
-import { AccountingContact, BuyerContact, Contact, ContactTypeParams, DeliveryContact } from './ContactTypeGroup';
+import { AccountingContact, BuyerContact, Contact, ContactTypeParams, DeliveryContact } from './Contact';
 
-import { PostalAddress, PostalAddressTypeParams } from './PostalAddressTypeGroup';
+import { PostalAddress, PostalAddressTypeParams } from './PostalAddress';
 
-import { AccountingCustomerParty, CustomerPartyParams } from './CustomerPartyTypeGroup';
+import { AccountingCustomerParty, CustomerPartyParams } from './CustomerParty';
 
 import { Despatch, DespatchParams } from './Despatch';
 
-import {
-  DeliveryUnit,
-  DeliveryUnitTypeParams,
-  MaximumDeliveryUnit,
-  MinimumDeliveryUnit,
-} from './DeliveryUnitTypeGroup';
+import { DeliveryUnit, DeliveryUnitTypeParams, MaximumDeliveryUnit, MinimumDeliveryUnit } from './DeliveryUnit';
 
-import { Delivery, DeliveryTypeParams } from './DeliveryTypeGroup';
-import { ShipmentType, ShipmentTypeParams } from './ShipmentTypeGroup';
+import { Delivery, DeliveryTypeParams } from './Delivery';
+import { ShipmentType, ShipmentTypeParams } from './Shipment';
 
 import { DeliveryTerms, DeliveryTermsParams } from './DeliveryTerms';
-import { ExchangeRate, ExchangeRateParams, PaymentExchangeRate, PricingExchangeRate } from './ExchangeRateTypeGroup';
+import { ExchangeRate, ExchangeRateParams, PaymentExchangeRate, PricingExchangeRate } from './ExchangeRate';
 import {
   CallForTendersLineReference,
   CatalogueLineReference,
@@ -104,29 +99,29 @@ import {
   QuotationLineReference,
   ReceiptLineReference,
   RequestLineReference,
-} from './LineReferenceTypeGroup';
-import { LegalMonetaryTotal, MonetaryTotal, MonetaryTotalParams } from './MonetaryTotalTypeGroup';
+} from './LineReference';
+import { LegalMonetaryTotal, MonetaryTotal, MonetaryTotalParams } from './MonetaryTotal';
 import { OrderLineReference, OrderLineReferenceParams } from './OrderLineReference';
+import { PaymentType, PaymentTypeParams, PrepaidPayment } from './Payment';
 import { PaymentMeans, PaymentMeansParams } from './PaymentMeans';
-import { PaymentTerms, PaymentTermsTypeParams } from './PaymentTermsTypeGroup';
-import { PaymentType, PaymentTypeParams, PrepaidPayment } from './PaymentTypeGroup';
-import { PriceList, PriceListParams } from './PriceListTypeGroup';
+import { PaymentTerms, PaymentTermsTypeParams } from './PaymentTerms';
+import { PriceList, PriceListParams } from './PriceList';
 import {
   ClassifiedTaxCategory,
   ClassifiedTaxCategoryTypeParams,
   TaxCategory,
   TaxCategoryTypeParams,
-} from './TaxCategoryTypeGroup';
+} from './TaxCategory';
 import { TaxSubtotal, TaxSubtotalParams } from './TaxSubtotal';
-import { TaxTotal, TaxTotalTypeParams, WithholdingTaxTotal } from './TaxTotalTypeGroup';
+import { TaxTotal, TaxTotalTypeParams, WithholdingTaxTotal } from './TaxTotal';
 
-import { AllowanceCharge, AllowanceChargeParams } from './AllowanceChargeTypeGroup';
-import { Item, ItemTypeParams, SupplyItem } from './ItemTypeGroup';
+import { AllowanceCharge, AllowanceChargeParams } from './AllowanceCharge';
+import { Item, ItemTypeParams, SupplyItem } from './Item';
 
-import { CreditNoteLine, CreditNoteLineParams, SubCreditNoteLine } from './CreditNoteLineTypeGroup';
-import { DebitNoteLine, DebitNoteLineParams } from './DebitNoteLineTypeGroup';
-import { InvoiceLine, InvoiceLineParams } from './InvoiceLineTypeGroup';
-import { Price, PriceParams } from './PriceTypeGroup';
+import { CreditNoteLine, CreditNoteLineParams, SubCreditNoteLine } from './CreditNoteLine';
+import { DebitNoteLine, DebitNoteLineParams } from './DebitNoteLine';
+import { InvoiceLine, InvoiceLineParams } from './InvoiceLine';
+import { Price, PriceParams } from './Price';
 
 export {
   AccountingContact,

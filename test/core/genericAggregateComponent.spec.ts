@@ -61,4 +61,31 @@ describe('GenericAggregateComponent', () => {
       expect(new GenericAggregateComponent({}, singleId).parseToJson()).toStrictEqual({});
     });
   });
+
+  describe('getAsXml', () => {
+    it('wraps the component in its default element', () => {
+      // Without a wrapper, parseToJson()'s one-key-per-child output is an
+      // invalid XML document: a component with two children threw
+      // "Document already has a document element", and one with a single
+      // child emitted a bare, unwrapped child.
+      const component = new GenericAggregateComponent({ id: 'X' }, singleId, 'cac:Example');
+
+      expect(component.getAsXml(false, true)).toBe('<cac:Example><cbc:ID>X</cbc:ID></cac:Example>');
+    });
+
+    it('honours headless', () => {
+      // headless was previously passed to create() instead of end(), where it
+      // did nothing, so the declaration was emitted whatever the caller asked.
+      const component = new GenericAggregateComponent({ id: 'X' }, singleId, 'cac:Example');
+
+      expect(component.getAsXml(false, false).startsWith('<?xml')).toBe(true);
+      expect(component.getAsXml(false, true).startsWith('<?xml')).toBe(false);
+    });
+
+    it('accepts an element name override', () => {
+      const component = new GenericAggregateComponent({ id: 'X' }, singleId, 'cac:Example');
+
+      expect(component.getAsXml(false, true, 'cac:Other')).toBe('<cac:Other><cbc:ID>X</cbc:ID></cac:Other>');
+    });
+  });
 });

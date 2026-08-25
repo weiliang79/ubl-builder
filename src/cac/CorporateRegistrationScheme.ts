@@ -1,6 +1,6 @@
 import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from '../core/GenericAggregateComponent';
 import { UdtCode, UdtIdentifier, UdtName } from '../datatypes/udt';
-import { JurisdictionRegionAddress } from './AddressTypeGroup';
+import { JurisdictionRegionAddress } from './Address';
 
 /*
     1  cbc:ID [0..1]    An identifier for this registration scheme.

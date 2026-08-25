@@ -15,10 +15,12 @@ describe('AddressLine', () => {
     expect(addressLine.parseToJson()['cbc:Line']['#']).toBe('1 Jalan Contoh');
   });
 
-  it('serializes cbc:Line to XML', () => {
+  it('serializes to XML wrapped in its element', () => {
     const addressLine = new AddressLine({ line: 'Main street 10' });
 
-    expect(addressLine.getAsXml(false, false)).toContain('<cbc:Line>Main street 10</cbc:Line>');
+    expect(addressLine.getAsXml(false, true)).toBe(
+      '<cac:AddressLine><cbc:Line>Main street 10</cbc:Line></cac:AddressLine>',
+    );
   });
 
   it('setLine replaces the value', () => {

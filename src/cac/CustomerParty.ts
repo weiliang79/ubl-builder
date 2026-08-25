@@ -1,7 +1,7 @@
 import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from '../core/GenericAggregateComponent';
 import { UdtIdentifier } from '../datatypes/udt';
-import { AccountingContact, BuyerContact, DeliveryContact } from './ContactTypeGroup';
-import { Party } from './PartyTypeGroup';
+import { AccountingContact, BuyerContact, DeliveryContact } from './Contact';
+import { Party } from './Party';
 
 /*
 

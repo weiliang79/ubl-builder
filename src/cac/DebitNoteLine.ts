@@ -4,12 +4,12 @@ import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from '..
 import { UdtCode, UdtDate, UdtIdentifier, UdtQuantity, UdtText } from '../datatypes/udt';
 import { UdtAmount } from '../datatypes/udt/UdtAmount';
 import { BillingReference } from './BillingReference';
-import { Delivery } from './DeliveryTypeGroup';
-import { DocumentReference } from './DocumentReferenceGroup';
-import { Item } from './ItemTypeGroup';
-import { DespatchLineReference, ReceiptLineReference } from './LineReferenceTypeGroup';
-import { Price } from './PriceTypeGroup';
-import { TaxTotal } from './TaxTotalTypeGroup';
+import { Delivery } from './Delivery';
+import { DocumentReference } from './DocumentReference';
+import { Item } from './Item';
+import { DespatchLineReference, ReceiptLineReference } from './LineReference';
+import { Price } from './Price';
+import { TaxTotal } from './TaxTotal';
 
 /*
   01 cbc:ID [1..1]    An identifier for this debit note line.

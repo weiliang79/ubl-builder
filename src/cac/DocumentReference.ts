@@ -6,10 +6,10 @@ import { UdtCode, UdtDate, UdtIdentifier, UdtIndicator, UdtText, UdtTime } from 
 /* TODO GANERIC CLASSES */
 
 import { Attachment } from './Attachment';
-import { ValidityPeriod } from './ValidityPeriod';
+import { ValidityPeriod } from './Period';
 
 // const { ValidityPeriod, ValidityPeriodParams } = require("./ValidityPeriod");
-// const { IssuerParty, IssuerPartyParams } = require("./PartyTypeGroup");
+// const { IssuerParty, IssuerPartyParams } = require("./Party");
 
 const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
   id: { order: 1, attributeName: 'cbc:ID', min: 1, max: 1, classRef: UdtIdentifier },

@@ -1,7 +1,7 @@
 import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from '../core/GenericAggregateComponent';
 import { UdtIdentifier, UdtText } from '../datatypes/udt';
 import { AddressLine } from './AddressLine';
-import { Country } from './CountryTypeGroup';
+import { Country } from './Country';
 
 /**
    cac:PostalAddress

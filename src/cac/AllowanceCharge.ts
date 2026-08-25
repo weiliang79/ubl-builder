@@ -1,6 +1,6 @@
 import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from '../core/GenericAggregateComponent';
 import { UdtAmount, UdtCode, UdtIdentifier, UdtIndicator, UdtText } from '../datatypes/udt';
-import { TaxCategory } from './TaxCategoryTypeGroup';
+import { TaxCategory } from './TaxCategory';
 
 /* TODO GANERIC CLASSES */
 /*

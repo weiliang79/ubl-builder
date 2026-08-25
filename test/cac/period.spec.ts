@@ -26,18 +26,21 @@ describe('PeriodType', () => {
     expect(json['cbc:EndDate']['#']).toBe('2025-01-19');
   });
 
-  it('getAsXml cannot serialize a component with more than one child', () => {
-    // Documented limitation, not desired behaviour. getAsXml() feeds
-    // parseToJson() straight to xmlbuilder2's create(), which rejects a
-    // document with multiple roots. It happens to work for single-child
-    // components such as AddressLine and fails for everything else.
-    //
-    // The wrapper element name every component already passes to super()
-    // — 'cac:InvoicePeriod' here — is exactly what it lacks, and that
-    // argument is currently ignored. See D5 in the decision record.
+  it('serializes standalone inside its default element', () => {
     const period = new PeriodType({ startDate: '2024-12-19', endDate: '2025-01-19' });
 
-    expect(() => period.getAsXml(false, true)).toThrow(/Document already has a document element/);
+    expect(period.getAsXml(false, true)).toBe(
+      '<cac:InvoicePeriod><cbc:StartDate>2024-12-19</cbc:StartDate>' +
+        '<cbc:EndDate>2025-01-19</cbc:EndDate></cac:InvoicePeriod>',
+    );
+  });
+
+  it('accepts an element name override, because the name is contextual', () => {
+    // PeriodType is cac:InvoicePeriod under Invoice and cac:ValidityPeriod
+    // under Price. Only the caller knows which position it occupies.
+    const period = new PeriodType({ startDate: '2024-12-19', endDate: '2025-01-19' });
+
+    expect(period.getAsXml(false, true, 'cac:ValidityPeriod')).toContain('<cac:ValidityPeriod>');
   });
 
   it('emits dates in schema sequence regardless of assignment order', () => {

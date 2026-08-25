@@ -1,7 +1,7 @@
 import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from '../core/GenericAggregateComponent';
 import { UdtCode, UdtIdentifier, UdtText } from '../datatypes/udt';
 import { UdtAmount } from '../datatypes/udt/UdtAmount';
-import { DeliveryLocation } from './LocationTypeGroup';
+import { DeliveryLocation } from './Location';
 /*
 
   1    cbc:ID [0..1]    An identifier for this description of delivery terms.

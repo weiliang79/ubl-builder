@@ -4,7 +4,7 @@ import { UdtCode, UdtIdentifier, UdtIdentifierAttributes, UdtName, UdtText } fro
 
 /* TODO GENERIC CLASSES */
 import { AddressLine } from './AddressLine';
-import { Country } from './CountryTypeGroup';
+import { Country } from './Country';
 
 const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
   /** cbc:ID [0..1] An identifier for this address within an agreed scheme of address identifiers. */
