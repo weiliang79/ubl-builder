@@ -16,8 +16,4 @@ export default class XsdAnyURI extends XsdAnySimpleType {
     super(content, attributtes);
     this.validateContent();
   }
-
-  parseToJson() {
-    return { '#': this.content };
-  }
 }

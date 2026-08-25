@@ -19,15 +19,6 @@ export class CctTextType extends XsdString {
   validateContent() {
     super.validateContent();
   }
-  parseToJson() {
-    const jsonResult: any = { '#': this.content };
-    Object.keys(this.attributes)
-      .filter((att) => this.attributes[att])
-      .forEach((attribute) => {
-        jsonResult[`@${attribute}`] = this.attributes[attribute];
-      });
-    return jsonResult;
-  }
 
   setLanguageID(value: string) {
     this.attributes.languageID = value;

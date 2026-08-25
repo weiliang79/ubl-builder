@@ -32,16 +32,6 @@ export class CctQuantityType extends XsdDecimal {
     super.validateContent();
   }
 
-  parseToJson() {
-    const jsonResult: any = { '#': this.content };
-    Object.keys(this.attributes)
-      .filter((att) => this.attributes[att])
-      .forEach((att) => {
-        jsonResult[`@${att}`] = this.attributes[att];
-      });
-    return jsonResult;
-  }
-
   setUnitCode(value: string) {
     this.attributes.unitCode = value;
   }

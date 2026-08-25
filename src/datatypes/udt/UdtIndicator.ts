@@ -24,8 +24,4 @@ export class UdtIndicator extends XsdBoolean {
     super(content);
     this.validateContent();
   }
-
-  parseToJson() {
-    return { '#': this.content };
-  }
 }

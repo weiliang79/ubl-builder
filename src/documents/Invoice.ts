@@ -62,8 +62,9 @@ import {
   UdtTime,
 } from '../datatypes/udt';
 
-import { create } from 'xmlbuilder2';
 import { IGenericKeyValue } from '../core/GenericAggregateComponent';
+import { toUblJson, toXmlString, UblJsonNamespaces } from '../core/serialize';
+import { NodeSource, XmlNode } from '../core/xmlNode';
 import { INVOICE_CHILDREN_MAP } from './ChildrenMap';
 
 interface Issuer {
@@ -103,13 +104,10 @@ export interface InvoiceOptions {
   software?: Software;
 }
 
-type XmlRefType = {
-  Invoice: any;
-};
-
 export default class Invoice {
   private options: InvoiceOptions;
-  private xmlRef: XmlRefType;
+  /** Attributes on the Invoice root element — namespace declarations and the like. */
+  private properties: Record<string, string> = {};
   private children: IGenericKeyValue<any> = {};
 
   /**
@@ -118,10 +116,6 @@ export default class Invoice {
    * @param options Invoice options
    */
   constructor(id?: string, options?: InvoiceOptions) {
-    this.xmlRef = {
-      Invoice: {},
-    };
-
     this.options = options || {};
     this.options.timestamp = options?.timestamp || Date.now();
     this.options.enviroment = options?.enviroment || '2';
@@ -131,13 +125,15 @@ export default class Invoice {
     }
   }
 
+  /** Add an attribute to the Invoice root, typically a namespace declaration. */
   addProperty(key: string, value: string): Invoice {
-    this.xmlRef.Invoice[`@${key}`] = value;
+    this.properties[key] = value;
     return this;
   }
 
-  removeProperty(key: string, value: string) {
-    this.xmlRef.Invoice[`@${key}`] = value;
+  /** Remove an attribute from the Invoice root. */
+  removeProperty(key: string): Invoice {
+    delete this.properties[key];
     return this;
   }
 
@@ -1086,26 +1082,56 @@ export default class Invoice {
    * @param pretty Pretty format
    * @param headless result without headers
    */
-  getXml(pretty = false, headless = false): string {
+  /**
+   * Describe the whole document as a neutral node.
+   *
+   * This is the entry point every serializer shares: `getXml` renders it as
+   * XML, and an OASIS UBL JSON renderer works from the same tree.
+   */
+  toNode(): XmlNode {
+    const children: XmlNode[] = [];
+
     Object.keys(INVOICE_CHILDREN_MAP)
       .filter((attKey) => this.children[attKey])
+      // cbc/cac elements are an xsd:sequence — order is significant, and
+      // MyInvois rejects an incorrect one as "Invalid Structure".
+      .sort((a, b) => INVOICE_CHILDREN_MAP[a].order - INVOICE_CHILDREN_MAP[b].order)
       .forEach((attKey) => {
         const { childName, max } = INVOICE_CHILDREN_MAP[attKey];
+        const value = this.children[attKey];
+        const isChildAnArray = Array.isArray(value);
 
-        const isChildAnArray = Array.isArray(this.children[attKey]);
-        // validate array condition
         if (max && max > 1 && !isChildAnArray) {
           throw new Error(`${attKey} must to be an Array`);
         }
 
-        this.xmlRef.Invoice[childName] = isChildAnArray
-          ? this.children[attKey].map((e: any) => e.parseToJson())
-          : this.children[attKey].parseToJson();
+        if (isChildAnArray) {
+          value.forEach((item: NodeSource) => children.push({ name: childName, repeats: true, ...item.toNode() }));
+        } else {
+          children.push({ name: childName, ...value.toNode() });
+        }
       });
 
-    return create({ version: '1.0', encoding: 'UTF-8', standalone: false }, this.xmlRef as object).end({
-      headless,
-      prettyPrint: pretty,
-    });
+    return { name: 'Invoice', attributes: { ...this.properties }, children };
+  }
+
+  /**
+   *
+   * @param pretty Pretty format
+   * @param headless result without headers
+   */
+  getXml(pretty = false, headless = false): string {
+    return toXmlString(this.toNode(), { pretty, headless });
+  }
+
+  /**
+   * Render as OASIS UBL JSON (Alternative Representation v2.0) — the format
+   * MyInvois accepts alongside XML.
+   *
+   * Namespaces come from the properties already set for XML output, so no
+   * additional configuration is needed.
+   */
+  getJson(namespaces?: UblJsonNamespaces): Record<string, unknown> {
+    return toUblJson(this.toNode(), namespaces);
   }
 }
