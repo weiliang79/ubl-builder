@@ -26,3 +26,5 @@ export {
   SoftwareProvider,
   SoftwareProviderParams,
 };
+
+export { dian } from './profile';
