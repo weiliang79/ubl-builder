@@ -1,46 +1,96 @@
-# Ubl-builder
+# ubl-builder
 
-[![license](https://img.shields.io/npm/l/xmldom?color=blue&style=flat-square)](./LICENSE.md)
+[![license](https://img.shields.io/npm/l/xmldom?color=blue&style=flat-square)](./LICENSE)
 
+Build XML documents to the OASIS **UBL 2.1** (Universal Business Language)
+standard, with optional country profiles layered on top.
 
-A library to create XML documents with UBL 2.1 (Universal Business Language) standard.
+- **UBL 2.1 documents** — components generated against the OASIS schemas and
+  held to them by a CI check
+- **XML or JSON** — the same document renders as XML or as OASIS UBL JSON
+  v2.0, the format Malaysia's MyInvois accepts alongside XML
+- **Country profiles** — the core knows only UBL; jurisdictions add their
+  vocabulary and derived values behind a small interface
 
-Online demo: <https://ubl-builder-react-demo.stackblitz.io/>
+**UBL 2.1 documentation:** <https://docs.oasis-open.org/ubl/os-UBL-2.1/UBL-2.1.html>
+**UBL 2.1 schema reference:** <https://www.datypic.com/sc/ubl21/ss.html>
 
+## Install
 
-**Ubl 2.1 documentation:** <http://docs.oasis-open.org/ubl/os-UBL-2.1/UBL-2.1.html>
-**Ubl 2.1 Schema documents:** <http://www.datypic.com/sc/ubl21/ss.html>
-
-Install:
--------
-> npm install ubl-builder
-
-## Samples
-
-##### How to create a Basic Document
-```js
-// import { Invoice } from 'ubl-builder';
-const { Invoice } = require("ubl-builder");
-
-const invoice = new Invoice('123456789', {});
-invoice.addProperty('xmlns', 'urn:oasis:names:specification:ubl:schema:xsd:Invoice-2');
-console.log(invoice.getXml());
+```sh
+npm install @weiliang79/ubl-builder
 ```
 
-##### Output
+## Usage
+
+```ts
+import { Invoice } from '@weiliang79/ubl-builder/documents';
+import { myInvois } from '@weiliang79/ubl-builder/profiles/myinvois';
+
+const invoice = new Invoice('INV-0001');
+
+myInvois.defaults(invoice); // namespace declarations for the profile
+invoice.setIssueDate('2026-07-02').setIssueTime('02:02:36Z').setDocumentCurrencyCode('MYR');
+
+console.log(invoice.getXml(true));
+```
+
 ```xml
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <Invoice
-    xmlns="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2">
-    <cbc:UBLVersionID>UBL 2.1</cbc:UBLVersionID>
-    <cbc:ID>123456789</cbc:ID>
-    <cbc:IssueDate>2020-09-13</cbc:IssueDate>
-    <cbc:IssueTime>02:10:44-05:00</cbc:IssueTime>
+    xmlns="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2"
+    xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+    xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+  <cbc:ID>INV-0001</cbc:ID>
+  <cbc:IssueDate>2026-07-02</cbc:IssueDate>
+  <cbc:IssueTime>02:02:36Z</cbc:IssueTime>
+  <cbc:DocumentCurrencyCode>MYR</cbc:DocumentCurrencyCode>
 </Invoice>
 ```
 
+For submission, `getXml(false, true)` gives the headless single-line form whose
+bytes the MyInvois `documentHash` is computed over. `getJson()` renders the
+same document as UBL JSON.
 
+## Entry points
 
+The root import re-exports everything. Subpaths are narrower:
 
+| Import                    | Contains                                                     |
+| ------------------------- | ------------------------------------------------------------ |
+| `@weiliang79/ubl-builder` | everything                                                   |
+| `.../documents`           | `Invoice`                                                    |
+| `.../cac`                 | aggregate components — `Party`, `TaxTotal`, `InvoiceLine`, … |
+| `.../datatypes`           | `UdtAmount`, `UdtCode`, the CCT and XSD primitives           |
+| `.../ext`                 | `UBLExtensions`                                              |
+| `.../profiles/myinvois`   | Malaysia — LHDN vocabulary and profile                       |
+| `.../profiles/dian`       | Colombia — retained, unmaintained                            |
+| `.../core`                | the component base, serializers and node types               |
 
+## Schemas
 
+The OASIS UBL 2.1 OS schemas are vendored under `schemas/` and are the source
+of truth for every component's structure. They are development-only and are
+not published.
+
+```sh
+npm run report:schema     # differences between the components and the schemas
+npm run check:schema      # fail if any params map disagrees (runs in CI)
+npm run validate:xsd      # validate the golden fixtures against the XSD
+```
+
+Validation is structural only — element sequence, names, cardinality,
+datatypes. Not EN 16931 business rules: MyInvois deviates from BR-CO-13 by
+reporting line-level discounts in `AllowanceTotalAmount` while
+`LineExtensionAmount` is already net of them, so business-rule validation
+rejects conformant documents.
+
+## Upgrading
+
+See [MIGRATION.md](./MIGRATION.md). 0.1.0 moves every import path.
+
+## Credits
+
+A fork of [pipesanta/ubl-builder](https://github.com/pipesanta/ubl-builder) by
+Felipe Santa, which is where the component model and the UBL type coverage came
+from. MIT, as is this.

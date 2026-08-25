@@ -1,10 +1,47 @@
 {
   "name": "@weiliang79/ubl-builder",
-  "version": "0.0.1-alpha.2",
+  "version": "0.1.0",
   "description": "Tool to create xml documents with UBL 2.1 standard",
   "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./cac": {
+      "types": "./dist/cac/index.d.ts",
+      "default": "./dist/cac/index.js"
+    },
+    "./core": {
+      "types": "./dist/core/index.d.ts",
+      "default": "./dist/core/index.js"
+    },
+    "./datatypes": {
+      "types": "./dist/datatypes/index.d.ts",
+      "default": "./dist/datatypes/index.js"
+    },
+    "./documents": {
+      "types": "./dist/documents/index.d.ts",
+      "default": "./dist/documents/index.js"
+    },
+    "./ext": {
+      "types": "./dist/ext/index.d.ts",
+      "default": "./dist/ext/index.js"
+    },
+    "./profiles/myinvois": {
+      "types": "./dist/profiles/myinvois/index.d.ts",
+      "default": "./dist/profiles/myinvois/index.js"
+    },
+    "./profiles/dian": {
+      "types": "./dist/profiles/dian/index.d.ts",
+      "default": "./dist/profiles/dian/index.js"
+    },
+    "./package.json": "./package.json"
+  },
   "files": [
-    "dist/**/*"
+    "dist/**/*",
+    "MIGRATION.md"
   ],
   "scripts": {
     "test": "jest --config jest.config.ts",
@@ -12,7 +49,7 @@
     "build": "tsc --project tsconfig.build.json",
     "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
     "lint": "eslint .",
-    "prepublishOnly": "npm test && npm run lint",
+    "prepublishOnly": "npm run build && npm run lint && npm run check:schema && npm test && npm run validate:xsd",
     "preversion": "npm run lint",
     "version": "npm run format && git add -A src",
     "postversion": "git push && git push --tags",
