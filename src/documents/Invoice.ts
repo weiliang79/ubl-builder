@@ -820,12 +820,6 @@ export default class Invoice {
   // }
 
   /**
-   * (COLOMBIA) DIAN rule to apply cufe value
-   * @returns {Invoice}
-   */
-  /**
-   *
-   * @param attribute attribute name
    * @param value value
    * @param classRefs list of allowed classes
    */
