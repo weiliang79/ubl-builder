@@ -28,6 +28,9 @@ jobs:
         cache: 'npm'
     - run: npm ci
     - run: npm run lint
+    # libxml2-utils supplies xmllint, which validate:xsd shells out to.
+    # It used to be preinstalled on the ubuntu runner image; it no longer is.
+    - run: sudo apt-get update && sudo apt-get install -y libxml2-utils
     - run: npm run validate:xsd
     - run: npm run check:schema
     - run: npm run check:types

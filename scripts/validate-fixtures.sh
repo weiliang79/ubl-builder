@@ -12,7 +12,8 @@ SCHEMA="$(dirname "$0")/../schemas/ubl/2.1/maindoc/UBL-Invoice-2.1.xsd"
 FIXTURES="$(dirname "$0")/../test/fixtures"
 
 if ! command -v xmllint >/dev/null 2>&1; then
-  echo "xmllint not found. Install libxml2 (preinstalled on GitHub Actions ubuntu-latest)." >&2
+  echo "xmllint not found. Install libxml2-utils (Debian/Ubuntu) or libxml2 (brew)." >&2
+  echo "It is no longer preinstalled on GitHub Actions runners; CI installs it explicitly." >&2
   exit 1
 fi
 
