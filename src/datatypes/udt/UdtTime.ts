@@ -1,4 +1,4 @@
-import XsdDate from '../xsd/XsdDate';
+import XsdTime from '../xsd/XsdTime';
 
 /**
  * udt:TimeType
@@ -9,8 +9,8 @@ import XsdDate from '../xsd/XsdDate';
  * See more: http://www.datypic.com/sc/ubl21/t-udt_TimeType.html
  *
  */
-export class UdtTime extends XsdDate {
-  constructor(content: string) {
-    super(content);
+export class UdtTime extends XsdTime {
+  constructor(content: string, attributes?: unknown) {
+    super(content, attributes);
   }
 }

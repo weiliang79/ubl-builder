@@ -4,7 +4,6 @@ import { NodeSource, XmlContent, XmlNode } from './xmlNode';
 export type ParamsMapValues = {
   order: number;
   attributeName: string;
-  min: number;
   max?: number;
   classRef: any;
 };

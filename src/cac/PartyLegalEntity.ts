@@ -35,55 +35,49 @@ import { CorporateRegistrationScheme } from './CorporateRegistrationScheme';
 // ##################################  TODO CAC MISSING ################################################
 
 const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
-  registrationDate: { order: 3, attributeName: 'cbc:RegistrationDate', min: 0, max: 1, classRef: UdtDate },
+  registrationName: { order: 1, attributeName: 'cbc:RegistrationName', max: 1, classRef: UdtName },
+  companyID: { order: 2, attributeName: 'cbc:CompanyID', max: 1, classRef: UdtIdentifier },
+  registrationDate: { order: 3, attributeName: 'cbc:RegistrationDate', max: 1, classRef: UdtDate },
   registrationExpirationDate: {
     order: 4,
     attributeName: 'cbc:RegistrationExpirationDate',
-    min: 0,
     max: 1,
     classRef: UdtDate,
   },
-  companyLegalFormCode: { order: 5, attributeName: 'cbc:CompanyLegalFormCode', min: 0, max: 1, classRef: UdtCode },
-  companyLegalForm: { order: 6, attributeName: 'cbc:CompanyLegalForm', min: 0, max: 1, classRef: UdtText },
+  companyLegalFormCode: { order: 5, attributeName: 'cbc:CompanyLegalFormCode', max: 1, classRef: UdtCode },
+  companyLegalForm: { order: 6, attributeName: 'cbc:CompanyLegalForm', max: 1, classRef: UdtText },
   soleProprietorshipIndicator: {
     order: 7,
     attributeName: 'cbc:SoleProprietorshipIndicator',
-    min: 0,
     max: 1,
     classRef: UdtIndicator,
   },
   companyLiquidationStatusCode: {
     order: 8,
     attributeName: 'cbc:CompanyLiquidationStatusCode',
-    min: 0,
     max: 1,
     classRef: UdtCode,
   },
-  corporateStockAmount: { order: 9, attributeName: 'cbc:CorporateStockAmount', min: 0, max: 1, classRef: UdtAmount },
+  corporateStockAmount: { order: 9, attributeName: 'cbc:CorporateStockAmount', max: 1, classRef: UdtAmount },
   fullyPaidSharesIndicator: {
     order: 10,
     attributeName: 'cbc:FullyPaidSharesIndicator',
-    min: 0,
     max: 1,
     classRef: UdtIndicator,
   },
   registrationAddress: {
     order: 11,
     attributeName: 'cac:RegistrationAddress',
-    min: 0,
     max: 1,
     classRef: () => PostalAddress,
   },
-  headOfficeParty: { order: 13, attributeName: 'cac:HeadOfficeParty', min: 0, max: 1, classRef: () => Party },
-  registrationName: { order: 1, attributeName: 'cbc:RegistrationName', min: 0, max: 1, classRef: UdtName },
-  companyID: { order: 2, attributeName: 'cbc:CompanyID', min: 0, max: 1, classRef: UdtIdentifier },
   corporateRegistrationScheme: {
     order: 12,
     attributeName: 'cac:CorporateRegistrationScheme',
-    min: 0,
     max: 1,
     classRef: () => CorporateRegistrationScheme,
   },
+  headOfficeParty: { order: 13, attributeName: 'cac:HeadOfficeParty', max: 1, classRef: () => Party },
 };
 
 type AllowedParams = {

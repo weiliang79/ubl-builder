@@ -3,18 +3,17 @@ import { UdtCode, UdtDate, UdtIdentifier, UdtIndicator, UdtText, UdtTime } from 
 import { DocumentReference } from './DocumentReference';
 
 const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
-  id: { order: 1, attributeName: 'cbc:ID', min: 1, max: 1, classRef: UdtIdentifier },
-  salesOrderID: { order: 2, attributeName: 'cbc:SalesOrderID', min: 0, max: 1, classRef: UdtIdentifier },
-  copyIndicator: { order: 3, attributeName: 'cbc:CopyIndicator', min: 0, max: 1, classRef: UdtIndicator },
-  uuid: { order: 4, attributeName: 'cbc:UUID', min: 0, max: 1, classRef: UdtIdentifier },
-  issueDate: { order: 5, attributeName: 'cbc:IssueDate', min: 0, max: 1, classRef: UdtDate },
-  issueTime: { order: 6, attributeName: 'cbc:IssueTime', min: 0, max: 1, classRef: UdtTime },
-  customerReference: { order: 7, attributeName: 'cbc:CustomerReference', min: 0, max: 1, classRef: UdtText },
-  orderTypeCode: { order: 8, attributeName: 'cbc:OrderTypeCode', min: 0, max: 1, classRef: UdtCode },
+  id: { order: 1, attributeName: 'cbc:ID', max: 1, classRef: UdtIdentifier },
+  salesOrderID: { order: 2, attributeName: 'cbc:SalesOrderID', max: 1, classRef: UdtIdentifier },
+  copyIndicator: { order: 3, attributeName: 'cbc:CopyIndicator', max: 1, classRef: UdtIndicator },
+  uuid: { order: 4, attributeName: 'cbc:UUID', max: 1, classRef: UdtIdentifier },
+  issueDate: { order: 5, attributeName: 'cbc:IssueDate', max: 1, classRef: UdtDate },
+  issueTime: { order: 6, attributeName: 'cbc:IssueTime', max: 1, classRef: UdtTime },
+  customerReference: { order: 7, attributeName: 'cbc:CustomerReference', max: 1, classRef: UdtText },
+  orderTypeCode: { order: 8, attributeName: 'cbc:OrderTypeCode', max: 1, classRef: UdtCode },
   documentReference: {
     order: 9,
     attributeName: 'cac:DocumentReference',
-    min: 0,
     max: 1,
     classRef: () => DocumentReference,
   },

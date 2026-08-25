@@ -2,7 +2,7 @@ import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from '..
 import { UdtIdentifier, UdtName } from '../../src/datatypes/udt';
 
 const singleId: IGenericKeyValue<ParamsMapValues> = {
-  id: { order: 1, attributeName: 'cbc:ID', min: 0, max: 1, classRef: UdtIdentifier },
+  id: { order: 1, attributeName: 'cbc:ID', max: 1, classRef: UdtIdentifier },
 };
 
 describe('GenericAggregateComponent', () => {
@@ -13,8 +13,8 @@ describe('GenericAggregateComponent', () => {
       // order came from the object literal, so an innocuous reorder during a
       // refactor silently produced schema-invalid XML.
       const declaredOutOfOrder: IGenericKeyValue<ParamsMapValues> = {
-        name: { order: 2, attributeName: 'cbc:Name', min: 0, max: 1, classRef: UdtName },
-        id: { order: 1, attributeName: 'cbc:ID', min: 0, max: 1, classRef: UdtIdentifier },
+        name: { order: 2, attributeName: 'cbc:Name', max: 1, classRef: UdtName },
+        id: { order: 1, attributeName: 'cbc:ID', max: 1, classRef: UdtIdentifier },
       };
 
       const json = new GenericAggregateComponent({ id: 'X', name: 'Y' }, declaredOutOfOrder).parseToJson();

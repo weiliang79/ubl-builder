@@ -4,21 +4,20 @@ import { Country } from './Country';
 import { FinancialInstitutionBranch } from './FinancialInstitutionBranch';
 
 const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
-  name: { order: 2, attributeName: 'cbc:Name', min: 0, max: 1, classRef: UdtName },
-  aliasName: { order: 3, attributeName: 'cbc:AliasName', min: 0, max: 1, classRef: UdtName },
-  accountTypeCode: { order: 4, attributeName: 'cbc:AccountTypeCode', min: 0, max: 1, classRef: UdtCode },
-  accountFormatCode: { order: 5, attributeName: 'cbc:AccountFormatCode', min: 0, max: 1, classRef: UdtCode },
-  currencyCode: { order: 6, attributeName: 'cbc:CurrencyCode', min: 0, max: 1, classRef: UdtCode },
-  paymentNotes: { order: 7, attributeName: 'cbc:PaymentNote', min: 0, max: undefined, classRef: UdtText },
-  country: { order: 9, attributeName: 'cac:Country', min: 0, max: 1, classRef: () => Country },
-  id: { order: 1, attributeName: 'cbc:ID', min: 0, max: 1, classRef: UdtIdentifier },
-  financialInstitutioBranch: {
-    order: 2,
+  id: { order: 1, attributeName: 'cbc:ID', max: 1, classRef: UdtIdentifier },
+  name: { order: 2, attributeName: 'cbc:Name', max: 1, classRef: UdtName },
+  financialInstitutionBranch: {
+    order: 8,
     attributeName: 'cac:FinancialInstitutionBranch',
-    min: 0,
     max: 1,
     classRef: () => FinancialInstitutionBranch,
   },
+  aliasName: { order: 3, attributeName: 'cbc:AliasName', max: 1, classRef: UdtName },
+  accountTypeCode: { order: 4, attributeName: 'cbc:AccountTypeCode', max: 1, classRef: UdtCode },
+  accountFormatCode: { order: 5, attributeName: 'cbc:AccountFormatCode', max: 1, classRef: UdtCode },
+  currencyCode: { order: 6, attributeName: 'cbc:CurrencyCode', max: 1, classRef: UdtCode },
+  paymentNotes: { order: 7, attributeName: 'cbc:PaymentNote', max: undefined, classRef: UdtText },
+  country: { order: 9, attributeName: 'cac:Country', max: 1, classRef: () => Country },
 };
 
 type AllowedParams = {
@@ -37,7 +36,7 @@ type AllowedParams = {
   /** The country in which the holder of the financial account is domiciled. */
   country?: Country;
   id: string | UdtIdentifier;
-  financialInstitutioBranch?: FinancialInstitutionBranch;
+  financialInstitutionBranch?: FinancialInstitutionBranch;
 };
 
 class PayeeFinancialAccount extends GenericAggregateComponent {

@@ -19,24 +19,22 @@ import { PayeeFinancialAccount } from './PayeeFinancialAccount';
 */
 
 const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
+  id: { order: 1, attributeName: 'cbc:ID', max: 1, classRef: UdtIdentifier },
+  paymentMeansCode: { order: 2, attributeName: 'cbc:PaymentMeansCode', max: 1, classRef: UdtCode },
+  paymentDueDate: { order: 3, attributeName: 'cbc:PaymentDueDate', max: 1, classRef: UdtDate },
+  paymentChannelCode: { order: 4, attributeName: 'cbc:PaymentChannelCode', max: 1, classRef: UdtCode },
+  instructionID: { order: 5, attributeName: 'cbc:InstructionID', max: 1, classRef: UdtIdentifier },
+  instructionNotes: { order: 6, attributeName: 'cbc:InstructionNote', max: undefined, classRef: UdtText },
+  paymentID: { order: 7, attributeName: 'cbc:PaymentID', max: undefined, classRef: UdtIdentifier },
   payerFinancialAccount: {
     order: 9,
     attributeName: 'cac:PayerFinancialAccount',
-    min: 0,
     max: 1,
     classRef: () => PayeeFinancialAccount,
   },
-  id: { order: 1, attributeName: 'cbc:ID', min: 0, max: 1, classRef: UdtIdentifier },
-  paymentMeansCode: { order: 2, attributeName: 'cbc:PaymentMeansCode', min: 1, max: 1, classRef: UdtCode },
-  paymentDueDate: { order: 3, attributeName: 'cbc:PaymentDueDate', min: 0, max: 1, classRef: UdtDate },
-  paymentChannelCode: { order: 4, attributeName: 'cbc:PaymentChannelCode', min: 0, max: 1, classRef: UdtCode },
-  instructionID: { order: 5, attributeName: 'cbc:InstructionID', min: 0, max: 1, classRef: UdtIdentifier },
-  instructionNotes: { order: 6, attributeName: 'cbc:InstructionNote', min: 0, max: undefined, classRef: UdtText },
-  paymentID: { order: 7, attributeName: 'cbc:PaymentID', min: 0, max: undefined, classRef: UdtIdentifier },
   payeeFinancialAccount: {
     order: 10,
     attributeName: 'cac:PayeeFinancialAccount',
-    min: 0,
     max: 1,
     classRef: () => PayeeFinancialAccount,
   },

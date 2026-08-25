@@ -2,8 +2,8 @@ import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from '..
 import { UdtIdentifier } from '../../datatypes/udt';
 
 const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
-  providerID: { order: 1, attributeName: 'sts:ProviderID', min: 0, max: 1, classRef: UdtIdentifier },
-  softwareID: { order: 2, attributeName: 'sts:SoftwareID', min: 0, max: 1, classRef: UdtIdentifier },
+  providerID: { order: 1, attributeName: 'sts:ProviderID', max: 1, classRef: UdtIdentifier },
+  softwareID: { order: 2, attributeName: 'sts:SoftwareID', max: 1, classRef: UdtIdentifier },
 };
 
 type AllowedParams = {

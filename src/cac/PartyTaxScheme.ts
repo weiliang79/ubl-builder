@@ -27,19 +27,18 @@ import { TaxScheme } from './TaxScheme';
 */
 
 const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
-  registrationName: { order: 1, attributeName: 'cbc:RegistrationName', min: 0, max: 1, classRef: UdtName },
-  companyID: { order: 2, attributeName: 'cbc:CompanyID', min: 0, max: 1, classRef: UdtIdentifier },
-  taxLevelCode: { order: 3, attributeName: 'cbc:TaxLevelCode', min: 0, max: 1, classRef: UdtCode },
-  exemptionReasonCode: { order: 4, attributeName: 'cbc:ExemptionReasonCode', min: 0, max: 1, classRef: UdtCode },
-  exemptionReason: { order: 5, attributeName: 'cbc:ExemptionReason', min: 0, max: undefined, classRef: UdtText },
+  registrationName: { order: 1, attributeName: 'cbc:RegistrationName', max: 1, classRef: UdtName },
+  companyID: { order: 2, attributeName: 'cbc:CompanyID', max: 1, classRef: UdtIdentifier },
+  taxLevelCode: { order: 3, attributeName: 'cbc:TaxLevelCode', max: 1, classRef: UdtCode },
+  exemptionReasonCode: { order: 4, attributeName: 'cbc:ExemptionReasonCode', max: 1, classRef: UdtCode },
+  exemptionReason: { order: 5, attributeName: 'cbc:ExemptionReason', max: undefined, classRef: UdtText },
   registrationAddress: {
     order: 6,
     attributeName: 'cac:RegistrationAddress',
-    min: 0,
     max: 1,
     classRef: () => RegistrationAddress,
   },
-  taxScheme: { order: 7, attributeName: 'cac:TaxScheme', min: 1, max: 1, classRef: () => TaxScheme },
+  taxScheme: { order: 7, attributeName: 'cac:TaxScheme', max: 1, classRef: () => TaxScheme },
 };
 
 type AllowedParams = {

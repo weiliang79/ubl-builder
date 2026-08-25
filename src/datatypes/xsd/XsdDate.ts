@@ -14,9 +14,19 @@ import XsdAnySimpleType from './XsdAnySimpleType';
  * If no time zone value is present, it is considered unknown; it is not assumed to be UTC.
  * More info http://www.datypic.com/sc/xsd/t-xsd_date.html
  */
+/** CCYY-MM-DD with an optional timezone; a leading minus for years before 0001. */
+const DATE = /^-?\d{4,}-(?:0[1-9]|1[0-2])-(?:0[1-9]|[12]\d|3[01])(?:Z|[+-](?:[01]\d|2[0-3]):[0-5]\d)?$/;
+
 export default class XsdDate extends XsdAnySimpleType {
   constructor(content: string, attributtes?: any) {
     super(content, attributtes);
     this.validateContent();
+  }
+
+  validateContent(): void {
+    if (this.content === '') return; // unset; cardinality is not this class's job
+    if (typeof this.content !== 'string' || !DATE.test(this.content)) {
+      throw new Error(`invalid xsd:date '${String(this.content)}'; expected CCYY-MM-DD with optional timezone`);
+    }
   }
 }

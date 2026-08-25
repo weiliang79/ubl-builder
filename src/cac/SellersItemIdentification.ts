@@ -3,10 +3,10 @@ import { UdtIdentifier } from '../datatypes/udt';
 import { Party } from './Party';
 
 const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
-  extendedID: { order: 2, attributeName: 'cbc:ExtendedID', min: 0, max: 1, classRef: UdtIdentifier },
-  barcodeSymbologyID: { order: 3, attributeName: 'cbc:BarcodeSymbologyID', min: 0, max: 1, classRef: UdtIdentifier },
-  issuerParty: { order: 6, attributeName: 'cac:IssuerParty', min: 0, max: 1, classRef: () => Party },
-  id: { order: 1, attributeName: 'cbc:ID', min: 1, max: 1, classRef: UdtIdentifier },
+  id: { order: 1, attributeName: 'cbc:ID', max: 1, classRef: UdtIdentifier },
+  extendedID: { order: 2, attributeName: 'cbc:ExtendedID', max: 1, classRef: UdtIdentifier },
+  barcodeSymbologyID: { order: 3, attributeName: 'cbc:BarcodeSymbologyID', max: 1, classRef: UdtIdentifier },
+  issuerParty: { order: 6, attributeName: 'cac:IssuerParty', max: 1, classRef: () => Party },
 };
 
 type AllowedParams = {

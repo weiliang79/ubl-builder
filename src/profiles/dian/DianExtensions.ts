@@ -8,7 +8,7 @@ import { DianExtensionsContent, DianExtensionsContentParams } from './DianExtens
 
 const ParamsMap = {
   // ##################################  TODO CAC MISSING ################################################
-  dianExtensions: { order: 1, attributeName: 'sts:DianExtensions', min: 0, max: 1, classRef: DianExtensionsContent },
+  dianExtensions: { order: 1, attributeName: 'sts:DianExtensions', max: 1, classRef: DianExtensionsContent },
 };
 
 type AllowedParams = {

@@ -50,15 +50,15 @@ import { Country } from './Country';
  * TODO: implement full list of attributes
  */
 const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
-  id: { order: 1, attributeName: 'cbc:ID', min: 0, max: 1, classRef: UdtIdentifier },
-  streetName: { order: 2, attributeName: 'cbc:StreetName', min: 0, max: 1, classRef: UdtText },
-  additionalStreetName: { order: 3, attributeName: 'cbc:AdditionalStreetName', min: 0, max: 1, classRef: UdtText },
-  cityName: { order: 4, attributeName: 'cbc:CityName', min: 0, max: 1, classRef: UdtText },
-  postalZone: { order: 5, attributeName: 'cbc:PostalZone', min: 0, max: 1, classRef: UdtText },
-  countrySubentity: { order: 6, attributeName: 'cbc:CountrySubentity', min: 0, max: 1, classRef: UdtText },
-  countrySubentityCode: { order: 7, attributeName: 'cbc:CountrySubentityCode', min: 0, max: 1, classRef: UdtText },
-  addressLine: { order: 8, attributeName: 'cac:AddressLine', min: 0, max: undefined, classRef: () => AddressLine },
-  country: { order: 9, attributeName: 'cac:Country', min: 0, max: 1, classRef: () => Country },
+  id: { order: 1, attributeName: 'cbc:ID', max: 1, classRef: UdtIdentifier },
+  streetName: { order: 7, attributeName: 'cbc:StreetName', max: 1, classRef: UdtText },
+  additionalStreetName: { order: 8, attributeName: 'cbc:AdditionalStreetName', max: 1, classRef: UdtText },
+  cityName: { order: 18, attributeName: 'cbc:CityName', max: 1, classRef: UdtText },
+  postalZone: { order: 19, attributeName: 'cbc:PostalZone', max: 1, classRef: UdtText },
+  countrySubentity: { order: 20, attributeName: 'cbc:CountrySubentity', max: 1, classRef: UdtText },
+  countrySubentityCode: { order: 21, attributeName: 'cbc:CountrySubentityCode', max: 1, classRef: UdtText },
+  addressLine: { order: 25, attributeName: 'cac:AddressLine', max: undefined, classRef: () => AddressLine },
+  country: { order: 26, attributeName: 'cac:Country', max: 1, classRef: () => Country },
 };
 
 interface AllowedParams {

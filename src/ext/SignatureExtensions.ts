@@ -8,7 +8,7 @@ import AnyExtensionContent from './AnyExtensionContent';
 
 const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
   // ##################################  TODO CAC MISSING ################################################
-  // signature: { order: 1,  attributeName: 'ds:Signature', min: 0, max: 1, classRef: SignatureExtensionsContent }
+  // signature: { order: 1,  attributeName: 'ds:Signature', max: 1, classRef: SignatureExtensionsContent }
 };
 
 type AllowedParams = {

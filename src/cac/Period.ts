@@ -2,13 +2,13 @@ import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from '..
 import { UdtCode, UdtDate, UdtMeasure, UdtText, UdtTime } from '../datatypes/udt';
 
 const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
-  startDate: { order: 1, attributeName: 'cbc:StartDate', min: 0, max: 1, classRef: UdtDate },
-  startTime: { order: 2, attributeName: 'cbc:StartTime', min: 0, max: 1, classRef: UdtTime },
-  endDate: { order: 3, attributeName: 'cbc:EndDate', min: 0, max: 1, classRef: UdtDate },
-  endTime: { order: 4, attributeName: 'cbc:EndTime', min: 0, max: 1, classRef: UdtTime },
-  durationMeasure: { order: 5, attributeName: 'cbc:DurationMeasure', min: 0, max: 1, classRef: UdtMeasure },
-  descriptionCode: { order: 6, attributeName: 'cbc:DescriptionCode', min: 0, max: undefined, classRef: UdtCode },
-  description: { order: 7, attributeName: 'cbc:Description', min: 0, max: undefined, classRef: UdtText },
+  startDate: { order: 1, attributeName: 'cbc:StartDate', max: 1, classRef: UdtDate },
+  startTime: { order: 2, attributeName: 'cbc:StartTime', max: 1, classRef: UdtTime },
+  endDate: { order: 3, attributeName: 'cbc:EndDate', max: 1, classRef: UdtDate },
+  endTime: { order: 4, attributeName: 'cbc:EndTime', max: 1, classRef: UdtTime },
+  durationMeasure: { order: 5, attributeName: 'cbc:DurationMeasure', max: 1, classRef: UdtMeasure },
+  descriptionCode: { order: 6, attributeName: 'cbc:DescriptionCode', max: undefined, classRef: UdtCode },
+  description: { order: 7, attributeName: 'cbc:Description', max: undefined, classRef: UdtText },
 };
 
 type AllowedParams = {

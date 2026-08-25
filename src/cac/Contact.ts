@@ -14,13 +14,13 @@ import { UdtIdentifier, UdtName, UdtText } from '../datatypes/udt';
 */
 
 const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
-  id: { order: 1, attributeName: 'cbc:ID', min: 0, max: 1, classRef: UdtIdentifier },
-  name: { order: 2, attributeName: 'cbc:Name', min: 0, max: 1, classRef: UdtName },
-  telephone: { order: 3, attributeName: 'cbc:Telephone', min: 0, max: 1, classRef: UdtText },
-  telefax: { order: 4, attributeName: 'cbc:Telefax', min: 0, max: 1, classRef: UdtText },
-  electronicMail: { order: 5, attributeName: 'cbc:ElectronicMail', min: 0, max: 1, classRef: UdtText },
-  note: { order: 6, attributeName: 'cbc:Note', min: 0, max: undefined, classRef: UdtText },
-  // otherCommunication: { order: 7,  attributeName: 'cac:OtherCommunication', min: 0, max: undefined, classRef: UdtIdentifier },
+  id: { order: 1, attributeName: 'cbc:ID', max: 1, classRef: UdtIdentifier },
+  name: { order: 2, attributeName: 'cbc:Name', max: 1, classRef: UdtName },
+  telephone: { order: 3, attributeName: 'cbc:Telephone', max: 1, classRef: UdtText },
+  telefax: { order: 4, attributeName: 'cbc:Telefax', max: 1, classRef: UdtText },
+  electronicMail: { order: 5, attributeName: 'cbc:ElectronicMail', max: 1, classRef: UdtText },
+  note: { order: 6, attributeName: 'cbc:Note', max: undefined, classRef: UdtText },
+  // otherCommunication: { order: 7,  attributeName: 'cac:OtherCommunication', max: undefined, classRef: UdtIdentifier },
   // ##################################  TODO CAC MISSING ################################################
 };
 

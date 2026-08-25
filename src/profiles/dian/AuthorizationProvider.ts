@@ -5,7 +5,6 @@ const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
   authorizationProviderID: {
     order: 1,
     attributeName: 'sts:AuthorizationProviderID',
-    min: 0,
     max: 1,
     classRef: UdtIdentifier,
   },

@@ -6,14 +6,12 @@ const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
   embeddedDocumentBinaryObject: {
     order: 1,
     attributeName: 'cbc:EmbeddedDocumentBinaryObject',
-    min: 0,
     max: 1,
     classRef: UdtBinaryObject,
   },
   externalReference: {
-    order: 1,
+    order: 2,
     attributeName: 'cac:ExternalReference',
-    min: 0,
     max: 1,
     classRef: () => ExternalReference,
   },

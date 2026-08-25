@@ -14,11 +14,11 @@ import { TaxSubtotal } from './TaxSubtotal';
 */
 
 const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
-  taxAmount: { order: 1, attributeName: 'cbc:TaxAmount', min: 1, max: 1, classRef: UdtAmount },
-  roundingAmount: { order: 2, attributeName: 'cbc:RoundingAmount', min: 0, max: 1, classRef: UdtAmount },
-  taxEvidenceIndicator: { order: 3, attributeName: 'cbc:TaxEvidenceIndicator', min: 0, max: 1, classRef: UdtIndicator },
-  taxIncludedIndicator: { order: 4, attributeName: 'cbc:TaxIncludedIndicator', min: 0, max: 1, classRef: UdtIndicator },
-  taxSubtotals: { order: 5, attributeName: 'cac:TaxSubtotal', min: 0, max: undefined, classRef: () => TaxSubtotal },
+  taxAmount: { order: 1, attributeName: 'cbc:TaxAmount', max: 1, classRef: UdtAmount },
+  roundingAmount: { order: 2, attributeName: 'cbc:RoundingAmount', max: 1, classRef: UdtAmount },
+  taxEvidenceIndicator: { order: 3, attributeName: 'cbc:TaxEvidenceIndicator', max: 1, classRef: UdtIndicator },
+  taxIncludedIndicator: { order: 4, attributeName: 'cbc:TaxIncludedIndicator', max: 1, classRef: UdtIndicator },
+  taxSubtotals: { order: 5, attributeName: 'cac:TaxSubtotal', max: undefined, classRef: () => TaxSubtotal },
 };
 
 type AllowedParams = {
@@ -26,6 +26,8 @@ type AllowedParams = {
   roundingAmount?: string | UdtAmount;
   taxEvidenceIndicator?: string | UdtIndicator;
   taxSubtotals: TaxSubtotal[];
+
+  taxIncludedIndicator?: string | UdtIndicator;
 };
 
 /**

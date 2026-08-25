@@ -13,7 +13,9 @@ import { loadSchema, Schema, SchemaChild } from './schema';
  * is a separate job.
  */
 
-const CAC_DIR = join(__dirname, '..', '..', 'src', 'cac');
+const SRC = join(__dirname, '..', '..', 'src');
+const CAC_DIR = join(SRC, 'cac');
+const DOCUMENTS_DIR = join(SRC, 'documents');
 
 interface Entry {
   raw: string;
@@ -23,7 +25,6 @@ interface Entry {
   key: string;
   name: string;
   order: string;
-  min: string;
   max: string;
   classRef: string;
 }
@@ -35,7 +36,7 @@ interface Entry {
  * parser sees only a third of the files.
  */
 function readEntries(source: string): { entries: Entry[]; bodyStart: number; bodyEnd: number } | null {
-  const open = /const ParamsMap[^=]*=\s*\{/.exec(source);
+  const open = /const (?:ParamsMap|\w*CHILDREN_MAP)[^=]*=\s*\{/.exec(source);
   if (!open) return null;
 
   const bodyStart = (open.index as number) + open[0].length;
@@ -70,9 +71,8 @@ function readEntries(source: string): { entries: Entry[]; bodyStart: number; bod
       start: entryStart,
       end: j + 1,
       key: keyMatch[1],
-      name: /attributeName:\s*'([^']*)'/.exec(raw)?.[1] ?? '',
+      name: /(?:attributeName|childName):\s*'([^']*)'/.exec(raw)?.[1] ?? '',
       order: field('order'),
-      min: field('min'),
       max: field('max') || 'undefined',
       classRef: field('classRef'),
     });
@@ -120,62 +120,72 @@ function main(): void {
   let filesChanged = 0;
   const skipped: string[] = [];
 
-  readdirSync(CAC_DIR)
-    .filter((f) => f.endsWith('.ts') && f !== 'index.ts')
-    .forEach((file) => {
-      const path = join(CAC_DIR, file);
-      const source = readFileSync(path, 'utf8');
-      const parsed = readEntries(source);
-      const type = schemaTypeFor(basename(file, '.ts'), schema);
+  const targets: [string, string][] = [
+    ...readdirSync(CAC_DIR)
+      .filter((f) => f.endsWith('.ts') && f !== 'index.ts')
+      .map((f): [string, string] => [CAC_DIR, f]),
+    // The document's children map was reported but never corrected, because
+    // this only ever globbed src/cac. It is the least-covered file and the
+    // most-used one.
+    [DOCUMENTS_DIR, 'ChildrenMap.ts'],
+  ];
 
-      if (!parsed || !type) {
-        if (type) skipped.push(file);
-        return;
-      }
+  targets.forEach(([dir, file]) => {
+    const path = join(dir, file);
+    const source = readFileSync(path, 'utf8');
+    const parsed = readEntries(source);
+    const stem = file === 'ChildrenMap.ts' ? 'Invoice' : basename(file, '.ts');
+    const type = schemaTypeFor(stem, schema);
 
-      const taken = new Set<string>();
-      const changes: string[] = [];
-      const edits: { start: number; end: number; text: string }[] = [];
+    if (!parsed || !type) {
+      if (type) skipped.push(file);
+      return;
+    }
 
-      parsed.entries.forEach((entry) => {
-        const child = matchChild(entry, type.children, taken);
-        if (!child) return;
-        taken.add(child.name);
+    const taken = new Set<string>();
+    const changes: string[] = [];
+    const edits: { start: number; end: number; text: string }[] = [];
 
-        const min = String(child.minOccurs);
-        const max = child.maxOccurs === null ? 'undefined' : String(child.maxOccurs);
-        const order = String(type.children.indexOf(child) + 1);
+    parsed.entries.forEach((entry) => {
+      const child = matchChild(entry, type.children, taken);
+      if (!child) return;
+      taken.add(child.name);
 
-        if (entry.name !== child.name) changes.push(`${entry.key}: name '${entry.name}' -> '${child.name}'`);
-        if (entry.min !== min) changes.push(`${entry.key}: min ${entry.min} -> ${min}`);
-        if (entry.max !== max) changes.push(`${entry.key}: max ${entry.max} -> ${max}`);
+      const max = child.maxOccurs === null ? 'undefined' : String(child.maxOccurs);
+      const order = String(type.children.indexOf(child) + 1);
 
-        // Surgical field replacement: everything else in the entry, and every
-        // comment between entries, is left exactly as written.
-        const text = entry.raw
-          .replace(/order:\s*\d+/, `order: ${order}`)
-          .replace(/attributeName:\s*'[^']*'/, `attributeName: '${child.name}'`)
-          .replace(/min:\s*\d+/, `min: ${min}`)
-          .replace(/max:\s*(?:\d+|undefined)/, `max: ${max}`);
-        edits.push({ start: entry.start, end: entry.end, text });
-      });
+      if (entry.name !== child.name) changes.push(`${entry.key}: name '${entry.name}' -> '${child.name}'`);
+      if (entry.max !== max) changes.push(`${entry.key}: max ${entry.max} -> ${max}`);
+      // `order` decides the emitted sequence, so a wrong value is a real
+      // defect rather than untidiness. It went uncompared until a duplicate
+      // order in PayeeFinancialAccount surfaced it.
+      if (entry.order !== order) changes.push(`${entry.key}: order ${entry.order} -> ${order}`);
 
-      if (changes.length === 0) return;
-      corrected += changes.length;
-      filesChanged += 1;
-      console.log(`\n${file}`);
-      changes.forEach((c) => console.log(`    ${c}`));
-      const body = source.slice(parsed.bodyStart, parsed.bodyEnd);
-      let rebuiltBody = '';
-      let cursor = 0;
-      edits.forEach((edit) => {
-        rebuiltBody += body.slice(cursor, edit.start) + edit.text;
-        cursor = edit.end;
-      });
-      rebuiltBody += body.slice(cursor);
-
-      if (write) writeFileSync(path, source.slice(0, parsed.bodyStart) + rebuiltBody + source.slice(parsed.bodyEnd));
+      // Surgical field replacement: everything else in the entry, and every
+      // comment between entries, is left exactly as written.
+      const text = entry.raw
+        .replace(/order:\s*\d+/, `order: ${order}`)
+        .replace(/(attributeName|childName):\s*'[^']*'/, `$1: '${child.name}'`)
+        .replace(/max:\s*(?:\d+|undefined)/, `max: ${max}`);
+      edits.push({ start: entry.start, end: entry.end, text });
     });
+
+    if (changes.length === 0) return;
+    corrected += changes.length;
+    filesChanged += 1;
+    console.log(`\n${file}`);
+    changes.forEach((c) => console.log(`    ${c}`));
+    const body = source.slice(parsed.bodyStart, parsed.bodyEnd);
+    let rebuiltBody = '';
+    let cursor = 0;
+    edits.forEach((edit) => {
+      rebuiltBody += body.slice(cursor, edit.start) + edit.text;
+      cursor = edit.end;
+    });
+    rebuiltBody += body.slice(cursor);
+
+    if (write) writeFileSync(path, source.slice(0, parsed.bodyStart) + rebuiltBody + source.slice(parsed.bodyEnd));
+  });
 
   console.log(`\n${'='.repeat(64)}`);
   console.log(`${write ? 'corrected' : 'would correct'} ${corrected} entries across ${filesChanged} files`);

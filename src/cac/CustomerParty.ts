@@ -19,34 +19,30 @@ const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
   customerAssignedAccountID: {
     order: 1,
     attributeName: 'cbc:CustomerAssignedAccountID',
-    min: 0,
     max: 1,
     classRef: UdtIdentifier,
   },
   SupplierAssignedAccountID: {
     order: 2,
     attributeName: 'cbc:SupplierAssignedAccountID',
-    min: 0,
     max: 1,
     classRef: UdtIdentifier,
   },
   additionalAccountIDs: {
     order: 3,
     attributeName: 'cbc:AdditionalAccountID',
-    min: 0,
     max: undefined,
     classRef: UdtIdentifier,
   },
-  party: { order: 4, attributeName: 'cac:Party', min: 0, max: 1, classRef: () => Party },
-  deliveryContact: { order: 5, attributeName: 'cac:DeliveryContact', min: 0, max: 1, classRef: () => DeliveryContact },
+  party: { order: 4, attributeName: 'cac:Party', max: 1, classRef: () => Party },
+  deliveryContact: { order: 5, attributeName: 'cac:DeliveryContact', max: 1, classRef: () => DeliveryContact },
   accountingContact: {
     order: 6,
     attributeName: 'cac:AccountingContact',
-    min: 0,
     max: 1,
     classRef: () => AccountingContact,
   },
-  buyerContact: { order: 7, attributeName: 'cac:BuyerContact', min: 0, max: 1, classRef: () => BuyerContact },
+  buyerContact: { order: 7, attributeName: 'cac:BuyerContact', max: 1, classRef: () => BuyerContact },
 };
 
 type AllowedParams = {

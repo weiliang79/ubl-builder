@@ -4,7 +4,7 @@ import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from '..
 import { UdtText } from '../datatypes/udt';
 
 const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
-  line: { order: 1, attributeName: 'cbc:Line', min: 1, max: 1, classRef: UdtText },
+  line: { order: 1, attributeName: 'cbc:Line', max: 1, classRef: UdtText },
 };
 
 type AllowedParams = {

@@ -4,8 +4,8 @@ import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from '..
 import { UdtCode, UdtName } from '../datatypes/udt';
 
 const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
-  identificationCode: { order: 1, attributeName: 'cbc:IdentificationCode', min: 0, max: 1, classRef: UdtCode },
-  name: { order: 2, attributeName: 'cbc:Name', min: 0, max: 1, classRef: UdtName },
+  identificationCode: { order: 1, attributeName: 'cbc:IdentificationCode', max: 1, classRef: UdtCode },
+  name: { order: 2, attributeName: 'cbc:Name', max: 1, classRef: UdtName },
 };
 
 type AllowedParams = {

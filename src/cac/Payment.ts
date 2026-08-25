@@ -12,12 +12,12 @@ import { UdtAmount } from '../datatypes/udt/UdtAmount';
 */
 
 const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
-  id: { order: 1, attributeName: 'cbc:ID', min: 0, max: 1, classRef: UdtIdentifier },
-  paidAmount: { order: 2, attributeName: 'cbc:PaidAmount', min: 0, max: 1, classRef: UdtAmount },
-  receivedDate: { order: 3, attributeName: 'cbc:ReceivedDate', min: 0, max: 1, classRef: UdtDate },
-  paidDate: { order: 4, attributeName: 'cbc:PaidDate', min: 0, max: 1, classRef: UdtDate },
-  paidTime: { order: 5, attributeName: 'cbc:PaidTime', min: 0, max: 1, classRef: UdtTime },
-  instructionID: { order: 6, attributeName: 'cbc:InstructionID', min: 0, max: 1, classRef: UdtIdentifier },
+  id: { order: 1, attributeName: 'cbc:ID', max: 1, classRef: UdtIdentifier },
+  paidAmount: { order: 2, attributeName: 'cbc:PaidAmount', max: 1, classRef: UdtAmount },
+  receivedDate: { order: 3, attributeName: 'cbc:ReceivedDate', max: 1, classRef: UdtDate },
+  paidDate: { order: 4, attributeName: 'cbc:PaidDate', max: 1, classRef: UdtDate },
+  paidTime: { order: 5, attributeName: 'cbc:PaidTime', max: 1, classRef: UdtTime },
+  instructionID: { order: 6, attributeName: 'cbc:InstructionID', max: 1, classRef: UdtIdentifier },
 };
 
 type AllowedParams = {

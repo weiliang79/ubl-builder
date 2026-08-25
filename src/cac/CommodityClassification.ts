@@ -5,13 +5,12 @@ import { UdtCode } from '../datatypes/udt';
     cbc:ItemClassificationCode [1..1]  A code signifying the classification of the item
 */
 const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
-  natureCode: { order: 1, attributeName: 'cbc:NatureCode', min: 0, max: 1, classRef: UdtCode },
-  cargoTypeCode: { order: 2, attributeName: 'cbc:CargoTypeCode', min: 0, max: 1, classRef: UdtCode },
-  commodityCode: { order: 3, attributeName: 'cbc:CommodityCode', min: 0, max: 1, classRef: UdtCode },
+  natureCode: { order: 1, attributeName: 'cbc:NatureCode', max: 1, classRef: UdtCode },
+  cargoTypeCode: { order: 2, attributeName: 'cbc:CargoTypeCode', max: 1, classRef: UdtCode },
+  commodityCode: { order: 3, attributeName: 'cbc:CommodityCode', max: 1, classRef: UdtCode },
   itemClassificationCode: {
     order: 4,
     attributeName: 'cbc:ItemClassificationCode',
-    min: 0,
     max: 1,
     classRef: UdtCode,
   },

@@ -10,26 +10,24 @@ import { JurisdictionRegionAddress } from './Address';
 */
 
 const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
-  id: { order: 1, attributeName: 'cbc:ID', min: 0, max: 1, classRef: UdtIdentifier },
-  name: { order: 2, attributeName: 'cbc:Name', min: 0, max: 1, classRef: UdtName },
+  id: { order: 1, attributeName: 'cbc:ID', max: 1, classRef: UdtIdentifier },
+  name: { order: 2, attributeName: 'cbc:Name', max: 1, classRef: UdtName },
   corporateRegistrationTypeCode: {
     order: 3,
     attributeName: 'cbc:CorporateRegistrationTypeCode',
-    min: 0,
     max: 1,
     classRef: UdtCode,
   },
   jurisdictionRegionAddresses: {
     order: 4,
     attributeName: 'cac:JurisdictionRegionAddress',
-    min: 0,
     max: undefined,
     classRef: () => JurisdictionRegionAddress,
   },
 
   // ##################################  TODO CAC MISSING ################################################
 
-  // postalAddress: { order: 10,  attributeName: 'cac:PostalAddress', min: 0, max: 1, classRef: PostalAddress }, //
+  // postalAddress: { order: 10,  attributeName: 'cac:PostalAddress', max: 1, classRef: PostalAddress }, //
 
   // ##################################  TODO CAC MISSING ################################################
 };
