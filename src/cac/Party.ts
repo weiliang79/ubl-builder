@@ -1,13 +1,13 @@
 import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from '../core/GenericAggregateComponent';
 import { UdtCode, UdtIdentifier, UdtIndicator } from '../datatypes/udt';
-import { Contact } from './ContactTypeGroup';
+import { Contact } from './Contact';
 import { Language } from './Language';
-import { PhysicalLocation } from './LocationTypeGroup';
+import { PhysicalLocation } from './Location';
 import { PartyIdentification, PartyIdentificationParams } from './PartyIdentification';
 import { PartyLegalEntity } from './PartyLegalEntity';
 import { PartyName } from './PartyName';
 import { PartyTaxScheme, PartyTaxSchemeParams } from './PartyTaxScheme';
-import { PostalAddress } from './PostalAddressTypeGroup';
+import { PostalAddress } from './PostalAddress';
 
 /*
     cbc:MarkCareIndicator [0..1]    An indicator that this party is "care of" (c/o) (true) or not (false).

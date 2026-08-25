@@ -2,17 +2,17 @@ import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from '..
 import { UdtCode, UdtDate, UdtIdentifier, UdtIndicator, UdtQuantity, UdtText } from '../datatypes/udt';
 import { UdtAmount } from '../datatypes/udt/UdtAmount';
 import { BillingReference } from './BillingReference';
+import { Delivery } from './Delivery';
 import { DeliveryTerms } from './DeliveryTerms';
-import { Delivery } from './DeliveryTypeGroup';
 import { DocumentReference } from './DocumentReferenceGroup';
-import { Item } from './ItemTypeGroup';
-import { DespatchLineReference, ReceiptLineReference } from './LineReferenceTypeGroup';
+import { Item } from './Item';
+import { DespatchLineReference, ReceiptLineReference } from './LineReference';
 import { OrderLineReference } from './OrderLineReference';
-import { Party } from './PartyTypeGroup';
-import { PaymentTerms } from './PaymentTermsTypeGroup';
-import { PeriodType } from './PeriodTypeGroup';
-import { Price } from './PriceTypeGroup';
-import { TaxTotal } from './TaxTotalTypeGroup';
+import { Party } from './Party';
+import { PaymentTerms } from './PaymentTerms';
+import { PeriodType } from './Period';
+import { Price } from './Price';
+import { TaxTotal } from './TaxTotal';
 
 /*
   1    cbc:ID [1..1]    An identifier for this credit note line.

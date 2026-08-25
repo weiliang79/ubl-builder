@@ -4,7 +4,7 @@ import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from '..
 import { UdtCode, UdtDate, UdtIdentifier, UdtText } from '../datatypes/udt';
 import { UdtAmount } from '../datatypes/udt/UdtAmount';
 import { UdtPercent } from '../datatypes/udt/UdtPercent';
-import { PeriodType } from './PeriodTypeGroup';
+import { PeriodType } from './Period';
 
 // const GenericAggregateComponent = require("./GenericAggregateComponent");;
 
@@ -13,7 +13,7 @@ import { PeriodType } from './PeriodTypeGroup';
 // const { UdtCode, UdtIdentifier, UdtDate, UdtText, UdtTime, UdtName, UdtQuantity, UdtPercent, UdtAmount } = require("../types/UnqualifiedDataTypes");
 
 // /* TODO GANERIC CLASSES */
-// const { PeriodType } = require("./PeriodTypeGroup");
+// const { PeriodType } = require("./Period");
 
 /*
     http://www.datypic.com/sc/ubl21/e-cac_PaymentTerms.html

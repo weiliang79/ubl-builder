@@ -2,9 +2,9 @@ import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from '..
 import { UdtIndicator, UdtName, UdtQuantity, UdtText } from '../datatypes/udt';
 import { UdtNumeric } from '../datatypes/udt/UdtNumeric';
 import { CommodityClassification } from './CommodityClassification';
-import { Country } from './CountryTypeGroup';
+import { Country } from './Country';
 import { SellersItemIdentification } from './SellersItemIdentification';
-import { ClassifiedTaxCategory } from './TaxCategoryTypeGroup';
+import { ClassifiedTaxCategory } from './TaxCategory';
 
 /*
     1   cbc:Description [0..*]    Text describing this item.

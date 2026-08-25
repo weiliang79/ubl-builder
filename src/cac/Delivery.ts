@@ -2,13 +2,13 @@
 
 import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from '../core/GenericAggregateComponent';
 import { UdtDate, UdtIdentifier, UdtQuantity, UdtTime } from '../datatypes/udt';
-import { DeliveryAddress } from './AddressTypeGroup';
-import { MaximumDeliveryUnit, MinimumDeliveryUnit } from './DeliveryUnitTypeGroup';
+import { DeliveryAddress } from './Address';
+import { MaximumDeliveryUnit, MinimumDeliveryUnit } from './DeliveryUnit';
 import { Despatch } from './Despatch';
-import { AlternativeDeliveryLocation, DeliveryLocation } from './LocationTypeGroup';
-import { CarrierParty, DeliveryParty, NotifyParty } from './PartyTypeGroup';
-import { EstimatedDeliveryPeriod, PromisedDeliveryPeriod, RequestedDeliveryPeriod } from './PeriodTypeGroup';
-import { ShipmentType } from './ShipmentTypeGroup';
+import { AlternativeDeliveryLocation, DeliveryLocation } from './Location';
+import { CarrierParty, DeliveryParty, NotifyParty } from './Party';
+import { EstimatedDeliveryPeriod, PromisedDeliveryPeriod, RequestedDeliveryPeriod } from './Period';
+import { ShipmentType } from './Shipment';
 
 /*
 

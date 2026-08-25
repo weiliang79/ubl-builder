@@ -9,7 +9,7 @@ import { Attachment } from './Attachment';
 import { ValidityPeriod } from './ValidityPeriod';
 
 // const { ValidityPeriod, ValidityPeriodParams } = require("./ValidityPeriod");
-// const { IssuerParty, IssuerPartyParams } = require("./PartyTypeGroup");
+// const { IssuerParty, IssuerPartyParams } = require("./Party");
 
 const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
   id: { order: 1, attributeName: 'cbc:ID', min: 1, max: 1, classRef: UdtIdentifier },

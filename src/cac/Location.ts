@@ -1,6 +1,6 @@
 import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from '../core/GenericAggregateComponent';
 import { UdtCode, UdtIdentifier, UdtName, UdtText } from '../datatypes/udt';
-import { Address } from './AddressTypeGroup';
+import { Address } from './Address';
 import { ValidityPeriod } from './ValidityPeriod';
 
 /*http://www.datypic.com/sc/ubl21/e-cac_PhysicalLocation.html

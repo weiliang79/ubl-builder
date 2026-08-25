@@ -3,7 +3,7 @@ import { UdtMeasure, UdtText } from '../datatypes/udt';
 import { UdtAmount } from '../datatypes/udt/UdtAmount';
 import { UdtNumeric } from '../datatypes/udt/UdtNumeric';
 import { UdtPercent } from '../datatypes/udt/UdtPercent';
-import { TaxCategory } from './TaxCategoryTypeGroup';
+import { TaxCategory } from './TaxCategory';
 
 /*
 

@@ -3,20 +3,20 @@
 import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from '../core/GenericAggregateComponent';
 import { UdtCode, UdtDate, UdtIdentifier, UdtIndicator, UdtQuantity, UdtText } from '../datatypes/udt';
 import { UdtAmount } from '../datatypes/udt/UdtAmount';
-import { AllowanceCharge } from './AllowanceChargeTypeGroup';
+import { AllowanceCharge } from './AllowanceCharge';
 import { BillingReference } from './BillingReference';
+import { Delivery } from './Delivery';
 import { DeliveryTerms } from './DeliveryTerms';
-import { Delivery } from './DeliveryTypeGroup';
 import { DocumentReference } from './DocumentReferenceGroup';
+import { Item } from './Item';
 import { ItemPriceExtension } from './ItemPriceExtension';
-import { Item } from './ItemTypeGroup';
-import { DespatchLineReference, ReceiptLineReference } from './LineReferenceTypeGroup';
+import { DespatchLineReference, ReceiptLineReference } from './LineReference';
 import { OrderLineReference } from './OrderLineReference';
-import { Party } from './PartyTypeGroup';
-import { PaymentTerms } from './PaymentTermsTypeGroup';
-import { PeriodType } from './PeriodTypeGroup';
-import { Price } from './PriceTypeGroup';
-import { TaxTotal, WithholdingTaxTotal } from './TaxTotalTypeGroup';
+import { Party } from './Party';
+import { PaymentTerms } from './PaymentTerms';
+import { PeriodType } from './Period';
+import { Price } from './Price';
+import { TaxTotal, WithholdingTaxTotal } from './TaxTotal';
 
 /*
   1    cbc:ID [1..1]    An identifier for this invoice line.
