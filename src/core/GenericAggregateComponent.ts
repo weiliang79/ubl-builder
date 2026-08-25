@@ -1,4 +1,5 @@
-import { create } from 'xmlbuilder2';
+import { toXmlObject, toXmlString } from './serialize';
+import { NodeSource, XmlContent, XmlNode } from './xmlNode';
 
 export type ParamsMapValues = {
   order: number;
@@ -36,34 +37,55 @@ export default class GenericAggregateComponent {
    * @param paramsMap Params Map
    * @param [elementName="GenericAggregateComponent"] default element name
    */
-  constructor(
-    content: any,
-    paramsMap: IGenericKeyValue<ParamsMapValues>,
-    elementName = 'GenericAggregateComponent',
-  ) {
+  constructor(content: any, paramsMap: IGenericKeyValue<ParamsMapValues>, elementName = 'GenericAggregateComponent') {
     this.elementName = elementName;
     this.paramsMap = paramsMap;
     this.assignContent(content);
   }
 
-  parseToJson() {
-    const jsonResponse: any = {};
+  /**
+   * Describe this component as a neutral node.
+   *
+   * Children come out as an ordered list rather than a keyed object, so
+   * xsd:sequence position is carried by the structure itself instead of
+   * depending on object key ordering.
+   */
+  toNode(): XmlContent {
+    const children: XmlNode[] = [];
+
     Object.keys(this.paramsMap)
-      .filter((attkey) => this.attributes[attkey] !== undefined && this.attributes[attkey] !== null)
+      .filter((attKey) => this.attributes[attKey] !== undefined && this.attributes[attKey] !== null)
       // UBL complex types are xsd:sequence, so element order is significant.
       // Sorting on `order` makes that explicit rather than relying on the
       // declaration order of the params map object literal.
       .sort((a, b) => this.paramsMap[a].order - this.paramsMap[b].order)
       .forEach((attKey) => {
         const { attributeName, max } = this.paramsMap[attKey];
-        if (Array.isArray(this.attributes[attKey]) && max !== undefined) {
-          throw new Error('array given and max is defined validate structure');
+        const value = this.attributes[attKey];
+
+        if (Array.isArray(value)) {
+          if (max !== undefined) {
+            throw new Error('array given and max is defined validate structure');
+          }
+          value.forEach((item: NodeSource) => children.push({ name: attributeName, repeats: true, ...item.toNode() }));
+        } else {
+          children.push({ name: attributeName, ...value.toNode() });
         }
-        jsonResponse[attributeName] = Array.isArray(this.attributes[attKey])
-          ? this.attributes[attKey].map((e: any) => e.parseToJson())
-          : this.attributes[attKey].parseToJson();
       });
-    return jsonResponse;
+
+    return { children };
+  }
+
+  /**
+   * @deprecated Prefer {@link toNode}. Retained because Invoice and the test
+   * suite still read the xmlbuilder2 dialect directly.
+   *
+   * Returns `any` deliberately: this is a compatibility shim, and narrowing
+   * it to the serializer's own type would make every existing call site that
+   * indexes into the result a type error.
+   */
+  parseToJson(): any {
+    return toXmlObject(this.toNode());
   }
 
   assignContent(content: any) {
@@ -118,13 +140,7 @@ export default class GenericAggregateComponent {
    *        {@link elementName} for why the default may not be the right one
    */
   getAsXml(pretty = true, headless = false, elementName: string = this.elementName) {
-    const xmlRef = { [elementName]: this.parseToJson() };
-    // headless belongs to end(), not create(); passing it to create() silently
-    // did nothing, so the declaration was emitted regardless of the argument.
-    return create({ version: '1.0', encoding: 'UTF-8', standalone: false }, xmlRef).end({
-      headless,
-      prettyPrint: pretty,
-    });
+    return toXmlString({ name: elementName, ...this.toNode() }, { pretty, headless });
   }
 
   /**

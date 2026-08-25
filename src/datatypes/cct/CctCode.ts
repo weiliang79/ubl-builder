@@ -36,16 +36,6 @@ export class CctCodeType extends XsdNormalizedString {
     super(content, attributes);
   }
 
-  parseToJson() {
-    const jsonResult: any = { '#': this.content };
-    Object.keys(this.attributes)
-      .filter((att) => this.attributes[att])
-      .forEach((attribute) => {
-        jsonResult[`@${attribute}`] = this.attributes[attribute];
-      });
-    return jsonResult;
-  }
-
   setListID(value: string) {
     this.attributes.listID = value;
   }

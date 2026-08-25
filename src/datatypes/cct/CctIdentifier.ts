@@ -34,16 +34,6 @@ export class CctIdentifierType extends XsdNormalizedString {
     super(content, attributes);
   }
 
-  parseToJson() {
-    const jsonResult: any = { '#': this.content };
-    Object.keys(this.attributes)
-      .filter((att) => this.attributes[att])
-      .forEach((attribute) => {
-        jsonResult[`@${attribute}`] = this.attributes[attribute];
-      });
-    return jsonResult;
-  }
-
   /**
    *
    * @param {string} scheme

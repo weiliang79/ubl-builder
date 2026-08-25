@@ -11,13 +11,4 @@ export class UBLVersionID extends UdtIdentifier {
   constructor(content: string, attributes?: UdtIdentifierAttributes) {
     super(content, attributes);
   }
-
-  parseToJson() {
-    const jsonResult: any = { '#': this.content };
-    Object.keys(this.attributes).forEach((attribute) => {
-      jsonResult[`@${attribute}`] = this.attributes[attribute];
-    });
-
-    return jsonResult;
-  }
 }

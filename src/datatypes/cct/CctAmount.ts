@@ -20,16 +20,6 @@ export class CctAmountType extends XsdDecimal {
     super(content, attributes);
   }
 
-  parseToJson() {
-    const jsonResult: any = { '#': this.content };
-    Object.keys(this.attributes)
-      .filter((att) => this.attributes[att])
-      .forEach((attribute: string) => {
-        jsonResult[`@${attribute}`] = this.attributes[attribute];
-      });
-    return jsonResult;
-  }
-
   setCurrencyID(value: string) {
     this.attributes.currencyID = value;
   }
