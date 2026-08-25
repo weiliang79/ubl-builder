@@ -99,7 +99,7 @@ class UBLExtension extends GenericAggregateComponent {
    * @param {AllowedParams} content
    * @param {string} name
    */
-  constructor(content: AllowedParams, name: string = 'cac:UBLExtension') {
+  constructor(content: AllowedParams, name: string = 'ext:UBLExtension') {
     super(content, ParamsMap, name);
   }
 
@@ -118,4 +118,13 @@ class UBLExtension extends GenericAggregateComponent {
   }
 }
 
+export { UBLExtension, AllowedParams as UBLExtensionParams };
+
+/**
+ * @deprecated The old names, kept so 0.1.x imports keep working.
+ * `UBLExtensionType` was this file's exported name while the class it
+ * declared was called `UBLExtension` — and the sibling file named
+ * `UBLExtensionsType.ts` declared a *second* class also called
+ * `UBLExtension`. Prefer {@link UBLExtension} / {@link UBLExtensionParams}.
+ */
 export { UBLExtension as UBLExtensionType, AllowedParams as UBLExtensionTypeParams };

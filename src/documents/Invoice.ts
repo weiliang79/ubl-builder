@@ -46,9 +46,8 @@ import {
 
 import { UBLExtensions } from '../ext';
 
+import { UBLVersionID, UBLVersionIDAttributes } from '../datatypes/cbc';
 import {
-  UBLVersionID,
-  UBLVersionIDAttributes,
   UdtCode,
   UdtCodeAttributes,
   UdtDate,

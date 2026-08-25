@@ -1,6 +1,13 @@
 'use strict';
 
-import { UBLExtensionType, UBLExtensionTypeParams } from './UBLExtension';
-import { UBLExtensions, UBLExtensionsParams } from './UBLExtensionsType';
+import { UBLExtension, UBLExtensionParams, UBLExtensionType, UBLExtensionTypeParams } from './UBLExtension';
+import { UBLExtensions, UBLExtensionsParams } from './UBLExtensions';
 
-export { UBLExtensions, UBLExtensionsParams, UBLExtensionType, UBLExtensionTypeParams };
+export {
+  UBLExtension,
+  UBLExtensionParams,
+  UBLExtensions,
+  UBLExtensionsParams,
+  UBLExtensionType,
+  UBLExtensionTypeParams,
+};
