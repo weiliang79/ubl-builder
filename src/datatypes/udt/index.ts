@@ -19,11 +19,7 @@ import { UdtTime } from './UdtTime';
 import { UdtValue } from './UdtValue';
 import { UdtVideo, UdtVideoAttributes } from './UdtVideo';
 
-import { UBLVersionID, UBLVersionIDAttributes } from './UBLVersionID';
-
 export {
-  UBLVersionID,
-  UBLVersionIDAttributes,
   UdtAmount,
   UdtAmountAttributes,
   UdtBinaryObject,

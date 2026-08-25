@@ -1,5 +1,5 @@
 import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from '../core/GenericAggregateComponent';
-import { UBLExtensionType, UBLExtensionTypeParams } from './UBLExtension';
+import { UBLExtension, UBLExtensionParams } from './UBLExtension';
 
 /*
   1   ext:UBLExtension [0..*] A single extension for private use.
@@ -10,19 +10,19 @@ const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
     order: 1,
     attributeName: 'ext:UBLExtension',
     max: undefined,
-    classRef: UBLExtensionType,
+    classRef: UBLExtension,
   },
 };
 
 type AllowedParams = {
   /** @type {} A single extension for private use. */
-  UBLExtensions?: UBLExtensionType;
+  UBLExtensions?: UBLExtension;
 };
 
 /**
  *
  */
-class UBLExtension extends GenericAggregateComponent {
+class UBLExtensions extends GenericAggregateComponent {
   /**     *
    * @param {AllowedParams} content
    * @param {string} name
@@ -33,7 +33,7 @@ class UBLExtension extends GenericAggregateComponent {
   }
 
   /**
-   * @returns UBLExtensionType
+   * @returns UBLExtension
    */
   getDianUblExtension() {
     if (this.attributes.UBLExtensions.length > 0) {
@@ -44,10 +44,10 @@ class UBLExtension extends GenericAggregateComponent {
     }
   }
 
-  addUBLExtension(value: UBLExtensionType | UBLExtensionTypeParams) {
-    const itemToPush = value instanceof UBLExtensionType ? value : new UBLExtensionType(value);
+  addUBLExtension(value: UBLExtension | UBLExtensionParams) {
+    const itemToPush = value instanceof UBLExtension ? value : new UBLExtension(value);
     this.attributes.UBLExtensions.push(itemToPush);
   }
 }
 
-export { UBLExtension as UBLExtensions, AllowedParams as UBLExtensionsParams };
+export { UBLExtensions, AllowedParams as UBLExtensionsParams };
