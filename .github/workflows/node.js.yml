@@ -15,6 +15,9 @@ jobs:
     runs-on: ubuntu-latest
 
     strategy:
+      # Report every version's result. Without this a single failure cancels
+      # the rest, and a version that was actually fine gets reported as failed.
+      fail-fast: false
       matrix:
         node-version: [18.x, 20.x, 22.x]
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
