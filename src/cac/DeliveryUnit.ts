@@ -11,10 +11,10 @@ cbc:HazardousRiskIndicator [0..1]    An indication that the transported goods ar
 */
 
 const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
-  batchQuantity: { order: 1, attributeName: 'cbc:BatchQuantity', min: 0, max: 1, classRef: UdtQuantity },
-  consumerUnitQuantity: { order: 1, attributeName: 'cbc:ConsumerUnitQuantity', min: 0, max: 1, classRef: UdtQuantity },
+  batchQuantity: { order: 1, attributeName: 'cbc:BatchQuantity', min: 1, max: 1, classRef: UdtQuantity },
+  consumerUnitQuantity: { order: 2, attributeName: 'cbc:ConsumerUnitQuantity', min: 0, max: 1, classRef: UdtQuantity },
   hazardousRiskIndicator: {
-    order: 1,
+    order: 3,
     attributeName: 'cbc:HazardousRiskIndicator',
     min: 0,
     max: 1,

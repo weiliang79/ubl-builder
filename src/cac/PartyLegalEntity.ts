@@ -1,7 +1,9 @@
+import { Party } from './Party';
+import { PostalAddress } from './PostalAddress';
 // 'use strict'
 
 import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from '../core/GenericAggregateComponent';
-import { UdtIdentifier, UdtName } from '../datatypes/udt';
+import { UdtAmount, UdtCode, UdtDate, UdtIdentifier, UdtIndicator, UdtName, UdtText } from '../datatypes/udt';
 import { CorporateRegistrationScheme } from './CorporateRegistrationScheme';
 
 // const GenericAggregateComponent = require("./GenericAggregateComponent");
@@ -33,6 +35,46 @@ import { CorporateRegistrationScheme } from './CorporateRegistrationScheme';
 // ##################################  TODO CAC MISSING ################################################
 
 const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
+  registrationDate: { order: 3, attributeName: 'cbc:RegistrationDate', min: 0, max: 1, classRef: UdtDate },
+  registrationExpirationDate: {
+    order: 4,
+    attributeName: 'cbc:RegistrationExpirationDate',
+    min: 0,
+    max: 1,
+    classRef: UdtDate,
+  },
+  companyLegalFormCode: { order: 5, attributeName: 'cbc:CompanyLegalFormCode', min: 0, max: 1, classRef: UdtCode },
+  companyLegalForm: { order: 6, attributeName: 'cbc:CompanyLegalForm', min: 0, max: 1, classRef: UdtText },
+  soleProprietorshipIndicator: {
+    order: 7,
+    attributeName: 'cbc:SoleProprietorshipIndicator',
+    min: 0,
+    max: 1,
+    classRef: UdtIndicator,
+  },
+  companyLiquidationStatusCode: {
+    order: 8,
+    attributeName: 'cbc:CompanyLiquidationStatusCode',
+    min: 0,
+    max: 1,
+    classRef: UdtCode,
+  },
+  corporateStockAmount: { order: 9, attributeName: 'cbc:CorporateStockAmount', min: 0, max: 1, classRef: UdtAmount },
+  fullyPaidSharesIndicator: {
+    order: 10,
+    attributeName: 'cbc:FullyPaidSharesIndicator',
+    min: 0,
+    max: 1,
+    classRef: UdtIndicator,
+  },
+  registrationAddress: {
+    order: 11,
+    attributeName: 'cac:RegistrationAddress',
+    min: 0,
+    max: 1,
+    classRef: () => PostalAddress,
+  },
+  headOfficeParty: { order: 13, attributeName: 'cac:HeadOfficeParty', min: 0, max: 1, classRef: () => Party },
   registrationName: { order: 1, attributeName: 'cbc:RegistrationName', min: 0, max: 1, classRef: UdtName },
   companyID: { order: 2, attributeName: 'cbc:CompanyID', min: 0, max: 1, classRef: UdtIdentifier },
   corporateRegistrationScheme: {
@@ -40,11 +82,31 @@ const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
     attributeName: 'cac:CorporateRegistrationScheme',
     min: 0,
     max: 1,
-    classRef: CorporateRegistrationScheme,
+    classRef: () => CorporateRegistrationScheme,
   },
 };
 
 type AllowedParams = {
+  /** The registration date of the CompanyID. */
+  registrationDate?: string | UdtDate;
+  /** The date upon which a registration expires (e.g., registration for an import/export license). */
+  registrationExpirationDate?: string | UdtDate;
+  /** A code signifying the party's legal status. */
+  companyLegalFormCode?: string | UdtCode;
+  /** The company legal status, expressed as a text. */
+  companyLegalForm?: string | UdtText;
+  /** An indicator that the company is owned and controlled by one person (true) or not (false). */
+  soleProprietorshipIndicator?: string | UdtIndicator;
+  /** A code signifying the party's liquidation status. */
+  companyLiquidationStatusCode?: string | UdtCode;
+  /** The number of shares in the capital stock of a corporation. */
+  corporateStockAmount?: string | UdtAmount;
+  /** An indicator that all shares of corporate stock have been paid by shareholders (true) or not (false). */
+  fullyPaidSharesIndicator?: string | UdtIndicator;
+  /** The registered address of the party within a corporate registration scheme. */
+  registrationAddress?: PostalAddress;
+  /** The head office of the legal entity */
+  headOfficeParty?: Party;
   registrationName?: string | UdtName;
   companyID?: string | UdtIdentifier;
   corporateRegistrationScheme?: CorporateRegistrationScheme;

@@ -1,6 +1,8 @@
 import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from '../core/GenericAggregateComponent';
-import { UdtAmount, UdtCode, UdtIdentifier, UdtIndicator, UdtText } from '../datatypes/udt';
+import { UdtAmount, UdtCode, UdtIdentifier, UdtIndicator, UdtNumeric, UdtText } from '../datatypes/udt';
+import { PaymentMeans } from './PaymentMeans';
 import { TaxCategory } from './TaxCategory';
+import { TaxTotal } from './TaxTotal';
 
 /* TODO GANERIC CLASSES */
 /*
@@ -22,6 +24,19 @@ import { TaxCategory } from './TaxCategory';
 */
 
 const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
+  prepaidIndicator: { order: 6, attributeName: 'cbc:PrepaidIndicator', min: 0, max: 1, classRef: UdtIndicator },
+  sequenceNumeric: { order: 7, attributeName: 'cbc:SequenceNumeric', min: 0, max: 1, classRef: UdtNumeric },
+  accountingCostCode: { order: 10, attributeName: 'cbc:AccountingCostCode', min: 0, max: 1, classRef: UdtCode },
+  accountingCost: { order: 11, attributeName: 'cbc:AccountingCost', min: 0, max: 1, classRef: UdtText },
+  perUnitAmount: { order: 12, attributeName: 'cbc:PerUnitAmount', min: 0, max: 1, classRef: UdtAmount },
+  taxTotal: { order: 14, attributeName: 'cac:TaxTotal', min: 0, max: 1, classRef: () => TaxTotal },
+  paymentMeanses: {
+    order: 15,
+    attributeName: 'cac:PaymentMeans',
+    min: 0,
+    max: undefined,
+    classRef: () => PaymentMeans,
+  },
   id: {
     order: 1,
     attributeName: 'cbc:ID',
@@ -47,7 +62,7 @@ const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
     order: 4,
     attributeName: 'cbc:AllowanceChargeReason',
     min: 0,
-    max: 1,
+    max: undefined,
     classRef: UdtText,
   },
   multiplierFactorNumeric: {
@@ -78,12 +93,26 @@ const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
     order: 13,
     attributeName: 'cac:TaxCategory',
     min: 0,
-    max: 1,
-    classRef: TaxCategory,
+    max: undefined,
+    classRef: () => TaxCategory,
   },
 };
 
 type AllowedParams = {
+  /** An indicator that this allowance or charge is prepaid (true) or not (false). */
+  prepaidIndicator?: string | UdtIndicator;
+  /** A number indicating the order of this allowance or charge in the sequence of calculations applied when there are multiple allowances or charges. */
+  sequenceNumeric?: string | UdtNumeric;
+  /** The accounting cost centre used by the buyer to account for this allowance or charge, expressed as a code. */
+  accountingCostCode?: string | UdtCode;
+  /** The accounting cost centre used by the buyer to account for this allowance or charge, expressed as text. */
+  accountingCost?: string | UdtText;
+  /** The allowance or charge per item; the total allowance or charge is calculated by multiplying the per unit amount by the quantity of items, either at the level of the individual transaction line or for the total number of items in the document, depending on the context in which it appears. */
+  perUnitAmount?: string | UdtAmount;
+  /** The total of all the taxes applicable to this allowance or charge. */
+  taxTotal?: TaxTotal;
+  /** A means of payment for this allowance or charge. */
+  paymentMeanses?: PaymentMeans[];
   /**  An identifier for this allowance or charge */
   id?: string | UdtIdentifier;
   /** An indicator that this AllowanceCharge describes a charge (true) or a discount (false) */

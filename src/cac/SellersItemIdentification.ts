@@ -1,11 +1,21 @@
 import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from '../core/GenericAggregateComponent';
 import { UdtIdentifier } from '../datatypes/udt';
+import { Party } from './Party';
 
 const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
-  id: { order: 1, attributeName: 'cbc:ID', min: 0, max: 1, classRef: UdtIdentifier },
+  extendedID: { order: 2, attributeName: 'cbc:ExtendedID', min: 0, max: 1, classRef: UdtIdentifier },
+  barcodeSymbologyID: { order: 3, attributeName: 'cbc:BarcodeSymbologyID', min: 0, max: 1, classRef: UdtIdentifier },
+  issuerParty: { order: 6, attributeName: 'cac:IssuerParty', min: 0, max: 1, classRef: () => Party },
+  id: { order: 1, attributeName: 'cbc:ID', min: 1, max: 1, classRef: UdtIdentifier },
 };
 
 type AllowedParams = {
+  /** An extended identifier for the item that identifies the item with specific properties, e.g., Item 123 = Chair / Item 123 Ext 45 = brown chair. Two chairs can have the same item number, but one is brown. The other is white. */
+  extendedID?: string | UdtIdentifier;
+  /** An identifier for a system of barcodes. */
+  barcodeSymbologyID?: string | UdtIdentifier;
+  /** The party that issued this item identification. */
+  issuerParty?: Party;
   id: string | UdtIdentifier;
 };
 

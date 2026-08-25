@@ -89,7 +89,7 @@ const ParamsMap = {
     attributeName: 'cac:TaxCategory',
     min: 1,
     max: 1,
-    classRef: TaxCategory,
+    classRef: () => TaxCategory,
   },
 };
 

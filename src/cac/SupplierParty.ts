@@ -28,7 +28,7 @@ const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
     classRef: UdtIdentifier,
   },
   dataSendingCapability: { order: 3, attributeName: 'cbc:DataSendingCapability', min: 0, max: 1, classRef: UdtText },
-  party: { order: 4, attributeName: 'cac:Party', min: 0, max: 1, classRef: Party },
+  party: { order: 4, attributeName: 'cac:Party', min: 0, max: 1, classRef: () => Party },
 
   // ##################################  TODO CAC MISSING ################################################
 

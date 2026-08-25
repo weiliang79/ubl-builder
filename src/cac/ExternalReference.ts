@@ -8,7 +8,7 @@ const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
   expiryDate: { order: 4, attributeName: 'cbc:ExpiryDate', min: 0, max: 1, classRef: UdtDate },
   expiryTime: { order: 5, attributeName: 'cbc:ExpiryTime', min: 0, max: 1, classRef: UdtTime },
   mimeCode: { order: 6, attributeName: 'cbc:MimeCode', min: 0, max: 1, classRef: UdtCode },
-  formatCode: { order: 7, attributeName: 'cbc:FormatCode ', min: 0, max: 1, classRef: UdtCode },
+  formatCode: { order: 7, attributeName: 'cbc:FormatCode', min: 0, max: 1, classRef: UdtCode },
   encodingCode: { order: 8, attributeName: 'cbc:EncodingCode', min: 0, max: 1, classRef: UdtCode },
   characterSetCode: { order: 9, attributeName: 'cbc:CharacterSetCode', min: 0, max: 1, classRef: UdtCode },
   fileName: { order: 10, attributeName: 'cbc:FileName', min: 0, max: 1, classRef: UdtName },

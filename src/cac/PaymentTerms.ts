@@ -1,10 +1,11 @@
+import { ExchangeRate } from './ExchangeRate';
 // 'use strict'
 
 import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from '../core/GenericAggregateComponent';
 import { UdtCode, UdtDate, UdtIdentifier, UdtText } from '../datatypes/udt';
 import { UdtAmount } from '../datatypes/udt/UdtAmount';
 import { UdtPercent } from '../datatypes/udt/UdtPercent';
-import { PeriodType } from './Period';
+import { EstimatedDeliveryPeriod, PeriodType } from './Period';
 
 // const GenericAggregateComponent = require("./GenericAggregateComponent");;
 
@@ -40,6 +41,14 @@ import { PeriodType } from './Period';
 */
 
 const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
+  exchangeRate: { order: 18, attributeName: 'cac:ExchangeRate', min: 0, max: 1, classRef: () => ExchangeRate },
+  validityPeriod: {
+    order: 19,
+    attributeName: 'cac:ValidityPeriod',
+    min: 0,
+    max: 1,
+    classRef: () => EstimatedDeliveryPeriod,
+  },
   id: { order: 1, attributeName: 'cbc:ID', min: 0, max: 1, classRef: UdtIdentifier },
   paymentMeansIDs: { order: 2, attributeName: 'cbc:PaymentMeansID', min: 0, max: undefined, classRef: UdtIdentifier },
   prepaidPaymentReferenceID: {
@@ -91,13 +100,17 @@ const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
     max: 1,
     classRef: UdtText,
   },
-  settlementPeriod: { order: 16, attributeName: 'cac:SettlementPeriod', min: 0, max: 1, classRef: PeriodType },
-  penaltyPeriod: { order: 17, attributeName: 'cac:PenaltyPeriod', min: 0, max: 1, classRef: PeriodType },
+  settlementPeriod: { order: 16, attributeName: 'cac:SettlementPeriod', min: 0, max: 1, classRef: () => PeriodType },
+  penaltyPeriod: { order: 17, attributeName: 'cac:PenaltyPeriod', min: 0, max: 1, classRef: () => PeriodType },
 
   // ##################################  TODO CAC MISSING ################################################
 };
 
 type AllowedParams = {
+  /** The currency exchange rate for purposes of these payment terms. */
+  exchangeRate?: ExchangeRate;
+  /** The period during which these payment terms are valid. */
+  validityPeriod?: EstimatedDeliveryPeriod;
   id: string | UdtIdentifier;
   paymentMeansIDs: string[] | UdtIdentifier[];
   prepaidPaymentReferenceID: string | UdtIdentifier;

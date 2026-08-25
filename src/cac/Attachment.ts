@@ -15,7 +15,7 @@ const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
     attributeName: 'cac:ExternalReference',
     min: 0,
     max: 1,
-    classRef: ExternalReference,
+    classRef: () => ExternalReference,
   },
 };
 

@@ -37,10 +37,16 @@ const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
     max: undefined,
     classRef: UdtIdentifier,
   },
-  party: { order: 4, attributeName: 'cac:Party', min: 0, max: 1, classRef: Party },
-  deliveryContact: { order: 5, attributeName: 'cac:DeliveryContact', min: 0, max: 1, classRef: DeliveryContact },
-  accountingContact: { order: 6, attributeName: 'cac:AccountingContact', min: 0, max: 1, classRef: AccountingContact },
-  buyerContact: { order: 7, attributeName: 'cac:BuyerContact', min: 0, max: 1, classRef: BuyerContact },
+  party: { order: 4, attributeName: 'cac:Party', min: 0, max: 1, classRef: () => Party },
+  deliveryContact: { order: 5, attributeName: 'cac:DeliveryContact', min: 0, max: 1, classRef: () => DeliveryContact },
+  accountingContact: {
+    order: 6,
+    attributeName: 'cac:AccountingContact',
+    min: 0,
+    max: 1,
+    classRef: () => AccountingContact,
+  },
+  buyerContact: { order: 7, attributeName: 'cac:BuyerContact', min: 0, max: 1, classRef: () => BuyerContact },
 };
 
 type AllowedParams = {

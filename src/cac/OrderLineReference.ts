@@ -23,11 +23,11 @@ import { OrderReference } from './OrderReference';
 */
 
 const ParamsMap = {
-  lineID: { order: 1, attributeName: 'cbc:LineID', min: 0, max: 1, classRef: UdtIdentifier },
+  lineID: { order: 1, attributeName: 'cbc:LineID', min: 1, max: 1, classRef: UdtIdentifier },
   salesOrderLineID: { order: 2, attributeName: 'cbc:SalesOrderLineID', min: 0, max: 1, classRef: UdtIdentifier },
   uuid: { order: 3, attributeName: 'cbc:UUID', min: 0, max: 1, classRef: UdtIdentifier },
   lineStatusCode: { order: 4, attributeName: 'cbc:LineStatusCode', min: 0, max: 1, classRef: UdtIdentifier },
-  orderReference: { order: 5, attributeName: 'cac:OrderReference', min: 0, max: 1, classRef: OrderReference },
+  orderReference: { order: 5, attributeName: 'cac:OrderReference', min: 0, max: 1, classRef: () => OrderReference },
 };
 
 type AllowedParams = {

@@ -19,6 +19,13 @@ import { PayeeFinancialAccount } from './PayeeFinancialAccount';
 */
 
 const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
+  payerFinancialAccount: {
+    order: 9,
+    attributeName: 'cac:PayerFinancialAccount',
+    min: 0,
+    max: 1,
+    classRef: () => PayeeFinancialAccount,
+  },
   id: { order: 1, attributeName: 'cbc:ID', min: 0, max: 1, classRef: UdtIdentifier },
   paymentMeansCode: { order: 2, attributeName: 'cbc:PaymentMeansCode', min: 1, max: 1, classRef: UdtCode },
   paymentDueDate: { order: 3, attributeName: 'cbc:PaymentDueDate', min: 0, max: 1, classRef: UdtDate },
@@ -27,16 +34,18 @@ const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
   instructionNotes: { order: 6, attributeName: 'cbc:InstructionNote', min: 0, max: undefined, classRef: UdtText },
   paymentID: { order: 7, attributeName: 'cbc:PaymentID', min: 0, max: undefined, classRef: UdtIdentifier },
   payeeFinancialAccount: {
-    order: 8,
+    order: 10,
     attributeName: 'cac:PayeeFinancialAccount',
     min: 0,
-    max: undefined,
-    classRef: PayeeFinancialAccount,
+    max: 1,
+    classRef: () => PayeeFinancialAccount,
   },
   // ##################################  TODO CAC MISSING ################################################
 };
 
 type AllowedParams = {
+  /** The payer's financial account. */
+  payerFinancialAccount?: PayeeFinancialAccount;
   id?: string | UdtIdentifier;
   paymentMeansCode: string | UdtCode;
   paymentDueDate?: string | UdtDate;

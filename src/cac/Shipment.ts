@@ -1,6 +1,11 @@
 import GenericAggregateComponent, { IGenericKeyValue, ParamsMapValues } from '../core/GenericAggregateComponent';
 import { UdtCode, UdtIdentifier, UdtIndicator, UdtMeasure, UdtQuantity, UdtText } from '../datatypes/udt';
 import { UdtAmount } from '../datatypes/udt/UdtAmount';
+import { AllowanceCharge } from './AllowanceCharge';
+import { Country } from './Country';
+import { Delivery } from './Delivery';
+import { AlternativeDeliveryLocation } from './Location';
+import { PostalAddress } from './PostalAddress';
 
 /*
 
@@ -40,7 +45,32 @@ import { UdtAmount } from '../datatypes/udt/UdtAmount';
 */
 
 const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
-  id: { order: 1, attributeName: 'cbc:ID', min: 0, max: 1, classRef: UdtIdentifier },
+  delivery: { order: 25, attributeName: 'cac:Delivery', min: 0, max: 1, classRef: () => Delivery },
+  returnAddress: { order: 27, attributeName: 'cac:ReturnAddress', min: 0, max: 1, classRef: () => PostalAddress },
+  originAddress: { order: 28, attributeName: 'cac:OriginAddress', min: 0, max: 1, classRef: () => PostalAddress },
+  firstArrivalPortLocation: {
+    order: 29,
+    attributeName: 'cac:FirstArrivalPortLocation',
+    min: 0,
+    max: 1,
+    classRef: () => AlternativeDeliveryLocation,
+  },
+  lastExitPortLocation: {
+    order: 30,
+    attributeName: 'cac:LastExitPortLocation',
+    min: 0,
+    max: 1,
+    classRef: () => AlternativeDeliveryLocation,
+  },
+  exportCountry: { order: 31, attributeName: 'cac:ExportCountry', min: 0, max: 1, classRef: () => Country },
+  freightAllowanceCharges: {
+    order: 32,
+    attributeName: 'cac:FreightAllowanceCharge',
+    min: 0,
+    max: undefined,
+    classRef: () => AllowanceCharge,
+  },
+  id: { order: 1, attributeName: 'cbc:ID', min: 1, max: 1, classRef: UdtIdentifier },
   shippingPriorityLevelCode: {
     order: 2,
     attributeName: 'cbc:ShippingPriorityLevelCode',
@@ -49,8 +79,14 @@ const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
     classRef: UdtCode,
   },
   handlingCode: { order: 3, attributeName: 'cbc:HandlingCode', min: 0, max: 1, classRef: UdtCode },
-  handlingInstructions: { order: 4, attributeName: 'cbc:HandlingInstructions', min: 0, max: 1, classRef: UdtText },
-  informations: { order: 5, attributeName: 'cbc:Information', min: 0, max: 1, classRef: UdtText },
+  handlingInstructions: {
+    order: 4,
+    attributeName: 'cbc:HandlingInstructions',
+    min: 0,
+    max: undefined,
+    classRef: UdtText,
+  },
+  informations: { order: 5, attributeName: 'cbc:Information', min: 0, max: undefined, classRef: UdtText },
   grossWeightMeasure: { order: 6, attributeName: 'cbc:GrossWeightMeasure', min: 0, max: 1, classRef: UdtMeasure },
   netWeightMeasure: { order: 7, attributeName: 'cbc:NetWeightMeasure', min: 0, max: 1, classRef: UdtMeasure },
   netNetWeightMeasure: { order: 8, attributeName: 'cbc:NetNetWeightMeasure', min: 0, max: 1, classRef: UdtMeasure },
@@ -137,6 +173,20 @@ const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
 };
 
 type AllowedParams = {
+  /** The delivery of this shipment. */
+  delivery?: Delivery;
+  /** The address to which a shipment should be returned. */
+  returnAddress?: PostalAddress;
+  /** The region in which the goods have been produced or manufactured, according to criteria laid down for the purposes of application of the customs tariff, or of quantitative restrictions, or of any other measure related to trade. */
+  originAddress?: PostalAddress;
+  /** The first arrival location of a shipment. This would be a port for sea, an airport for air, a terminal for rail, or a border post for land crossing. */
+  firstArrivalPortLocation?: AlternativeDeliveryLocation;
+  /** The final exporting location for a shipment. This would be a port for sea, an airport for air, a terminal for rail, or a border post for land crossing. */
+  lastExitPortLocation?: AlternativeDeliveryLocation;
+  /** The country from which the goods were originally exported, without any commercial transaction taking place in intermediate countries. */
+  exportCountry?: Country;
+  /** A cost incurred by the shipper in moving goods, by whatever means, from one place to another under the terms of the contract of carriage. In addition to transport costs, this may include such elements as packing, documentation, loading, unloading, and insurance to the extent that they relate to the freight costs. */
+  freightAllowanceCharges?: AllowanceCharge[];
   id: string | UdtIdentifier;
   shippingPriorityLevelCode: string | UdtCode;
   handlingCode: string | UdtCode;

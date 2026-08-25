@@ -23,9 +23,9 @@ import { PriceList } from './PriceList';
 */
 
 const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
-  priceAmount: { order: 1, attributeName: 'cbc:PriceAmount', min: 0, max: 1, classRef: UdtAmount },
+  priceAmount: { order: 1, attributeName: 'cbc:PriceAmount', min: 1, max: 1, classRef: UdtAmount },
   baseQuantity: { order: 2, attributeName: 'cbc:BaseQuantity', min: 0, max: 1, classRef: UdtQuantity },
-  priceChangeReasons: { order: 3, attributeName: 'cbc:PriceChangeReason', min: 0, max: 1, classRef: UdtText },
+  priceChangeReasons: { order: 3, attributeName: 'cbc:PriceChangeReason', min: 0, max: undefined, classRef: UdtText },
   priceTypeCode: { order: 4, attributeName: 'cbc:PriceTypeCode', min: 0, max: 1, classRef: UdtCode },
   priceType: { order: 5, attributeName: 'cbc:PriceType', min: 0, max: 1, classRef: UdtText },
   orderableUnitFactorRate: {
@@ -35,21 +35,27 @@ const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
     max: 1,
     classRef: UdtRate,
   },
-  validityPeriods: { order: 7, attributeName: 'cac:ValidityPeriod', min: 0, max: 1, classRef: ValidityPeriod },
-  priceList: { order: 8, attributeName: 'cac:PriceList', min: 0, max: 1, classRef: PriceList },
+  validityPeriods: {
+    order: 7,
+    attributeName: 'cac:ValidityPeriod',
+    min: 0,
+    max: undefined,
+    classRef: () => ValidityPeriod,
+  },
+  priceList: { order: 8, attributeName: 'cac:PriceList', min: 0, max: 1, classRef: () => PriceList },
   allowanceCharges: {
     order: 9,
     attributeName: 'cac:AllowanceCharge',
     min: 0,
     max: undefined,
-    classRef: AllowanceCharge,
+    classRef: () => AllowanceCharge,
   },
   pricingExchangeRate: {
-    order: 9,
+    order: 10,
     attributeName: 'cac:PricingExchangeRate',
     min: 0,
     max: 1,
-    classRef: PricingExchangeRate,
+    classRef: () => PricingExchangeRate,
   },
 
   // ##################################  TODO CAC MISSING ################################################

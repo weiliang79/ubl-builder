@@ -31,7 +31,7 @@ const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
   taxExemptionReason: { order: 7, attributeName: 'cbc:TaxExemptionReason', min: 0, max: undefined, classRef: UdtText },
   tierRange: { order: 8, attributeName: 'cbc:TierRange', min: 0, max: 1, classRef: UdtText },
   tierRatePercent: { order: 9, attributeName: 'cbc:TierRatePercent', min: 0, max: 1, classRef: UdtPercent },
-  taxScheme: { order: 10, attributeName: 'cac:TaxScheme', min: 0, max: 1, classRef: TaxScheme },
+  taxScheme: { order: 10, attributeName: 'cac:TaxScheme', min: 1, max: 1, classRef: () => TaxScheme },
 };
 
 type AllowedParams = {

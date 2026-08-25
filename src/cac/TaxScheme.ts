@@ -19,8 +19,8 @@ const ParamsMap: IGenericKeyValue<ParamsMapValues> = {
     order: 5,
     attributeName: 'cac:JurisdictionRegionAddress',
     min: 0,
-    max: 1,
-    classRef: JurisdictionRegionAddress,
+    max: undefined,
+    classRef: () => JurisdictionRegionAddress,
   },
 };
 
