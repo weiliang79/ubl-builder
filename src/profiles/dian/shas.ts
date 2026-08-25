@@ -2,8 +2,14 @@
  * Message digests, on Web Crypto rather than Node's `crypto`.
  *
  * `crypto.createHash` is Node-only and would have made this the single import
- * that stops the package bundling for a browser. `crypto.subtle` is available
- * in Node 15+ and in every browser, so the same code runs in both.
+ * that stops the package bundling for a browser. `crypto.subtle` reached via
+ * the `crypto` global works in every browser and in Node 20+, so the same code
+ * runs in both.
+ *
+ * Node 18 is not enough and is why `engines` says >=20: Web Crypto exists there
+ * as `require('node:crypto').webcrypto`, but the *global* needs
+ * `--experimental-global-webcrypto` until Node 19. Reaching for the Node
+ * builtin as a fallback would put back the import this file exists to avoid.
  *
  * The trade is that Web Crypto is asynchronous, so `getHash` returns a
  * promise. That suits where this is heading: XAdES signing is async anyway,
