@@ -1,12 +1,12 @@
 # ubl-builder
 
-[![license](https://img.shields.io/npm/l/xmldom?color=blue&style=flat-square)](./LICENSE)
+[![license: MIT](https://img.shields.io/badge/license-MIT-blue?style=flat-square)](./LICENSE)
 
 Build XML documents to the OASIS **UBL 2.1** (Universal Business Language)
 standard, with optional country profiles layered on top.
 
-- **UBL 2.1 documents** — components generated against the OASIS schemas and
-  held to them by a CI check
+- **UBL 2.1 documents** — components are held to the OASIS schemas by a CI
+  check that fails on any disagreement in element name, order or cardinality
 - **XML or JSON** — the same document renders as XML or as OASIS UBL JSON
   v2.0, the format Malaysia's MyInvois accepts alongside XML
 - **Country profiles** — the core knows only UBL; jurisdictions add their
@@ -20,6 +20,9 @@ standard, with optional country profiles layered on top.
 ```sh
 npm install @weiliang79/ubl-builder
 ```
+
+Requires **Node 20 or newer**. Digests are computed with Web Crypto through the
+`crypto` global, which Node exposes by default only from version 19.
 
 ## Usage
 
@@ -48,6 +51,9 @@ console.log(invoice.getXml(true));
 </Invoice>
 ```
 
+The namespace declarations are wrapped here for readability; the real output
+puts them on the root element's own line.
+
 For submission, `getXml(false, true)` gives the headless single-line form whose
 bytes the MyInvois `documentHash` is computed over. `getJson()` renders the
 same document as UBL JSON.
@@ -56,16 +62,16 @@ same document as UBL JSON.
 
 The root import re-exports everything. Subpaths are narrower:
 
-| Import                    | Contains                                                     |
-| ------------------------- | ------------------------------------------------------------ |
-| `@weiliang79/ubl-builder` | everything                                                   |
-| `.../documents`           | `Invoice`                                                    |
-| `.../cac`                 | aggregate components — `Party`, `TaxTotal`, `InvoiceLine`, … |
-| `.../datatypes`           | `UdtAmount`, `UdtCode`, the CCT and XSD primitives           |
-| `.../ext`                 | `UBLExtensions`                                              |
-| `.../profiles/myinvois`   | Malaysia — LHDN vocabulary and profile                       |
-| `.../profiles/dian`       | Colombia — retained, unmaintained                            |
-| `.../core`                | the component base, serializers and node types               |
+| Import                    | Contains                                                        |
+| ------------------------- | --------------------------------------------------------------- |
+| `@weiliang79/ubl-builder` | everything                                                      |
+| `.../documents`           | `Invoice`                                                       |
+| `.../cac`                 | aggregate components — `Party`, `TaxTotal`, `InvoiceLine`, …    |
+| `.../datatypes`           | `UdtAmount`, `UdtCode`, `UBLVersionID`, the CCT and XSD primitives |
+| `.../ext`                 | `UBLExtension`, `UBLExtensions`                                 |
+| `.../profiles/myinvois`   | Malaysia — LHDN vocabulary and profile                          |
+| `.../profiles/dian`       | Colombia — retained, unmaintained                               |
+| `.../core`                | the component base, serializers and node types                  |
 
 ## Schemas
 
@@ -76,6 +82,7 @@ not published.
 ```sh
 npm run report:schema     # differences between the components and the schemas
 npm run check:schema      # fail if any params map disagrees (runs in CI)
+npm run check:types       # fail if a params map entry is unreachable from its params type
 npm run validate:xsd      # validate the golden fixtures against the XSD
 ```
 
@@ -85,6 +92,20 @@ reporting line-level discounts in `AllowanceTotalAmount` while
 `LineExtensionAmount` is already net of them, so business-rule validation
 rejects conformant documents.
 
+## Not implemented
+
+- **XAdES signing.** MyInvois document version 1.1 enables signature
+  validation; this library ships the `finalize()` seam and no-ops for 1.0.
+  Signing is planned for 0.2.0. Version 1.0 needs no signature, and its
+  `documentHash` is a digest of opaque bytes that belongs in your API client.
+- **Profile constraints.** MyInvois requires fields UBL marks optional; the
+  library does not yet enforce that, and LHDN rejects them on submission.
+- **65 UBL elements** remain untranscribed, blocked on component types that do
+  not exist yet. Everything absent is optional in UBL.
+
+The library never computes or validates monetary totals — see the BR-CO-13
+note above for why.
+
 ## Upgrading
 
 See [MIGRATION.md](./MIGRATION.md). 0.1.0 moves every import path.
@@ -92,5 +113,16 @@ See [MIGRATION.md](./MIGRATION.md). 0.1.0 moves every import path.
 ## Credits
 
 A fork of [pipesanta/ubl-builder](https://github.com/pipesanta/ubl-builder) by
-Felipe Santa, which is where the component model and the UBL type coverage came
-from. MIT, as is this.
+Felipe Santa, with contributions from Lars Buur. The component model, the
+params-map interpreter and the original UBL type coverage came from there.
+MIT, as is this.
+
+The fork diverged at `3367464` (November 2023) and has since restructured
+almost everything: 56 commits changing 191 files, with every import path moved,
+the serializer replaced, and the country-specific logic pulled out of the core
+document class into profiles. Upstream remains active and is published as
+`ubl-builder`.
+
+Note the version numbers run backwards between the two — upstream is at 1.4.5
+while this fork restarted at 0.1.0 for its own restructure. They are not
+comparable, and the two packages are not drop-in replacements for each other.

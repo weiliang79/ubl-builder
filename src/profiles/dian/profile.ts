@@ -12,7 +12,7 @@ import { Profile } from '../Profile';
  * `finalize()` is unimplemented. What it needs — CUFE, the QR code and the
  * DIAN extension — is written up in CUFE.md.
  */
-export const dian: Profile = {
+export const dian = {
   id: 'dian@2.1',
 
   defaults(document: Invoice): void {
@@ -25,4 +25,4 @@ export const dian: Profile = {
       // into the core document's setDefaultProperties.
       .addProperty('xmlns:sts', 'http://www.dian.gov.co/contratos/facturaelectronica/v1/Structures');
   },
-};
+} satisfies Profile;

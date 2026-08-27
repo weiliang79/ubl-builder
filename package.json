@@ -1,7 +1,7 @@
 {
   "name": "@weiliang79/ubl-builder",
   "version": "0.1.0",
-  "description": "Tool to create xml documents with UBL 2.1 standard",
+  "description": "Build OASIS UBL 2.1 documents as XML or UBL JSON, with country profiles — Malaysia MyInvois included",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "exports": {
@@ -68,12 +68,19 @@
     "url": "git+https://github.com/weiliang79/ubl-builder.git"
   },
   "keywords": [
-    "ubl2",
-    "UBL",
-    "2.1",
-    "xml"
+    "ubl",
+    "ubl-2.1",
+    "ubl-json",
+    "e-invoice",
+    "einvoicing",
+    "myinvois",
+    "lhdn",
+    "malaysia",
+    "oasis",
+    "xml",
+    "invoice"
   ],
-  "author": "Wei Liang Ung <liang2010@hotmail.my> (https://github.com/weiliang79/ubl-builder.git)",
+  "author": "Wei Liang Ung <liang2010@hotmail.my> (https://github.com/weiliang79)",
   "contributors": [
     {
       "name": "Felipe Santa",

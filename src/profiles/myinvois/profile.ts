@@ -37,7 +37,7 @@ import { Profile } from '../Profile';
  * library neither computes nor checks monetary totals: the caller supplies
  * them, and LHDN is the arbiter. See D8 in the restructure decision record.
  */
-export const myInvois: Profile = {
+export const myInvois = {
   id: 'myinvois@1.0',
 
   defaults(document: Invoice): void {
@@ -56,7 +56,7 @@ export const myInvois: Profile = {
    * assemble the result into the standard UBL signature extension. That is
    * tracked for 0.2.0.
    */
-  finalize(): void {
+  finalize(_document: Invoice): void {
     return;
   },
-};
+} satisfies Profile;
