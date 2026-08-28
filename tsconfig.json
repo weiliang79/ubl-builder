@@ -1,17 +1,23 @@
 {
+  // The type-checking project: everything written in TypeScript, including the
+  // tests and the generator scripts. It deliberately emits nothing — see
+  // tsconfig.build.json for the one that produces dist/.
+  //
+  // The wide `include` is the point. This file used to cover src/ alone, so
+  // `tsc --noEmit` reported success while a spec file failed to compile, and
+  // nothing type-checked scripts/generator at all.
   "compilerOptions": {
     "target": "es2020",
     "module": "commonjs",
     "moduleResolution": "node",
     "lib": ["es2020"],
     "typeRoots": ["./node_modules/@types", "./src/types"],
-    "declaration": true,
-    "declarationMap": true,
-    "sourceMap": true,
     "esModuleInterop": true,
     "strict": true,
-    "outDir": "./dist"
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true
   },
-  "include": ["src/**/*.ts"],
-  "exclude": ["node_modules"]
+  "include": ["src/**/*.ts", "test/**/*.ts", "scripts/**/*.ts", "jest.config.ts"],
+  "exclude": ["node_modules", "dist"]
 }

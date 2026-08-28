@@ -44,6 +44,7 @@
   },
   "files": [
     "dist/**/*",
+    "src/**/*.ts",
     "MIGRATION.md"
   ],
   "scripts": {
@@ -52,7 +53,8 @@
     "build": "tsc --project tsconfig.build.json",
     "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
     "lint": "eslint .",
-    "prepublishOnly": "npm run build && npm run lint && npm run check:schema && npm run check:types && npm test && npm run validate:xsd",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "prepublishOnly": "npm run build && npm run lint && npm run typecheck && npm run check:schema && npm run check:types && npm test && npm run validate:xsd",
     "preversion": "npm run lint",
     "version": "npm run format && git add -A src",
     "postversion": "git push && git push --tags",

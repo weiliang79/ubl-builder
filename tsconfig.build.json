@@ -1,4 +1,19 @@
 {
+  // The emit project: src/ only, and the only place that writes dist/.
+  //
+  // `rootDir` is load-bearing rather than decorative. Without it TypeScript
+  // infers the root from whatever is in the program, so a single stray import
+  // from outside src/ would shift every output path to dist/src/… and silently
+  // break all seven subpath exports. Pinning it turns that into a build error.
   "extends": "./tsconfig.json",
-  "exclude": ["node_modules", "test", "dist", "**/*spec.ts"]
+  "compilerOptions": {
+    "noEmit": false,
+    "rootDir": "./src",
+    "outDir": "./dist",
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true
+  },
+  "include": ["src/**/*.ts"],
+  "exclude": ["node_modules", "dist"]
 }

@@ -116,13 +116,3 @@ A fork of [pipesanta/ubl-builder](https://github.com/pipesanta/ubl-builder) by
 Felipe Santa, with contributions from Lars Buur. The component model, the
 params-map interpreter and the original UBL type coverage came from there.
 MIT, as is this.
-
-The fork diverged at `3367464` (November 2023) and has since restructured
-almost everything: 56 commits changing 191 files, with every import path moved,
-the serializer replaced, and the country-specific logic pulled out of the core
-document class into profiles. Upstream remains active and is published as
-`ubl-builder`.
-
-Note the version numbers run backwards between the two — upstream is at 1.4.5
-while this fork restarted at 0.1.0 for its own restructure. They are not
-comparable, and the two packages are not drop-in replacements for each other.
