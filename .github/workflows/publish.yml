@@ -1,0 +1,111 @@
+# Release on a version tag.
+#
+#   npm version minor      # bumps package.json, commits, tags v0.2.0
+#                          # `postversion` then pushes the commit and the tag
+#
+# Pushing the tag runs the full CI gate on Node 20/22/24, then publishes to npm
+# once — but only if every check passed and the tag agrees with package.json.
+#
+# Nothing here publishes from a branch push. A tag is the only trigger, so a
+# release is always a deliberate act.
+
+name: Publish
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+# Two tags pushed close together would otherwise race for the same version.
+concurrency:
+  group: publish-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  # The same gate master runs — called, not copied, so it cannot drift.
+  ci:
+    uses: ./.github/workflows/node.js.yml
+
+  publish:
+    needs: ci
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      # Required for npm provenance: npm exchanges this for a signed
+      # attestation linking the tarball to this workflow run.
+      id-token: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22.x
+          cache: 'npm'
+          registry-url: 'https://registry.npmjs.org'
+
+      - run: npm ci
+
+      # `npm publish` triggers prepublishOnly, which runs validate:xsd, which
+      # shells out to xmllint. Same reason the CI workflow installs it.
+      - name: Install xmllint
+        run: sudo apt-get update && sudo apt-get install -y libxml2-utils
+
+      - name: Tag must match package.json
+        run: |
+          set -euo pipefail
+          tag_version="${GITHUB_REF_NAME#v}"
+          pkg_version="$(node -p "require('./package.json').version")"
+          if [ "$tag_version" != "$pkg_version" ]; then
+            echo "::error::Tag ${GITHUB_REF_NAME} implies ${tag_version}, but package.json says ${pkg_version}."
+            echo "::error::Use \`npm version\` to move both together."
+            exit 1
+          fi
+          echo "Publishing version ${pkg_version}"
+
+      - name: Refuse to republish an existing version
+        run: |
+          set -euo pipefail
+          name="$(node -p "require('./package.json').name")"
+          version="$(node -p "require('./package.json').version")"
+          if npm view "${name}@${version}" version >/dev/null 2>&1; then
+            echo "::error::${name}@${version} is already on npm. Versions are immutable; bump and tag again."
+            exit 1
+          fi
+
+      # A prerelease must not become `latest`, or `npm install <pkg>` starts
+      # handing everyone a beta.
+      - name: Choose the dist-tag
+        id: disttag
+        run: |
+          set -euo pipefail
+          version="$(node -p "require('./package.json').version")"
+          case "$version" in
+            *-*) echo "tag=next"   >> "$GITHUB_OUTPUT" ;;
+            *)   echo "tag=latest" >> "$GITHUB_OUTPUT" ;;
+          esac
+
+      # Runs prepublishOnly first: build, lint, typecheck, check:schema,
+      # check:types, test, validate:xsd. Redundant with the `ci` job above and
+      # deliberately so — it is the gate that also protects a publish run by
+      # hand from a laptop.
+      - name: Publish
+        run: npm publish --access public --provenance --tag "$DIST_TAG"
+        env:
+          DIST_TAG: ${{ steps.disttag.outputs.tag }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Summary
+        env:
+          DIST_TAG: ${{ steps.disttag.outputs.tag }}
+        run: |
+          version="$(node -p "require('./package.json').version")"
+          name="$(node -p "require('./package.json').name")"
+          {
+            echo "### Published \`${name}@${version}\`"
+            echo
+            echo "- dist-tag: \`${DIST_TAG}\`"
+            echo "- tag: \`${GITHUB_REF_NAME}\`"
+            echo "- <https://www.npmjs.com/package/${name}/v/${version}>"
+          } >> "$GITHUB_STEP_SUMMARY"
