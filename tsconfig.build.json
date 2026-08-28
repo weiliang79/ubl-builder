@@ -8,6 +8,10 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "noEmit": false,
+    // A failed build should not leave output behind. Without this, tsc emits
+    // despite errors: the TS6059 case above still wrote four files to the repo
+    // root before failing.
+    "noEmitOnError": true,
     "rootDir": "./src",
     "outDir": "./dist",
     "declaration": true,
